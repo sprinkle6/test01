@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/15/19 4:43 PM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_gray_background"
+    tools:context=".features.search.SearchActivity">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchInput"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/rounded_rectangle_white_r8"
+        android:imeOptions="actionSearch"
+        app:closeIcon="@drawable/search_close"
+        app:layout_constraintEnd_toStartOf="@id/cancelButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="搜索昵称、ID"
+        app:searchIcon="@mipmap/search">
+
+    </androidx.appcompat.widget.SearchView>
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="48dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/rounded_rectangle_white_r8"
+        android:textColor="@color/main_gray_f2"
+        app:layout_constraintTop_toTopOf="@id/searchInput"
+        app:layout_constraintBottom_toBottomOf="@id/searchInput"
+        app:layout_constraintStart_toEndOf="@id/searchInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="取消" />
+
+    <View
+        android:id="@+id/searchInputDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="9dp"
+        android:alpha="0.4"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintStart_toStartOf="@id/searchInput"
+        app:layout_constraintEnd_toEndOf="@id/cancelButton"
+        app:layout_constraintTop_toBottomOf="@id/searchInput" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/historyArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/searchInputDivider"
+        app:layout_constraintStart_toStartOf="@id/searchInputDivider"
+        app:layout_constraintEnd_toEndOf="@id/searchInputDivider">
+
+        <TextView
+            android:id="@+id/historyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="历史搜索"
+            android:textAlignment="textStart"
+            android:textColor="@color/main_black_f1"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/clearHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清除历史"
+            android:textAlignment="textStart"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/searchHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:flexWrap="wrap"
+            app:layout_constraintTop_toBottomOf="@id/historyLabel"
+            app:layout_constraintStart_toStartOf="@id/historyLabel"
+            app:layout_constraintEnd_toEndOf="@id/historyLabel">
+        </com.google.android.flexbox.FlexboxLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/searchResult"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/historyArea"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/search_result_user_item"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

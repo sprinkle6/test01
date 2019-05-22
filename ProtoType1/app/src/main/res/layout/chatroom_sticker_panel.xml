@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/22/19 12:12 AM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 表情选择面板 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stickerPanel"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/shape_gradient_darkblue"/>
+
+</FrameLayout>
+

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">花语-PT2</string>
+
+    <string name="title_activity_main">花语-PT2</string>
+    <string name="user_details_screen_title">用户详情</string>
+
+    <!-- Main Navigation -->
+    <string name="nav_title_users">首页</string>
+    <string name="nav_title_chatrooms">聊天室</string>
+    <string name="nav_title_messages">消息</string>
+    <string name="nav_title_mine">我的</string>
+
+    <!-- Action -->
+    <string name="action_refresh">Refresh</string>
+
+    <!-- Error Message -->
+    <string name="failure_network_connection">No Network Connection.</string>
+    <string name="failure_server">Server Error</string>
+    <string name="failure_unknown">未知异常</string>
+    <string name="failure_user_list_unavailable">取不到用户列表</string>
+    <string name="failure_user_non_existent">用户不存在</string>
+    <string name="failure_chatrooms_list_unavailable">取不到聊天室列表</string>
+    <string name="failure_chatroom_not_exist">聊天室不存在</string>
+    <string name="failure_chatroom_general">聊天室异常</string>
+    <string name="failure_chatroom_voice_engine">语音引擎异常</string>
+    <string name="failure_chatroom_voice_engine_initialize_failed">语音引擎初始化失败</string>
+    <string name="failure_chatroom_no_record_audio_permission">请授予录音权限，否则无法上麦。</string>
+    <string name="failure_chatroom_signal_api">信令异常</string>
+    <string name="failure_chatroom_signal_channel_join_failed">加入聊天室消息频道失败</string>
+    <string name="failure_chatroom_signal_login_failed">信令登录失败，请检查网络连接是否正常。如果使用了VPN请关闭VPN。</string>
+    <string name="failure_chatroom_invaild">聊天室异常</string>
+
+    <!-- 声网聊天室SDK -->
+    <!-- 李鹏的ID -->
+    <!--
+    <string name="agora_private_app_id">5c7cfaf2c20e49f6a0ed215939931fa5</string>
+    -->
+    <!-- 同庆的ID -->
+    <string name="agora_private_app_id">0637d9030a4b46d6b80f87b2f59b9871</string>
+
+</resources>

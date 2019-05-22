@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Base colors-->
+    <color name="colorPrimary">#000000</color>
+    <color name="colorAccent">#000000</color>
+    <color name="colorSecondary">#7F1A18</color>
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextSecondary">#7f1a18</color>
+
+    <color name="translucentBackground">#ED000000</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#D2995F</color>
+    <color name="agora_blue">#00C8FF</color>
+    <color name="gray">#ADADAD</color>
+    <color name="dark_gray">#888888</color>
+
+    <color name="recorder_bg">#F4511E</color>
+
+    <!-- 花语主题颜色，参见UI设计规范 -->
+    <color name="main_blue_c1">#4CD3EA</color>
+    <color name="main_blue_c1_a20">#334CD3EA</color>
+    <color name="main_blue_c1_a70">#B34CD3EA</color>
+    <color name="main_blue_light">#AEDDFF</color>
+    <color name="main_blue_light2">#E1F7FC</color>
+    <color name="main_blue_dark">#08566B</color>
+    <color name="main_pink_c2">#FF6BD3</color>
+    <color name="main_yellow_c3">#FFB500</color>
+    <color name="main_nav_blue_c4">#09C9E2</color>
+    <color name="main_gametag_background_c5">#3B3B3B</color>
+    <color name="main_voice_button_background1_c6">#2FD6F5</color>
+    <color name="main_voice_button_background2_c6">#43E9E0</color>
+    <color name="main_mask_c7">#7F000000</color>
+    <color name="main_white_background">#FFFFFF</color>
+    <color name="main_gray_background">#F7F7F7</color>
+    <color name="main_black_f1">#1E1E1E</color>
+    <color name="main_gray_f2">#9B9B9B</color>
+    <color name="main_gray_f2_transparent">#779B9B9B</color>
+    <color name="main_blue_f3">#4CD3EA</color>
+    <color name="main_white_f4">#FFFFFF</color>
+    <color name="main_yellow_f5">#FFE159</color>
+    <color name="main_yellow_f8">#FFB500</color>
+    <color name="main_purple">#7D21E5</color>
+    <color name="main_gradient_darkblue_start">#017491</color>
+    <color name="main_gradient_darkblue_end">#005970</color>
+    <color name="main_mask_c16">#40FFFFFF</color>
+    <color name="main_mask_c17">#40000000</color>
+    <color name="main_mask_c18">#80000000</color>
+
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/2/19 5:31 PM
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:topRightRadius="5dp" android:bottomLeftRadius="5dp"/>
+    <solid android:color="@color/main_gametag_background_c5" />
+</shape>

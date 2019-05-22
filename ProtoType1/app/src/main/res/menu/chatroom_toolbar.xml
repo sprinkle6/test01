@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/5/19 4:30 PM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/actionSubscribeRoom"
+        android:title="收藏房间"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/actionShareRoom"
+        android:title="分享房间"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/actionComplainRoom"
+        android:title="投诉房间"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/actionLeaveRoom"
+        android:title="离开房间"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/actionClearAllSeats"
+        android:title="清除所有座位"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/actionSendTestMessages"
+        android:title="发送测试消息"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/actionTestWelcome"
+        android:title="测试欢迎通知"
+        app:showAsAction="never"/>
+</menu>

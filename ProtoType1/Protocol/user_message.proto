@@ -1,0 +1,501 @@
+syntax = "proto3";
+
+package proto_def;
+
+
+message UserInfoBrief {
+    string uid = 1;
+    string nick_name = 2;
+    string avatar = 3;
+    string level = 4;
+    int32 level_id = 12;
+    string great_num = 5;
+    string location = 6;
+    int32 fans = 7;
+    int32 follows = 8;
+    float balance = 9;
+    int32 age = 10;
+    string gender = 11;
+    int32 vip = 13;
+}
+
+message NameCheckReq {
+    string name = 1;
+}
+
+message NameCheckResp {
+    bool can_use = 1;
+    repeated string names = 2;
+}
+
+message UserRegisterReq {
+    string phone = 1;
+    string name = 2;
+    string gender = 3;
+    string avatar = 4;
+    string birth = 5;
+
+    string invited_code = 6;
+    repeated string gift_ids = 7;
+    repeated int32 skill_ids = 8;
+}
+
+message UserRegisterResp {
+    enum STATUS {
+        OK = 0;
+        NAME_OCUPIED = 1;
+        PARAMETER_ERROR = 2;
+    }
+
+    STATUS status = 1;
+    UserInfoBrief user = 2;
+}
+
+message BanbanListReq {
+    message Filter {
+        string field = 1; // filter field, [gender|location|skill|skill_grade}
+        string value = 2; // filter value, set 'ALL' for all ['F', 'M'] | ['北京'....] |
+                          // [skill_id or skill_grade_id in sys config]
+    }
+
+    string user_id = 1;
+    int32 page_number = 2;
+    int32 num_per_page = 3;
+    repeated Filter filters = 4;
+    string order_by = 5;  // 排序字段， ['price', ]
+    bool   desc = 6;      // 默认升序
+}
+
+message BanBanListResp {
+    message VoiceCharacter {
+        string id = 1;
+        string name = 2;
+        string gender = 12;
+        int32  age = 13;
+        string avatar = 3;
+        string audio_url = 14;
+        int32  audio_duration = 15;
+        string skill = 4;
+        string skill_category = 19;  // GAME | VOICE
+        string declaration = 5;
+        string last_alive = 6;
+        bool online = 7;
+        bool chating = 8;
+        bool fresh_man = 9;
+        string location = 10;
+        int32 rank = 11;
+        string rank_str = 16;
+        int32 vip_level = 17;
+        string vip_level_str = 18;
+    }
+
+    repeated VoiceCharacter banbans = 1;
+}
+
+
+message SearchReq {
+    string keyword = 1;
+    int32 page_number = 2;
+    int32 num_per_page = 3;
+}
+
+
+message SearchResp {
+    message SkillInfoBrief {
+        string title = 1;
+        string icon_url = 2;
+        string category = 3;
+    }
+
+    STATUS status = 1;
+    repeated SkillInfoBrief skills = 2;
+    repeated UserInfoBrief  users = 3;
+}
+
+message UserOverviewReq {
+    string dst_uid = 1;
+    string src_uid = 2;
+    string token = 3;
+}
+
+message UserOverviewResp {
+    enum STATUS {
+        OK = 0;
+        USER_NOT_EXIST = 1;
+    }
+
+    STATUS status = 1;
+    UserInfoBrief user = 2;
+    bool followed = 3;
+}
+
+message LoginReq {
+    string phone = 1;
+    string sms_code = 2;
+    string user_id = 3;
+}
+
+message LoginResp {
+    enum STATUS {
+        OK = 0;
+        SMS_TIMEOUT = 1;
+        SMS_ERROR = 2;
+    }
+
+    STATUS code = 1;
+    string phone = 3;
+    string uid = 2;
+    string nick_name = 4;
+    string avatar = 5;
+    string token = 6;
+    UserInfoBrief user = 7;
+}
+
+message SkillDetailReq {
+    string uid = 1;
+    string skill_id = 2;
+}
+
+message SkillDetailResp {
+    message Comment {
+        string uid = 1;
+        string name = 2;
+        string user_img = 3;
+        string comment = 4;
+        int32  rate = 5;
+        string time_info = 6;
+        //string gift_info = 7;
+    }
+
+    message Skill {
+        string title = 1;
+        string grade = 2;
+        string description = 3;
+        string img_url = 4;
+        string audio_url = 5;
+        int32 audio_duration = 6;
+    }
+
+    string uid = 1;
+    Skill skill = 3;
+    repeated string user_imgs = 2;
+    repeated Comment skill_comments = 4;
+}
+
+
+message HomePageReq {
+    string tgt_uid = 1;
+    string src_uid = 2;
+}
+
+message HomePageResp {
+    message Personal {
+        string id = 1;
+        string name = 2;
+        string gender = 3;
+        int32  age = 4;
+        string star = 5;
+        string career = 6;
+        string declaration = 7;
+        string time_info = 8;
+        int32 fans = 9;
+        repeated string img_urls = 10;
+    }
+
+    message Gift {
+        string id = 1;
+        string icon = 2;
+        int32 amount = 3;
+    }
+
+    message Chatroom {
+        string id = 1;
+        string title = 2;
+        string category = 3;
+    }
+    message Interest {
+        string skill_id = 1;
+        string title = 2;
+    }
+
+    message Skill {
+        string id = 1;
+        string description = 2;
+        int32  priority = 3;
+        string grade = 4;
+        string img_url = 5;
+        string audio_url = 6;
+        int32  audio_duration = 7;
+        int32  sells_count = 8;
+    }
+
+
+    Personal personal = 1;
+
+    string location = 2;
+    string online = 3;
+    int32 total_gift = 4;
+
+    repeated Gift gifts = 5;
+    repeated Interest interests = 8;
+    repeated Skill skills = 6;
+    string audio = 9;
+    int32 total_cp_num = 10;
+    bool followed = 11;
+}
+
+
+message LocationUpdateReq {
+    string uid = 1;
+    string token = 2;
+    string location = 3;
+}
+
+enum STATUS {
+    OK = 0;
+    USER_INVALID = 1;
+    TOKEN_EXPIRE = 2;
+    PARAMTER_ERROR = 3;
+}
+
+message LocationUpdateResp {
+    STATUS status = 1;
+}
+
+
+message UserInfoUpdateReq {
+    string uid = 1;
+    string token = 2;
+    string name = 3;
+    string gender = 4; // client may not allow user to change
+    string birth = 5;
+    string declaration = 6;
+    string career_id = 7;
+    string avatar = 8;
+    string audio = 9;
+
+}
+
+
+message UserInfoUpdateResp {
+    STATUS status = 1;
+}
+
+
+message UserGalleryUpdateReq {
+    enum METHOD {
+        UNK = 0;
+        ADD = 1;
+        UPDATE = 2;
+        REMOVE = 3;
+        SWAP = 4;
+    }
+
+    string uid = 1;
+    string token = 2;
+    METHOD method = 3;
+    string pos = 4; // for add/update/remove
+    string url = 5; //for add/update
+    int32 pos1 = 6; //for swap
+    int32 pos2 = 7; //for swap
+}
+
+message UserGalleryUpdteResp {
+    STATUS status = 1;
+}
+
+
+message UserInterestsUpdateReq {
+    enum METHOD {
+        UNK = 0;
+        ADD = 1;
+        REMOVE = 3;
+    }
+
+    string uid = 1;
+    string token = 2;
+    METHOD method = 3;
+    int32  skill_id = 4;
+}
+
+message UserInterestsUpdateResp {
+    STATUS status = 1;
+}
+
+message TokenOssResp {
+    string access_key_id = 1;
+    string access_key_secret = 2;
+    string security_token = 3;
+    int32  expiration = 4;
+}
+
+message TokenAgoraResp {
+    string token = 1;
+}
+
+
+message FollowReq {
+    string src_uid = 1;
+    string tgt_uid = 2;
+    bool   flag = 3;  // true to follow , false to unfollow
+    string token = 4;
+}
+
+message FollowResp {
+    STATUS status = 1;
+}
+
+message SmsCodeReq {
+    string phone = 1;
+}
+
+message SmsCodeResp {
+    enum STATUS {
+        OK = 0;
+        OVER_LIMIT = 1;
+        PHONE_INVALID = 2;
+    }
+    STATUS status = 1;
+    bool registed = 2;
+    string code = 3;
+}
+
+
+message CpCategoryListReq{
+
+}
+
+message CpCategoryListResp {
+    message CpCategory {
+        int32 cate_id = 1;
+        int32 price = 2;
+        int32 days = 3;
+        string title = 4;
+        string icon = 5;
+    }
+
+    repeated CpCategory lists = 1;
+}
+
+
+message UserCpRelationsReq {
+    string uid = 1;
+}
+
+message UserCpRelationsResp {
+    message CpRelation {
+        string name = 1;
+        string avatar = 2;
+        int32 days_left = 3;
+        int32 cp_type = 4;  // cp category id
+        string cp_title = 5;
+    }
+
+    repeated CpRelation relations = 1;
+}
+
+import "shop_message.proto";
+
+message BagReq {
+    string uid = 1;
+    string token = 2;
+}
+
+message BagResp {
+    message Item {
+        Product product = 1;
+        int32 count = 2;
+    }
+
+    repeated Item items = 1;
+}
+
+
+message OrderListReq {
+    enum Category {
+        ALL = 0;
+        AS_PROVIDER = 1;
+        AS_CUSTOMER = 2;
+    }
+
+    string uid = 1;
+    string token = 2;
+    Category category = 3;
+    int32 page_num = 4;
+    int32 num_per_page = 5;
+}
+
+message OrderListResp {
+    enum GiftState {
+        GS_UNK = 0;
+        GIVEN = 1;
+        REVOKED = 2;
+    }
+    enum OrderState {
+        OS_UNK = 0;
+        PENDING = 1;
+        ACCEPTED = 2;
+        SERVING = 3;
+        DONE = 4;
+        CANCEL_BY_C = 5;
+        CANCEL_BY_P = 6;
+    }
+
+    message Order {
+        string skill_title = 1;
+        string serve_time = 2;
+
+        string gift_id = 3;
+        string gift_title = 4;
+        string gift_icon = 5;
+        int32 count = 6;
+
+        string user_id = 7;
+        string user_name = 8;
+        string user_gender = 9;
+        int32 user_vip = 10;
+        int32 user_noble = 11;
+
+        OrderState order_state = 12;
+        GiftState gift_state = 13;
+
+    }
+    repeated Order orders = 1;
+}
+
+
+message MakeOrderReq {
+    string uid = 1;
+    string token = 2;
+    string skill_id = 3;
+    string serve_time = 4;
+    int32 gift_id = 5;
+    int32 gift_count = 6;
+}
+
+message MakeOrderResp {
+    STATUS status = 1;
+}
+
+message ChangeOrderStateReq {
+    enum OrderState {
+        UNK = 0;
+        ACCEPTED = 2;
+        CANCEL_BY_C = 5;
+        CANCEL_BY_P = 6;
+    }
+    string uid = 1;
+    string token = 2;
+    string order_id = 3;
+    OrderState state = 4;
+}
+
+message ChangeOrderStateResp {
+    STATUS status = 1;
+}
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/14/19 3:44 PM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="27dp" />
+    <solid android:color="@color/main_mask_c18" />
+</shape>

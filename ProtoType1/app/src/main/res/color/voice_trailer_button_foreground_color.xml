@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/1/19 5:59 PM
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/main_blue_c1" android:state_checked="false" />
+    <item android:color="@color/main_white_f4" android:state_checked="true" />
+</selector>

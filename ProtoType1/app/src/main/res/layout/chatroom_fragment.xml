@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_darkblue"
+    tools:context=".features.chatroom.ChatRoomActivity">
+
+    <!-- FIXME: 重复的量值统一定义，如上边栏距顶部的距离，背景色等 -->
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/transparent"
+        android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!-- 聊天室标题 -->
+            <TextView
+                android:id="@+id/chatRoomTitle"
+                android:layout_width="104dp"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textAlignment="textStart"
+                android:textColor="@color/main_white_f4"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="聊天室标题" />
+
+            <!-- 人数 -->
+            <TextView
+                android:id="@+id/guestNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.5"
+                android:textAlignment="textStart"
+                android:textColor="@color/main_white_f4"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chatRoomTitle"
+                tools:text="在线 142" />
+
+            <!-- 关注按钮 -->
+            <ImageView
+                android:id="@+id/buttonSubscribe"
+                android:layout_width="25dp"
+                android:layout_height="15dp"
+                android:src="@drawable/star"
+                app:layout_constraintBottom_toBottomOf="@id/chatRoomTitle"
+                app:layout_constraintStart_toEndOf="@id/chatRoomTitle"
+                app:layout_constraintTop_toTopOf="@id/chatRoomTitle" />
+
+            <!-- 观众头像 -->
+            <View
+                android:id="@+id/guest1Decoration"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:paddingRight="-4dp"
+                android:background="@drawable/number1_decoration"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guest2">
+            </View>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/guest1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/profile"
+                android:background="@drawable/number1_decoration"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/guest1Decoration"
+                app:layout_constraintStart_toStartOf="@id/guest1Decoration"
+                app:layout_constraintBottom_toBottomOf="@id/guest1Decoration"
+                app:layout_constraintTop_toTopOf="@id/guest1Decoration" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/guest2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:paddingRight="-2dp"
+                android:src="@mipmap/profile"
+                android:visibility="gone"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#89C0FF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guest3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/guest3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:src="@mipmap/profile"
+                android:visibility="gone"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#FFA0CF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/topRankButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/topRankButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/more"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- FIXME: remove -->
+    <ImageView
+        android:id="@+id/visualEffectAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:translationZ="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <!-- FIXME: remove -->
+    <ImageView
+        android:id="@+id/chatRoomBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/transparent"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        tools:srcCompat="@tools:sample/avatars"
+        tools:text="聊天室背景" />
+
+    <!-- 聊天室上半部 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/showRoomArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"
+        android:text="聊天室上半部背景区域"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 公告入口 -->
+        <TextView
+            android:id="@+id/announcementTag"
+            android:layout_width="54dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="40dp"
+            android:text="公告"
+            android:textAlignment="center"
+            android:textColor="@color/main_white_f4"
+            android:textSize="12sp"
+            android:background="@drawable/chatroom_announcement_tag"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- 主持人 -->
+        <com.april21dev.multipulseanimation.MultiPulseLayout
+            android:id="@+id/seatHostPulse"
+            android:layout_width="133dp"
+            android:layout_height="133dp"
+            android:background="@color/transparent"
+            app:mpa_start_radius="40dp"
+            app:mpa_duration="4500"
+            app:mpa_purse_count="4"
+            app:mpa_purse_color="@color/main_white_f4"
+            app:mpa_paint_style="fill"
+            app:mpa_stroke_width="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/seatHostImg"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/open_seat"
+            app:civ_circle_background_color="@color/main_blue_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        </com.april21dev.multipulseanimation.MultiPulseLayout>
+
+        <TextView
+            android:id="@+id/seatHostLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/main_white_f4"
+            android:singleLine="true"
+            android:alpha="0.8"
+            android:visibility="invisible"
+            tools:text="主持人昵称"
+            app:layout_constraintStart_toStartOf="@+id/seatHostPulse"
+            app:layout_constraintTop_toBottomOf="@+id/seatHostPulse" />
+
+
+        <!-- 嘉宾/守护/老板位 -->
+        <GridLayout
+            android:id="@+id/seatsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:columnCount="4"
+            app:layout_constraintTop_toBottomOf="@id/seatHostLabel"
+            app:layout_constraintStart_toStartOf="parent">
+        </GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 聊天室上半部结束 -->
+
+    <!-- 聊天室下半部，消息显示区域 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/messageArea"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showRoomArea">
+
+        <!-- 聊天室消息 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messageList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:stackFromEnd="true" />
+
+        <!-- 聊天室欢迎通知 -->
+        <ListView
+            android:id="@+id/welcomeList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:foregroundGravity="right"
+            android:translationZ="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 聊天室打赏通知 -->
+        <ListView
+            android:id="@+id/donateList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:foregroundGravity="left"
+            android:translationZ="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 消息显示区域结束 -->
+
+    <!-- 底边栏 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <!-- 互动底栏 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/interactionBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/micButton"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/mic_closed"
+                app:civ_circle_background_color="@color/main_mask_c16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/messageButton"
+                android:layout_height="31dp"
+                android:layout_width="91dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/rounded_rectangle_a16_r16"
+                android:text="说点什么"
+                android:textSize="16sp"
+                android:textColor="@color/main_white_f4"
+                android:gravity="center"
+                android:alpha="0.5"
+                app:layout_constraintStart_toEndOf="@id/micButton"
+                app:layout_constraintTop_toTopOf="@id/micButton"
+                app:layout_constraintBottom_toBottomOf="@id/micButton"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/stickerButton"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/sticker"
+                app:civ_circle_background_color="@color/main_mask_c16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/giftButton" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/giftButton"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/gift"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- 互动底栏结束 -->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 底边栏结束 -->
+
+    <!-- 消息输入栏 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/messageInputBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:background="@color/main_white_background"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@color/main_white_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/sendMessageButton"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/messageInputEdit"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_rectangle_gray_r2"
+                android:inputType="textShortMessage"
+                android:imeOptions="actionSend"
+                android:textAlignment="textStart"
+                android:textColor="@color/main_black_f1"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.libRG.CustomTextView
+            android:id="@+id/sendMessageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="9dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="发送"
+            android:textSize="14sp"
+            android:textColor="@color/main_white_f4"
+            android:gravity="center"
+            app:lib_setShape="rectangle"
+            app:lib_setRoundedView="true"
+            app:lib_setRadius="4dp"
+            app:lib_setRoundedBGColor="@color/main_blue_c1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 消息输入栏结束 -->
+
+    <!-- 表情选择面板 -->
+    <include layout="@layout/chatroom_sticker_panel"
+        android:id="@+id/stickerPanelContainer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/shape_gradient_darkblue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 礼品/背包面板 -->
+    <include layout="@layout/chatroom_donate_panel"
+        android:id="@+id/donatePanel"
+        android:layout_width="match_parent"
+        android:layout_height="398dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

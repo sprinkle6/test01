@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/10/19 10:18 AM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<resources>
+    <style name="BottomNavTextAppearance">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">@color/main_bottom_nav_text_color</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+</resources>

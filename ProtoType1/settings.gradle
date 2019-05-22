@@ -1,0 +1,3 @@
+include ':uikit', ':FlycoTabLayout_Lib'
+include ':app'
+project(':FlycoTabLayout_Lib').projectDir = new File('FlycoTabLayout/FlycoTabLayout_Lib')

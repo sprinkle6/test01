@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 3/25/19 4:03 PM
+  -->
+
+<androidx.viewpager.widget.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/messagesPager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/messagesTab"
+        style="@style/AppTabLayout"
+        app:tabTextAppearance="@style/AppTabTextAppearance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- TabItem实际由PagerAdapter程序生成，此处只是为了方便预览效果 -->
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="消息" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="羁绊" />
+
+    </com.google.android.material.tabs.TabLayout>
+</androidx.viewpager.widget.ViewPager>

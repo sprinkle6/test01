@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/17/19 11:36 AM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/donatePanel"
+    android:layout_width="match_parent"
+    android:layout_height="398dp"
+    android:background="@drawable/shape_gradient_darkblue">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/chatroomDonatePanelPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/chatroomDonatePanelTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicator="@null"
+            app:tabMaxWidth="60dp"
+            app:tabSelectedTextColor="@color/main_white_f4"
+            app:tabTextColor="@color/main_blue_light"/>
+    </androidx.viewpager.widget.ViewPager>
+</androidx.constraintlayout.widget.ConstraintLayout>

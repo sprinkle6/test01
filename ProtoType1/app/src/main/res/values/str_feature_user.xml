@@ -1,0 +1,10 @@
+<resources>
+    <string name="users_screen_title">Users</string>
+    <string name="user_details_declaration">Declaration</string>
+    <string name="user_details_skill">Skill</string>
+    <string name="user_details_last_alive">Last Alive</string>
+    <string name="user_details_location">Location</string>
+
+    <!-- Animations -->
+    <string name="user_transition_poster">userPosterTransition</string>
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/16/19 4:42 PM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/userAvatarContainer"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/userAvatar"
+            style="@style/UserAvatar"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/nickName"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:gravity="top|left"
+        android:maxWidth="150dp"
+        android:singleLine="true"
+        android:text="昵称"
+        android:textColor="@color/main_black_f1"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/genderAge"
+        app:layout_constraintStart_toEndOf="@+id/userAvatarContainer"
+        app:layout_constraintTop_toTopOf="@id/userAvatarContainer" />
+
+    <!-- FIXME CustomTextView提供设置颜色属性接口，先临时hack一下，之后再改 -->
+    <FrameLayout
+        android:id="@+id/genderAge"
+        android:layout_width="31dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/nickName"
+        app:layout_constraintTop_toTopOf="@+id/nickName"
+        app:layout_constraintBottom_toBottomOf="@id/nickName">
+
+        <TextView
+            android:id="@+id/genderAgeMale"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_rectangle_blue_r7"
+            android:gravity="center"
+            android:text="♂20"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/main_white_f4"
+            android:textSize="10sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/genderAgeFamale"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_rectangle_pink_r7"
+            android:gravity="center"
+            android:text="♀18"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/main_white_f4"
+            android:textSize="10sp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/userIdLabel"
+        android:layout_width="80dp"
+        android:layout_height="18dp"
+        android:gravity="bottom|start"
+        android:singleLine="true"
+        android:text="ID:"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/main_gray_f2"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/userAvatarContainer"
+        app:layout_constraintStart_toStartOf="@id/nickName" />
+
+    <View
+        android:id="@+id/rowDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:alpha="0.4"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintStart_toStartOf="@id/userAvatarContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userAvatarContainer"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

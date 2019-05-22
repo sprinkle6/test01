@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto_def;
+
+/*
+ * 客户端间直接交换的信息
+ */
+
+/*
+ * 发送消息时需要保证level和title两个字段至少一个有值。
+ * 收到消息时不能假定两个字段的值均存在，在不存在时需要去本地字典表中查询
+ */
+message Level{
+    int32 level = 1;
+    string title = 2;
+}
+
+/*
+ * 聊天室中消息/通知中用到的用户扩展信息
+ * UI根据扩展信息中的用户等级和头衔决定欢迎通知和用户消息如何显示
+ */
+message PeerUserInfo{
+    string userId = 1;
+    string nickName = 2;
+    string avatar = 3;
+    Level vip = 4;
+    Level noble = 5;
+    string gender = 6; //'F' for female, 'M' for male, 'U' for Unknown
+}

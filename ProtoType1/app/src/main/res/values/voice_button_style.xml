@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/1/19 8:41 PM
+  -->
+
+<resources>
+    <style name="VoiceButtonStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/voice_trailer_button_background_selector</item>
+        <item name="android:textColor">@color/voice_trailer_button_foreground_color</item>
+        <item name="android:clickable">true</item>
+    </style>
+</resources>

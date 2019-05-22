@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/15/19 4:19 PM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha
+        android:duration="200"
+        android:fromAlpha="0.0"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        android:toAlpha="1.0" />
+    <translate
+        android:duration="200"
+        android:fromXDelta="-50%"
+        android:toXDelta="0" />
+</set>

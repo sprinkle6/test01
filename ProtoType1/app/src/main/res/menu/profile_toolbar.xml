@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/1/19 9:29 AM
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="编辑"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_settings"
+        android:title="设置"
+        app:showAsAction="never"/>
+
+</menu>

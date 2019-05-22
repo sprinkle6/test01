@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/2/19 4:35 PM
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorTextPrimary">
+
+    <LinearLayout
+        android:id="@+id/selectorBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/main_white_f4"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ToggleButton
+            android:id="@+id/locationFilterButton"
+            style="@style/SelectorButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textOff="地域不限"
+            android:textOn="本地" />
+
+        <!-- 以下三个button的paddingRight是为了使箭头图标能够与文字靠近，否则箭头图标会靠按钮右边缘，距离太远。-->
+        <!-- FIXME: 在分辨率较低的设备上这个padding设置可能使得文字在一行显示不下变成两行。需要使图标位置能够根据文字宽度自适应 -->
+        <ToggleButton
+            android:id="@+id/genderFilterButton"
+            style="@style/SelectorButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/selector_button_foreground"
+            android:buttonTintMode="src_in"
+            android:drawableRight="@drawable/triangle_down"
+            android:drawablePadding="2dp"
+            android:textAlignment="center"
+            android:textOff="性别不限"
+            android:textOn="小哥哥" />
+
+        <ToggleButton
+            android:id="@+id/priceOrderButton"
+            style="@style/SelectorButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/triangle_down"
+            android:drawablePadding="2dp"
+            android:textAlignment="center"
+            android:textOff="价格排序"
+            android:textOn="价格排序" />
+
+        <ToggleButton
+            android:id="@+id/skillFilterButton"
+            style="@style/SelectorButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/triangle_down"
+            android:drawablePadding="2dp"
+            android:textAlignment="center"
+            android:textOff="技能" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/selectorBarBottomDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:alpha="0.5"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@id/selectorBar"
+        app:layout_constraintStart_toStartOf="@id/selectorBar"
+        app:layout_constraintTop_toBottomOf="@id/selectorBar"/>
+
+    <!-- 筛选面板容器，包含实际面板和背景遮罩 -->
+    <!-- FIXME: 背景遮罩迁移到main_activity布局中去，以实现对底部导航的遮罩 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selectorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:translationZ="2dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectorBarBottomDivider">
+
+        <!-- 所有筛选option的显示容器，主要用于方便遮罩定位 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/optionsPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main_white_f4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <!-- 性别筛选项 -->
+            <RadioGroup
+                android:id="@+id/genderOptions"
+                android:layout_width="match_parent"
+                android:layout_height="126dp"
+                android:paddingLeft="24dp"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/genderOptionUnlimit"
+                    style="@style/SelectorOptionRadioButtonStyle"
+                    android:checked="true"
+                    android:text="性别不限" />
+
+                <RadioButton
+                    android:id="@+id/genderOptionMale"
+                    style="@style/SelectorOptionRadioButtonStyle"
+                    android:text="小哥哥" />
+
+                <RadioButton
+                    android:id="@+id/genderOptionFemale"
+                    style="@style/SelectorOptionRadioButtonStyle"
+                    android:text="小姐姐" />
+            </RadioGroup>
+
+            <!-- 技能筛面板 -->
+            <!-- 外面套一个ScrollView，以便选项过多一屏显示不下时可以滚动 -->
+            <!-- FIXME: 技能及级别面板全部打开时，如果ScrollView底部不设置足够的margin，则确认按钮的底部被底部导航栏遮挡。如果设置了又显示不了遮罩-->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/skillOptionsPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!-- 技能选项顶层容器, 用于保证游戏和技能类的所有选项中同时只能选择一个 -->
+                <com.qint.pt1.base.widgets.RadioGridGroup
+                    android:id="@+id/skillOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:paddingLeft="24dp"
+                    app:columnCount="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/gameSkillLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="游戏"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/main_black_f1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- 游戏类技能选项 -->
+                    <com.hopenlib.flextools.FlexRadioGroup
+                        android:id="@+id/gameSkillOptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:flexWrap="wrap"
+                        app:layout_constraintStart_toStartOf="@id/gameSkillLabel"
+                        app:layout_constraintTop_toBottomOf="@id/gameSkillLabel"
+                        app:layout_gravity="center"
+                        app:useDefaultMargins="true" />
+
+                    <TextView
+                        android:id="@+id/voiceSkillLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="语音"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/main_black_f1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- 语音类技能选项 -->
+                    <com.hopenlib.flextools.FlexRadioGroup
+                        android:id="@+id/voiceSkillOptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:flexWrap="wrap"
+                        app:layout_constraintStart_toStartOf="@id/voiceSkillLabel"
+                        app:layout_constraintTop_toBottomOf="@id/gameSkillLabel"
+                        app:useDefaultMargins="true" />
+                </com.qint.pt1.base.widgets.RadioGridGroup>
+
+                <!-- 技能级别显示容器 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/skillGradePanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/skillOptions">
+
+                    <View
+                        android:id="@+id/skillGradePanelTopDivider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:alpha="0.5"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/skillGradeLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="28dp"
+                        android:text="最高实力"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/main_blue_c1"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- 技能级别选项 -->
+                    <com.hopenlib.flextools.FlexRadioGroup
+                        android:id="@+id/skillGradeOptions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingLeft="24dp"
+                        app:flexWrap="wrap"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/skillGradeLabel"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- 技能选项重置及确认按钮 -->
+                <Button
+                    android:id="@+id/resetSkillOptionButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/reset_button_background"
+                    android:text="重置"
+                    android:textColor="@color/main_blue_c1"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/confirmSkillOptionButton"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/skillGradePanel" />
+
+                <Button
+                    android:id="@+id/confirmSkillOptionButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/confirm_button_background"
+                    android:text="确定"
+                    android:textColor="@color/main_white_f4"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/resetSkillOptionButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/resetSkillOptionButton"
+                    app:layout_constraintTop_toTopOf="@id/resetSkillOptionButton" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 遮罩 -->
+        <View
+            android:id="@+id/selectorMask"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/main_mask_c7"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/optionsPanel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectorBar">
+
+        <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/usersList"
+            android:name="com.qint.pt1.features.users.UsersFilterListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectorBar"
+            tools:context=".features.users.UsersFilterListFragment"
+            tools:listitem="@layout/users_list_item" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/common_empty" />
+</androidx.constraintlayout.widget.ConstraintLayout>

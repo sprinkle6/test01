@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/20/19 11:44 AM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:exitFadeDuration="@android:integer/config_mediumAnimTime">
+    <item android:drawable="@color/main_blue_c1_a20" android:state_pressed="true" />
+    <item android:drawable="@color/main_blue_c1_a20" android:state_selected="true" />
+    <item>
+        <inset android:insetLeft="-1dp" android:insetRight="-1dp">
+            <shape android:shape="rectangle">
+                <stroke android:width="1dp" android:color="#cccccc" />
+                <solid android:color="#f0f0f0" />
+            </shape>
+        </inset>
+    </item>
+</selector>

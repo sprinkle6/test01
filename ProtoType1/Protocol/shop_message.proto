@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package proto_def;
+
+
+message StickersReq {
+
+}
+
+message Sticker {
+    string id = 1;
+    string title = 2;
+    string icon = 3;
+}
+
+message StickersResp {
+    repeated Sticker stickers = 1;
+}
+
+
+message ShopGiftsReq {
+
+}
+
+message Gift {
+    string id = 1;
+    string title = 2;
+    string icon = 3;
+    int32 price = 4;
+}
+
+message ShopGiftsResp {
+    repeated Gift gifts = 1;
+}
+
+enum CATEGORY {
+    ALL = 0;
+    GIFT = 1;
+    AVATAR_BOX = 2;
+    SEAT_GUARDIAN = 3;
+    BOX = 4;
+    KEY = 5;
+    NOBLE = 6;
+}
+
+enum PRODUCT_GRADE {
+    NONE = 0;
+    BROZEN = 1;
+    SILVER = 2;
+    GOLDEN = 3;
+}
+
+message Product {
+    string pid = 1;
+    string title = 2;
+    string icon = 3;
+    int32  price = 4;
+    int32  period = 5;
+    bool   permanent = 6;
+    CATEGORY category = 7;
+    PRODUCT_GRADE grade = 8;
+    int32 priority = 9;
+}
+
+message ShopProductsReq {
+    CATEGORY category = 1;
+}
+
+message ShopProductsResp {
+    repeated Product products = 1;
+}
+
+message BuyProductReq {
+    string uid = 1;
+    string token = 2;
+    string product_id = 3;
+    bool use_groupon = 4;
+    int32 count = 5;  // when use groupon , count must be 1
+}
+
+message BuyProductResp {
+    enum STATUS {
+        OK = 0;
+        TOKEN_INVALID = 1;
+        PRODUCT_INVALID = 2;
+        GROUPON_LIMITED = 3;
+        TRANSACTION_FAILURE = 4;
+        ACCOUNT_MONEY_NOT_ENOUGH = 5;
+    }
+
+    STATUS status = 1;
+}
+
+message OpenBoxReq{
+    string uid = 1;
+    string token = 2;
+    PRODUCT_GRADE box_grade = 3;
+    string room_id = 4;
+    int32 count = 5; // open several times
+}
+
+message OpenBoxResp{
+    enum STATUS {
+        OK = 0;
+        TOKEN_INVALID = 1;
+        KEY_NEEDED = 2;
+        BOX_EXHAUSTED = 3;
+        TRANSACTION_FAILURE = 4;
+    }
+
+    STATUS status = 1;
+    repeated int32 product_ids = 2;
+}
+
+
+message SendGiftReq {
+    message Gift {
+        string to_uid = 1;
+        string to_name = 2;
+        int32  gift_id = 3;
+        int32  count = 4;
+    }
+
+    string uid = 1;
+    string token = 2;
+    string room_id = 3;
+    repeated Gift gifts = 4;
+}
+
+message SendGiftResp {
+    enum STATUS {
+        OK = 0;
+        ERROR = 1;
+    }
+
+    STATUS status = 1;
+}
+
+message GiftBatchNumReq {
+    
+}
+
+message GiftBatchNumResp {
+    repeated int32 batch_nums = 1;
+}

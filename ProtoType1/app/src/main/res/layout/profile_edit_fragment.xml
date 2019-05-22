@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 3/27/19 1:40 PM
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/pageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="编辑资料"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/completionProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="完成度 10%"
+        app:layout_constraintStart_toStartOf="@+id/pageTitle"
+        app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
+
+    <com.libRG.CustomTextView
+        android:id="@+id/saveButton"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:text="保存"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pageTitle"
+        app:lib_setRadius="16dp"
+        app:lib_setRoundedBGColor="@android:color/holo_blue_light"
+        app:lib_setRoundedView="true"
+        app:lib_setShape="rectangle" />
+
+    <ImageView
+        android:id="@+id/profilePhoto1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePageTitleArea"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinePageTitleArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="88dp" />
+
+    <ImageView
+        android:id="@+id/profilePhotoAddButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/color_background"
+        app:layout_constraintStart_toEndOf="@+id/profilePhoto1"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePageTitleArea"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:id="@+id/photoOperationDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="单击可以修改图片或视频，长按可以排序"
+        app:layout_constraintStart_toStartOf="@+id/profilePhoto1"
+        app:layout_constraintTop_toBottomOf="@+id/profilePhoto1" />
+
+    <TextView
+        android:id="@+id/sectionTitleBasicInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/color_background"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="基本资料 2/3"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photoOperationDesc" />
+
+    <TextView
+        android:id="@+id/nickNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="昵称"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sectionTitleBasicInfo" />
+
+    <TextView
+        android:id="@+id/nickName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="昵称"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nickNameLabel" />
+
+    <TextView
+        android:id="@+id/declarationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="个人签名"
+        app:layout_constraintStart_toStartOf="@+id/nickNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/nickNameLabel" />
+
+    <TextView
+        android:id="@+id/declaration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="有什么想说给附近的朋友们听？"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nickName" />
+
+    <TextView
+        android:id="@+id/birthdayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="出生日期"
+        app:layout_constraintStart_toStartOf="@+id/nickNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/declarationLabel" />
+
+    <TextView
+        android:id="@+id/birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="1990-08-16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/birthdayLabel" />
+
+    <TextView
+        android:id="@+id/profileVoiceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="语音介绍"
+        app:layout_constraintStart_toStartOf="@+id/nickNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/birthdayLabel" />
+
+    <TextView
+        android:id="@+id/voiceProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@color/color_background"
+        android:text="点击添加"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profileVoiceLabel" />
+
+    <TextView
+        android:id="@+id/careerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="职业"
+        app:layout_constraintStart_toStartOf="@+id/nickNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/profileVoiceLabel" />
+
+    <TextView
+        android:id="@+id/career"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="设计师"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/careerLabel" />
+
+    <TextView
+        android:id="@+id/sectionTitleInterests"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/color_background"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="兴趣爱好 0/3"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/careerLabel" />
+
+    <TextView
+        android:id="@+id/gameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="游戏"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sectionTitleInterests" />
+
+    <TextView
+        android:id="@+id/gameSkill1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="王者荣耀"
+        app:layout_constraintStart_toEndOf="@+id/gameLabel"
+        app:layout_constraintTop_toTopOf="@+id/gameLabel" />
+
+    <TextView
+        android:id="@+id/gameLabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="刺激战场"
+        app:layout_constraintStart_toEndOf="@+id/gameSkill1"
+        app:layout_constraintTop_toTopOf="@+id/gameLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/15/19 4:34 PM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<!-- FIXME: 这里的设置完全不生效，不知是否哪里配置有问题 -->
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="Search Label"
+    android:hint="搜索昵称、ID"
+    android:searchSuggestAuthority="com.qint.pt1.features.search.SearchSuggestionProvider"
+    android:searchSuggestSelection=" ?"
+    android:searchSuggestThreshold="1">
+</searchable>

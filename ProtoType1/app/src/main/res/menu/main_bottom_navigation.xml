@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_recommend_users"
+        android:icon="@mipmap/homepage"
+        android:title="@string/nav_title_users" />
+
+    <item
+        android:id="@+id/navigation_chatrooms"
+        android:icon="@mipmap/chatroom"
+        android:title="@string/nav_title_chatrooms" />
+
+    <item
+        android:id="@+id/navigation_messages"
+        android:icon="@mipmap/message"
+        android:title="@string/nav_title_messages" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@mipmap/profile"
+        android:title="@string/nav_title_mine" />
+
+</menu>

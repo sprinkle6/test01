@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/3/19 5:06 PM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="89dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.april21dev.multipulseanimation.MultiPulseLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/seatPulse"
+        android:layout_width="89dp"
+        android:layout_height="89dp"
+        android:layout_gravity="center_horizontal"
+        app:mpa_start_radius="30dp"
+        app:mpa_duration="4500"
+        app:mpa_purse_count="4"
+        app:mpa_purse_color="@color/main_white_f4"
+        app:mpa_paint_style="fill"
+        app:mpa_stroke_width="1dp" >
+
+        <View
+            android:id="@+id/seatImgFrame"
+            android:layout_width="71dp"
+            android:layout_height="71dp"
+            android:background="@drawable/avatar_frame_golden"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/seatImg"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_gravity="center"
+            android:src="@drawable/open_seat"
+            app:civ_circle_background_color="@color/main_blue_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/seatSticker"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </com.april21dev.multipulseanimation.MultiPulseLayout>
+
+    <TextView
+        android:id="@+id/seatLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textColor="@color/main_white_f4"
+        android:singleLine="true"
+        android:alpha="0.8"
+        tools:text="昵称" />
+</LinearLayout>

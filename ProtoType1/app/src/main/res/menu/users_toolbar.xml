@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 3/31/19 11:15 PM
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- "Search", should appear as action button if possible -->
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/search"
+        android:title="搜索"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_refresh"
+        app:showAsAction="never"
+        android:title="刷新"/>
+
+    <item
+        android:id="@+id/action_report"
+        app:showAsAction="never"
+        android:title="反馈"/>
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/action_settings"
+        android:title="设置"
+        app:showAsAction="never"/>
+</menu>

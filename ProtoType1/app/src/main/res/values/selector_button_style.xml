@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. QINT.TV
+  ~ Author: Matthew Zhang
+  ~ Created on: 4/4/19 9:07 AM
+  -->
+
+<resources>
+    <style name="SelectorButtonStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:background">@color/main_white_background</item>
+        <item name="android:textColor">@color/selector_button_foreground</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="elevation">0dp</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="SelectorOptionRadioButtonStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:button">@color/transparent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textColor">@color/selector_option_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SelectorGridOptionRadioButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:background">@drawable/skill_option_button_background</item>
+        <item name="android:button">@color/transparent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/selector_option_text</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+    </style>
+
+</resources>

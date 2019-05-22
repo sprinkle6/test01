@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/16/19 11:22 AM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/genderAge"
+    android:layout_width="31dp"
+    android:layout_height="14dp"
+    android:foregroundGravity="center_vertical">
+
+    <TextView
+        android:id="@+id/genderAgeMale"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_rectangle_blue_r7"
+        android:gravity="center"
+        tools:text="♂18"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/main_white_f4"
+        android:textSize="10sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/genderAgeFamale"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_rectangle_pink_r7"
+        android:gravity="center"
+        tools:text="♀18"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/main_white_f4"
+        android:textSize="10sp" />
+</FrameLayout>

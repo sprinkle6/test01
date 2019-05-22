@@ -1,0 +1,2 @@
+sed -e "s/common\/protocol\///" -i "" *.proto  #fix import path
+protoc --java_out=../app/src/main/java *.proto
