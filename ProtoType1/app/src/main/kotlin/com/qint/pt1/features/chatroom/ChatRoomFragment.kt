@@ -34,8 +34,8 @@ import com.qint.pt1.base.platform.BaseFragment
 import com.qint.pt1.base.platform.BasePagerAdapter
 import com.qint.pt1.base.widgets.RoundedBackgroundSpan
 import com.qint.pt1.domain.*
+import com.qint.pt1.features.chatroom.widgets.ChatRoomBackpackPanelFragment
 import com.qint.pt1.features.chatroom.widgets.ChatRoomGiftPanelFragment
-import com.qint.pt1.features.chatroom.widgets.ChatRoomPackagePanelFragment
 import com.qint.pt1.features.chatrooms.ChatRoomFailure
 import com.qint.pt1.features.chatrooms.ChatRoomsListViewItem
 import com.qint.pt1.features.login.Login
@@ -756,7 +756,7 @@ class ChatRoomDonatePanelPagerAdapter(fm: FragmentManager) : BasePagerAdapter(fm
 
     override fun getItem(position: Int) = when(position){
         0 -> ChatRoomGiftPanelFragment()
-        1 -> ChatRoomPackagePanelFragment()
+        1 -> ChatRoomBackpackPanelFragment()
         else -> ChatRoomGiftPanelFragment()
     }
 

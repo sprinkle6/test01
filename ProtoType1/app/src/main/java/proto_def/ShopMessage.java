@@ -4377,14 +4377,9 @@ public final class ShopMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string pid = 1;</code>
+     * <code>int32 pid = 1;</code>
      */
-    java.lang.String getPid();
-    /**
-     * <code>string pid = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getPidBytes();
+    int getPid();
 
     /**
      * <code>string title = 2;</code>
@@ -4457,7 +4452,7 @@ public final class ShopMessage {
       super(builder);
     }
     private Product() {
-      pid_ = "";
+      pid_ = 0;
       title_ = "";
       icon_ = "";
       price_ = 0;
@@ -4492,10 +4487,9 @@ public final class ShopMessage {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
 
-              pid_ = s;
+              pid_ = input.readInt32();
               break;
             }
             case 18: {
@@ -4575,37 +4569,12 @@ public final class ShopMessage {
     }
 
     public static final int PID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object pid_;
+    private int pid_;
     /**
-     * <code>string pid = 1;</code>
+     * <code>int32 pid = 1;</code>
      */
-    public java.lang.String getPid() {
-      java.lang.Object ref = pid_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        pid_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string pid = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPidBytes() {
-      java.lang.Object ref = pid_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        pid_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getPid() {
+      return pid_;
     }
 
     public static final int TITLE_FIELD_NUMBER = 2;
@@ -4760,8 +4729,8 @@ public final class ShopMessage {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getPidBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, pid_);
+      if (pid_ != 0) {
+        output.writeInt32(1, pid_);
       }
       if (!getTitleBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
@@ -4796,8 +4765,9 @@ public final class ShopMessage {
       if (size != -1) return size;
 
       size = 0;
-      if (!getPidBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, pid_);
+      if (pid_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, pid_);
       }
       if (!getTitleBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
@@ -4845,8 +4815,8 @@ public final class ShopMessage {
       proto_def.ShopMessage.Product other = (proto_def.ShopMessage.Product) obj;
 
       boolean result = true;
-      result = result && getPid()
-          .equals(other.getPid());
+      result = result && (getPid()
+          == other.getPid());
       result = result && getTitle()
           .equals(other.getTitle());
       result = result && getIcon()
@@ -4873,7 +4843,7 @@ public final class ShopMessage {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PID_FIELD_NUMBER;
-      hash = (53 * hash) + getPid().hashCode();
+      hash = (53 * hash) + getPid();
       hash = (37 * hash) + TITLE_FIELD_NUMBER;
       hash = (53 * hash) + getTitle().hashCode();
       hash = (37 * hash) + ICON_FIELD_NUMBER;
@@ -5024,7 +4994,7 @@ public final class ShopMessage {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        pid_ = "";
+        pid_ = 0;
 
         title_ = "";
 
@@ -5125,9 +5095,8 @@ public final class ShopMessage {
 
       public Builder mergeFrom(proto_def.ShopMessage.Product other) {
         if (other == proto_def.ShopMessage.Product.getDefaultInstance()) return this;
-        if (!other.getPid().isEmpty()) {
-          pid_ = other.pid_;
-          onChanged();
+        if (other.getPid() != 0) {
+          setPid(other.getPid());
         }
         if (!other.getTitle().isEmpty()) {
           title_ = other.title_;
@@ -5184,71 +5153,28 @@ public final class ShopMessage {
         return this;
       }
 
-      private java.lang.Object pid_ = "";
+      private int pid_ ;
       /**
-       * <code>string pid = 1;</code>
+       * <code>int32 pid = 1;</code>
        */
-      public java.lang.String getPid() {
-        java.lang.Object ref = pid_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          pid_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getPid() {
+        return pid_;
       }
       /**
-       * <code>string pid = 1;</code>
+       * <code>int32 pid = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getPidBytes() {
-        java.lang.Object ref = pid_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          pid_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string pid = 1;</code>
-       */
-      public Builder setPid(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setPid(int value) {
+        
         pid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string pid = 1;</code>
+       * <code>int32 pid = 1;</code>
        */
       public Builder clearPid() {
         
-        pid_ = getDefaultInstance().getPid();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string pid = 1;</code>
-       */
-      public Builder setPidBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        pid_ = value;
+        pid_ = 0;
         onChanged();
         return this;
       }
@@ -9553,17 +9479,28 @@ public final class ShopMessage {
     proto_def.ShopMessage.OpenBoxResp.STATUS getStatus();
 
     /**
-     * <code>repeated int32 product_ids = 2;</code>
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
      */
-    java.util.List<java.lang.Integer> getProductIdsList();
+    java.util.List<proto_def.ShopMessage.OpenBoxResp.Item> 
+        getItemsList();
     /**
-     * <code>repeated int32 product_ids = 2;</code>
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
      */
-    int getProductIdsCount();
+    proto_def.ShopMessage.OpenBoxResp.Item getItems(int index);
     /**
-     * <code>repeated int32 product_ids = 2;</code>
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
      */
-    int getProductIds(int index);
+    int getItemsCount();
+    /**
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+     */
+    java.util.List<? extends proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder> 
+        getItemsOrBuilderList();
+    /**
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+     */
+    proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder getItemsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code proto_def.OpenBoxResp}
@@ -9579,7 +9516,7 @@ public final class ShopMessage {
     }
     private OpenBoxResp() {
       status_ = 0;
-      productIds_ = java.util.Collections.emptyList();
+      items_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -9612,25 +9549,13 @@ public final class ShopMessage {
               status_ = rawValue;
               break;
             }
-            case 16: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                productIds_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              productIds_.add(input.readInt32());
-              break;
-            }
             case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
-                productIds_ = new java.util.ArrayList<java.lang.Integer>();
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                items_ = new java.util.ArrayList<proto_def.ShopMessage.OpenBoxResp.Item>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              while (input.getBytesUntilLimit() > 0) {
-                productIds_.add(input.readInt32());
-              }
-              input.popLimit(limit);
+              items_.add(
+                  input.readMessage(proto_def.ShopMessage.OpenBoxResp.Item.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -9649,7 +9574,7 @@ public final class ShopMessage {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          productIds_ = java.util.Collections.unmodifiableList(productIds_);
+          items_ = java.util.Collections.unmodifiableList(items_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -9793,6 +9718,693 @@ public final class ShopMessage {
       // @@protoc_insertion_point(enum_scope:proto_def.OpenBoxResp.STATUS)
     }
 
+    public interface ItemOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:proto_def.OpenBoxResp.Item)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string title = 1;</code>
+       */
+      java.lang.String getTitle();
+      /**
+       * <code>string title = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getTitleBytes();
+
+      /**
+       * <code>string icon = 2;</code>
+       */
+      java.lang.String getIcon();
+      /**
+       * <code>string icon = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getIconBytes();
+    }
+    /**
+     * Protobuf type {@code proto_def.OpenBoxResp.Item}
+     */
+    public  static final class Item extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:proto_def.OpenBoxResp.Item)
+        ItemOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Item.newBuilder() to construct.
+      private Item(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Item() {
+        title_ = "";
+        icon_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Item(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                title_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                icon_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownFieldProto3(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_def.ShopMessage.internal_static_proto_def_OpenBoxResp_Item_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_def.ShopMessage.internal_static_proto_def_OpenBoxResp_Item_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_def.ShopMessage.OpenBoxResp.Item.class, proto_def.ShopMessage.OpenBoxResp.Item.Builder.class);
+      }
+
+      public static final int TITLE_FIELD_NUMBER = 1;
+      private volatile java.lang.Object title_;
+      /**
+       * <code>string title = 1;</code>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string title = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ICON_FIELD_NUMBER = 2;
+      private volatile java.lang.Object icon_;
+      /**
+       * <code>string icon = 2;</code>
+       */
+      public java.lang.String getIcon() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          icon_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string icon = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIconBytes() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          icon_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getTitleBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, title_);
+        }
+        if (!getIconBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, icon_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getTitleBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, title_);
+        }
+        if (!getIconBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, icon_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof proto_def.ShopMessage.OpenBoxResp.Item)) {
+          return super.equals(obj);
+        }
+        proto_def.ShopMessage.OpenBoxResp.Item other = (proto_def.ShopMessage.OpenBoxResp.Item) obj;
+
+        boolean result = true;
+        result = result && getTitle()
+            .equals(other.getTitle());
+        result = result && getIcon()
+            .equals(other.getIcon());
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + TITLE_FIELD_NUMBER;
+        hash = (53 * hash) + getTitle().hashCode();
+        hash = (37 * hash) + ICON_FIELD_NUMBER;
+        hash = (53 * hash) + getIcon().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static proto_def.ShopMessage.OpenBoxResp.Item parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(proto_def.ShopMessage.OpenBoxResp.Item prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code proto_def.OpenBoxResp.Item}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:proto_def.OpenBoxResp.Item)
+          proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return proto_def.ShopMessage.internal_static_proto_def_OpenBoxResp_Item_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return proto_def.ShopMessage.internal_static_proto_def_OpenBoxResp_Item_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  proto_def.ShopMessage.OpenBoxResp.Item.class, proto_def.ShopMessage.OpenBoxResp.Item.Builder.class);
+        }
+
+        // Construct using proto_def.ShopMessage.OpenBoxResp.Item.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          title_ = "";
+
+          icon_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return proto_def.ShopMessage.internal_static_proto_def_OpenBoxResp_Item_descriptor;
+        }
+
+        @java.lang.Override
+        public proto_def.ShopMessage.OpenBoxResp.Item getDefaultInstanceForType() {
+          return proto_def.ShopMessage.OpenBoxResp.Item.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public proto_def.ShopMessage.OpenBoxResp.Item build() {
+          proto_def.ShopMessage.OpenBoxResp.Item result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public proto_def.ShopMessage.OpenBoxResp.Item buildPartial() {
+          proto_def.ShopMessage.OpenBoxResp.Item result = new proto_def.ShopMessage.OpenBoxResp.Item(this);
+          result.title_ = title_;
+          result.icon_ = icon_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof proto_def.ShopMessage.OpenBoxResp.Item) {
+            return mergeFrom((proto_def.ShopMessage.OpenBoxResp.Item)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(proto_def.ShopMessage.OpenBoxResp.Item other) {
+          if (other == proto_def.ShopMessage.OpenBoxResp.Item.getDefaultInstance()) return this;
+          if (!other.getTitle().isEmpty()) {
+            title_ = other.title_;
+            onChanged();
+          }
+          if (!other.getIcon().isEmpty()) {
+            icon_ = other.icon_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          proto_def.ShopMessage.OpenBoxResp.Item parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (proto_def.ShopMessage.OpenBoxResp.Item) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object title_ = "";
+        /**
+         * <code>string title = 1;</code>
+         */
+        public java.lang.String getTitle() {
+          java.lang.Object ref = title_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            title_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string title = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTitleBytes() {
+          java.lang.Object ref = title_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            title_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string title = 1;</code>
+         */
+        public Builder setTitle(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          title_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string title = 1;</code>
+         */
+        public Builder clearTitle() {
+          
+          title_ = getDefaultInstance().getTitle();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string title = 1;</code>
+         */
+        public Builder setTitleBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          title_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object icon_ = "";
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public java.lang.String getIcon() {
+          java.lang.Object ref = icon_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            icon_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIconBytes() {
+          java.lang.Object ref = icon_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            icon_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public Builder setIcon(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          icon_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public Builder clearIcon() {
+          
+          icon_ = getDefaultInstance().getIcon();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public Builder setIconBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          icon_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:proto_def.OpenBoxResp.Item)
+      }
+
+      // @@protoc_insertion_point(class_scope:proto_def.OpenBoxResp.Item)
+      private static final proto_def.ShopMessage.OpenBoxResp.Item DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new proto_def.ShopMessage.OpenBoxResp.Item();
+      }
+
+      public static proto_def.ShopMessage.OpenBoxResp.Item getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Item>
+          PARSER = new com.google.protobuf.AbstractParser<Item>() {
+        @java.lang.Override
+        public Item parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Item(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Item> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Item> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public proto_def.ShopMessage.OpenBoxResp.Item getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
     private int bitField0_;
     public static final int STATUS_FIELD_NUMBER = 1;
     private int status_;
@@ -9811,28 +10423,40 @@ public final class ShopMessage {
       return result == null ? proto_def.ShopMessage.OpenBoxResp.STATUS.UNRECOGNIZED : result;
     }
 
-    public static final int PRODUCT_IDS_FIELD_NUMBER = 2;
-    private java.util.List<java.lang.Integer> productIds_;
+    public static final int ITEMS_FIELD_NUMBER = 2;
+    private java.util.List<proto_def.ShopMessage.OpenBoxResp.Item> items_;
     /**
-     * <code>repeated int32 product_ids = 2;</code>
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
      */
-    public java.util.List<java.lang.Integer>
-        getProductIdsList() {
-      return productIds_;
+    public java.util.List<proto_def.ShopMessage.OpenBoxResp.Item> getItemsList() {
+      return items_;
     }
     /**
-     * <code>repeated int32 product_ids = 2;</code>
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
      */
-    public int getProductIdsCount() {
-      return productIds_.size();
+    public java.util.List<? extends proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder> 
+        getItemsOrBuilderList() {
+      return items_;
     }
     /**
-     * <code>repeated int32 product_ids = 2;</code>
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
      */
-    public int getProductIds(int index) {
-      return productIds_.get(index);
+    public int getItemsCount() {
+      return items_.size();
     }
-    private int productIdsMemoizedSerializedSize = -1;
+    /**
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+     */
+    public proto_def.ShopMessage.OpenBoxResp.Item getItems(int index) {
+      return items_.get(index);
+    }
+    /**
+     * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+     */
+    public proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder getItemsOrBuilder(
+        int index) {
+      return items_.get(index);
+    }
 
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
@@ -9848,16 +10472,11 @@ public final class ShopMessage {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (status_ != proto_def.ShopMessage.OpenBoxResp.STATUS.OK.getNumber()) {
         output.writeEnum(1, status_);
       }
-      if (getProductIdsList().size() > 0) {
-        output.writeUInt32NoTag(18);
-        output.writeUInt32NoTag(productIdsMemoizedSerializedSize);
-      }
-      for (int i = 0; i < productIds_.size(); i++) {
-        output.writeInt32NoTag(productIds_.get(i));
+      for (int i = 0; i < items_.size(); i++) {
+        output.writeMessage(2, items_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -9872,19 +10491,9 @@ public final class ShopMessage {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < productIds_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(productIds_.get(i));
-        }
-        size += dataSize;
-        if (!getProductIdsList().isEmpty()) {
-          size += 1;
-          size += com.google.protobuf.CodedOutputStream
-              .computeInt32SizeNoTag(dataSize);
-        }
-        productIdsMemoizedSerializedSize = dataSize;
+      for (int i = 0; i < items_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, items_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9903,8 +10512,8 @@ public final class ShopMessage {
 
       boolean result = true;
       result = result && status_ == other.status_;
-      result = result && getProductIdsList()
-          .equals(other.getProductIdsList());
+      result = result && getItemsList()
+          .equals(other.getItemsList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -9918,9 +10527,9 @@ public final class ShopMessage {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + status_;
-      if (getProductIdsCount() > 0) {
-        hash = (37 * hash) + PRODUCT_IDS_FIELD_NUMBER;
-        hash = (53 * hash) + getProductIdsList().hashCode();
+      if (getItemsCount() > 0) {
+        hash = (37 * hash) + ITEMS_FIELD_NUMBER;
+        hash = (53 * hash) + getItemsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -10050,6 +10659,7 @@ public final class ShopMessage {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getItemsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -10057,8 +10667,12 @@ public final class ShopMessage {
         super.clear();
         status_ = 0;
 
-        productIds_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          itemsBuilder_.clear();
+        }
         return this;
       }
 
@@ -10088,11 +10702,15 @@ public final class ShopMessage {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.status_ = status_;
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          productIds_ = java.util.Collections.unmodifiableList(productIds_);
-          bitField0_ = (bitField0_ & ~0x00000002);
+        if (itemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            items_ = java.util.Collections.unmodifiableList(items_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.items_ = items_;
+        } else {
+          result.items_ = itemsBuilder_.build();
         }
-        result.productIds_ = productIds_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -10145,15 +10763,31 @@ public final class ShopMessage {
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
         }
-        if (!other.productIds_.isEmpty()) {
-          if (productIds_.isEmpty()) {
-            productIds_ = other.productIds_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureProductIdsIsMutable();
-            productIds_.addAll(other.productIds_);
+        if (itemsBuilder_ == null) {
+          if (!other.items_.isEmpty()) {
+            if (items_.isEmpty()) {
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureItemsIsMutable();
+              items_.addAll(other.items_);
+            }
+            onChanged();
           }
-          onChanged();
+        } else {
+          if (!other.items_.isEmpty()) {
+            if (itemsBuilder_.isEmpty()) {
+              itemsBuilder_.dispose();
+              itemsBuilder_ = null;
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              itemsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getItemsFieldBuilder() : null;
+            } else {
+              itemsBuilder_.addAllMessages(other.items_);
+            }
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10230,70 +10864,244 @@ public final class ShopMessage {
         return this;
       }
 
-      private java.util.List<java.lang.Integer> productIds_ = java.util.Collections.emptyList();
-      private void ensureProductIdsIsMutable() {
+      private java.util.List<proto_def.ShopMessage.OpenBoxResp.Item> items_ =
+        java.util.Collections.emptyList();
+      private void ensureItemsIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          productIds_ = new java.util.ArrayList<java.lang.Integer>(productIds_);
+          items_ = new java.util.ArrayList<proto_def.ShopMessage.OpenBoxResp.Item>(items_);
           bitField0_ |= 0x00000002;
          }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_def.ShopMessage.OpenBoxResp.Item, proto_def.ShopMessage.OpenBoxResp.Item.Builder, proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder> itemsBuilder_;
+
       /**
-       * <code>repeated int32 product_ids = 2;</code>
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
        */
-      public java.util.List<java.lang.Integer>
-          getProductIdsList() {
-        return java.util.Collections.unmodifiableList(productIds_);
+      public java.util.List<proto_def.ShopMessage.OpenBoxResp.Item> getItemsList() {
+        if (itemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(items_);
+        } else {
+          return itemsBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>repeated int32 product_ids = 2;</code>
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
        */
-      public int getProductIdsCount() {
-        return productIds_.size();
+      public int getItemsCount() {
+        if (itemsBuilder_ == null) {
+          return items_.size();
+        } else {
+          return itemsBuilder_.getCount();
+        }
       }
       /**
-       * <code>repeated int32 product_ids = 2;</code>
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
        */
-      public int getProductIds(int index) {
-        return productIds_.get(index);
+      public proto_def.ShopMessage.OpenBoxResp.Item getItems(int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);
+        } else {
+          return itemsBuilder_.getMessage(index);
+        }
       }
       /**
-       * <code>repeated int32 product_ids = 2;</code>
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
        */
-      public Builder setProductIds(
-          int index, int value) {
-        ensureProductIdsIsMutable();
-        productIds_.set(index, value);
-        onChanged();
+      public Builder setItems(
+          int index, proto_def.ShopMessage.OpenBoxResp.Item value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.set(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>repeated int32 product_ids = 2;</code>
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
        */
-      public Builder addProductIds(int value) {
-        ensureProductIdsIsMutable();
-        productIds_.add(value);
-        onChanged();
+      public Builder setItems(
+          int index, proto_def.ShopMessage.OpenBoxResp.Item.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       /**
-       * <code>repeated int32 product_ids = 2;</code>
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
        */
-      public Builder addAllProductIds(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
-        ensureProductIdsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, productIds_);
-        onChanged();
+      public Builder addItems(proto_def.ShopMessage.OpenBoxResp.Item value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(value);
+        }
         return this;
       }
       /**
-       * <code>repeated int32 product_ids = 2;</code>
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
        */
-      public Builder clearProductIds() {
-        productIds_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
+      public Builder addItems(
+          int index, proto_def.ShopMessage.OpenBoxResp.Item value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, value);
+        }
         return this;
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public Builder addItems(
+          proto_def.ShopMessage.OpenBoxResp.Item.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public Builder addItems(
+          int index, proto_def.ShopMessage.OpenBoxResp.Item.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public Builder addAllItems(
+          java.lang.Iterable<? extends proto_def.ShopMessage.OpenBoxResp.Item> values) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, items_);
+          onChanged();
+        } else {
+          itemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public Builder clearItems() {
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          itemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public Builder removeItems(int index) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.remove(index);
+          onChanged();
+        } else {
+          itemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public proto_def.ShopMessage.OpenBoxResp.Item.Builder getItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder getItemsOrBuilder(
+          int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);  } else {
+          return itemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public java.util.List<? extends proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder> 
+           getItemsOrBuilderList() {
+        if (itemsBuilder_ != null) {
+          return itemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(items_);
+        }
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public proto_def.ShopMessage.OpenBoxResp.Item.Builder addItemsBuilder() {
+        return getItemsFieldBuilder().addBuilder(
+            proto_def.ShopMessage.OpenBoxResp.Item.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public proto_def.ShopMessage.OpenBoxResp.Item.Builder addItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().addBuilder(
+            index, proto_def.ShopMessage.OpenBoxResp.Item.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto_def.OpenBoxResp.Item items = 2;</code>
+       */
+      public java.util.List<proto_def.ShopMessage.OpenBoxResp.Item.Builder> 
+           getItemsBuilderList() {
+        return getItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_def.ShopMessage.OpenBoxResp.Item, proto_def.ShopMessage.OpenBoxResp.Item.Builder, proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder> 
+          getItemsFieldBuilder() {
+        if (itemsBuilder_ == null) {
+          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto_def.ShopMessage.OpenBoxResp.Item, proto_def.ShopMessage.OpenBoxResp.Item.Builder, proto_def.ShopMessage.OpenBoxResp.ItemOrBuilder>(
+                  items_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          items_ = null;
+        }
+        return itemsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -14027,6 +14835,11 @@ public final class ShopMessage {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_def_OpenBoxResp_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_def_OpenBoxResp_Item_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_def_OpenBoxResp_Item_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_def_SendGiftReq_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -14067,7 +14880,7 @@ public final class ShopMessage {
       "GiftsReq\">\n\004Gift\022\n\n\002id\030\001 \001(\t\022\r\n\005title\030\002 " +
       "\001(\t\022\014\n\004icon\030\003 \001(\t\022\r\n\005price\030\004 \001(\005\"/\n\rShop" +
       "GiftsResp\022\036\n\005gifts\030\001 \003(\0132\017.proto_def.Gif" +
-      "t\"\307\001\n\007Product\022\013\n\003pid\030\001 \001(\t\022\r\n\005title\030\002 \001(" +
+      "t\"\307\001\n\007Product\022\013\n\003pid\030\001 \001(\005\022\r\n\005title\030\002 \001(" +
       "\t\022\014\n\004icon\030\003 \001(\t\022\r\n\005price\030\004 \001(\005\022\016\n\006period" +
       "\030\005 \001(\005\022\021\n\tpermanent\030\006 \001(\010\022%\n\010category\030\007 " +
       "\001(\0162\023.proto_def.CATEGORY\022\'\n\005grade\030\010 \001(\0162" +
@@ -14085,24 +14898,25 @@ public final class ShopMessage {
       "COUNT_MONEY_NOT_ENOUGH\020\005\"u\n\nOpenBoxReq\022\013" +
       "\n\003uid\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022+\n\tbox_grade\030" +
       "\003 \001(\0162\030.proto_def.PRODUCT_GRADE\022\017\n\007room_" +
-      "id\030\004 \001(\t\022\r\n\005count\030\005 \001(\005\"\262\001\n\013OpenBoxResp\022" +
+      "id\030\004 \001(\t\022\r\n\005count\030\005 \001(\005\"\356\001\n\013OpenBoxResp\022" +
       "-\n\006status\030\001 \001(\0162\035.proto_def.OpenBoxResp." +
-      "STATUS\022\023\n\013product_ids\030\002 \003(\005\"_\n\006STATUS\022\006\n" +
-      "\002OK\020\000\022\021\n\rTOKEN_INVALID\020\001\022\016\n\nKEY_NEEDED\020\002" +
-      "\022\021\n\rBOX_EXHAUSTED\020\003\022\027\n\023TRANSACTION_FAILU" +
-      "RE\020\004\"\257\001\n\013SendGiftReq\022\013\n\003uid\030\001 \001(\t\022\r\n\005tok" +
-      "en\030\002 \001(\t\022\017\n\007room_id\030\003 \001(\t\022*\n\005gifts\030\004 \003(\013" +
-      "2\033.proto_def.SendGiftReq.Gift\032G\n\004Gift\022\016\n" +
-      "\006to_uid\030\001 \001(\t\022\017\n\007to_name\030\002 \001(\t\022\017\n\007gift_i" +
-      "d\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\"[\n\014SendGiftResp\022." +
-      "\n\006status\030\001 \001(\0162\036.proto_def.SendGiftResp." +
-      "STATUS\"\033\n\006STATUS\022\006\n\002OK\020\000\022\t\n\005ERROR\020\001\"\021\n\017G" +
-      "iftBatchNumReq\"&\n\020GiftBatchNumResp\022\022\n\nba" +
-      "tch_nums\030\001 \003(\005*]\n\010CATEGORY\022\007\n\003ALL\020\000\022\010\n\004G" +
-      "IFT\020\001\022\016\n\nAVATAR_BOX\020\002\022\021\n\rSEAT_GUARDIAN\020\003" +
-      "\022\007\n\003BOX\020\004\022\007\n\003KEY\020\005\022\t\n\005NOBLE\020\006*=\n\rPRODUCT" +
-      "_GRADE\022\010\n\004NONE\020\000\022\n\n\006BROZEN\020\001\022\n\n\006SILVER\020\002" +
-      "\022\n\n\006GOLDEN\020\003b\006proto3"
+      "STATUS\022*\n\005items\030\002 \003(\0132\033.proto_def.OpenBo" +
+      "xResp.Item\032#\n\004Item\022\r\n\005title\030\001 \001(\t\022\014\n\004ico" +
+      "n\030\002 \001(\t\"_\n\006STATUS\022\006\n\002OK\020\000\022\021\n\rTOKEN_INVAL" +
+      "ID\020\001\022\016\n\nKEY_NEEDED\020\002\022\021\n\rBOX_EXHAUSTED\020\003\022" +
+      "\027\n\023TRANSACTION_FAILURE\020\004\"\257\001\n\013SendGiftReq" +
+      "\022\013\n\003uid\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\017\n\007room_id\030" +
+      "\003 \001(\t\022*\n\005gifts\030\004 \003(\0132\033.proto_def.SendGif" +
+      "tReq.Gift\032G\n\004Gift\022\016\n\006to_uid\030\001 \001(\t\022\017\n\007to_" +
+      "name\030\002 \001(\t\022\017\n\007gift_id\030\003 \001(\005\022\r\n\005count\030\004 \001" +
+      "(\005\"[\n\014SendGiftResp\022.\n\006status\030\001 \001(\0162\036.pro" +
+      "to_def.SendGiftResp.STATUS\"\033\n\006STATUS\022\006\n\002" +
+      "OK\020\000\022\t\n\005ERROR\020\001\"\021\n\017GiftBatchNumReq\"&\n\020Gi" +
+      "ftBatchNumResp\022\022\n\nbatch_nums\030\001 \003(\005*]\n\010CA" +
+      "TEGORY\022\007\n\003ALL\020\000\022\010\n\004GIFT\020\001\022\016\n\nAVATAR_BOX\020" +
+      "\002\022\021\n\rSEAT_GUARDIAN\020\003\022\007\n\003BOX\020\004\022\007\n\003KEY\020\005\022\t" +
+      "\n\005NOBLE\020\006*=\n\rPRODUCT_GRADE\022\010\n\004NONE\020\000\022\n\n\006" +
+      "BROZEN\020\001\022\n\n\006SILVER\020\002\022\n\n\006GOLDEN\020\003b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -14193,7 +15007,13 @@ public final class ShopMessage {
     internal_static_proto_def_OpenBoxResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_def_OpenBoxResp_descriptor,
-        new java.lang.String[] { "Status", "ProductIds", });
+        new java.lang.String[] { "Status", "Items", });
+    internal_static_proto_def_OpenBoxResp_Item_descriptor =
+      internal_static_proto_def_OpenBoxResp_descriptor.getNestedTypes().get(0);
+    internal_static_proto_def_OpenBoxResp_Item_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_def_OpenBoxResp_Item_descriptor,
+        new java.lang.String[] { "Title", "Icon", });
     internal_static_proto_def_SendGiftReq_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_proto_def_SendGiftReq_fieldAccessorTable = new

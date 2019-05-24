@@ -273,7 +273,7 @@ message UserInfoUpdateReq {
     string career_id = 7;
     string avatar = 8;
     string audio = 9;
-
+    int32  duration = 10; // required if audio
 }
 
 
@@ -283,19 +283,19 @@ message UserInfoUpdateResp {
 
 
 message UserGalleryUpdateReq {
-    enum METHOD {
+    enum Method {
         UNK = 0;
         ADD = 1;
-        UPDATE = 2;
+        REPLACE = 2;
         REMOVE = 3;
         SWAP = 4;
     }
 
     string uid = 1;
     string token = 2;
-    METHOD method = 3;
-    string pos = 4; // for add/update/remove
-    string url = 5; //for add/update
+    Method method = 3;
+    string pos = 4; // for add/replace/remove
+    string url = 5; //for add/replace
     int32 pos1 = 6; //for swap
     int32 pos2 = 7; //for swap
 }
@@ -309,7 +309,7 @@ message UserInterestsUpdateReq {
     enum METHOD {
         UNK = 0;
         ADD = 1;
-        REMOVE = 3;
+        REMOVE = 2;
     }
 
     string uid = 1;
@@ -394,7 +394,6 @@ message UserCpRelationsResp {
     repeated CpRelation relations = 1;
 }
 
-import "shop_message.proto";
 
 message BagReq {
     string uid = 1;
@@ -402,14 +401,47 @@ message BagReq {
 }
 
 message BagResp {
-    message Item {
-        Product product = 1;
-        int32 count = 2;
+    enum CATEGORY {
+        ALL = 0;
+        GIFT = 1;
+        AVATAR_BOX = 2;
+        SEAT_GUARDIAN = 3;
+        BOX = 4;
+        KEY = 5;
+        NOBLE = 6;
     }
 
-    repeated Item items = 1;
-}
+    enum PRODUCT_GRADE {
+        NONE = 0;
+        BROZEN = 1;
+        SILVER = 2;
+        GOLDEN = 3;
+    }
 
+    message Product {
+        int32 pid = 1;
+        string title = 2;
+        string icon = 3;
+        CATEGORY category = 4;
+        PRODUCT_GRADE grade = 5;
+        int32 count = 6;
+        bool permant = 7;
+        string expire = 8;
+    }
+
+    message Coupon {
+        int32 cid = 1;
+        int32 pid = 2;
+        string title = 3;
+        string icon = 4;
+        bool permant = 5;
+        int32 count = 6;
+        int32 value = 7;
+    }
+
+    repeated Product products = 1;
+    repeated Coupon coupons = 2;
+}
 
 message OrderListReq {
     enum Category {

@@ -1,10 +1,10 @@
 package com.qint.pt1.domain
 
-data class Gift(val id: GiftId, val title: String, val icon: ImageUrl, val price: PriceInCent){
+data class Gift(val id: GiftId, val title: String, val icon: ImageUrl, val price: Price){ //FIXME：与Product.Gift合并
     constructor(id: GiftId, icon: ImageUrl): this(id, "", icon, 0)
 }
 
-data class GiftPack(val gift: Gift, val amount: Int)
+data class GiftPack(val gift: Gift, val amount: Int) //FIXME: 与ProductPack合并
 
 fun Gift.toIcon() = Icon(id, icon, title)
 

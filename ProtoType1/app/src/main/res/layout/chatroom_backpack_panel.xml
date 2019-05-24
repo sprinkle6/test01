@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Author: Matthew Zhang
+  ~ Created on: 5/17/19 12:10 PM
+  ~ Copyright (c) 2019. QINT.TV
+  ~
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_darkblue">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/backpackPanel"
+        android:layout_width="match_parent"
+        android:layout_height="227dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/openBoxPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/backpackPanel">
+
+        <TextView
+            android:id="@+id/luckyPrizeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:text="幸运礼物"
+            android:textSize="14sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/luckyPrize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/diamond"
+            app:layout_constraintTop_toTopOf="@id/luckyPrizeLabel"
+            app:layout_constraintStart_toEndOf="@id/luckyPrizeLabel"/>
+
+        <TextView
+            android:id="@+id/luckyRankingListButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="14dp"
+            android:text="手气榜"
+            android:textSize="14sp"
+            android:textColor="@color/main_blue_c1"
+            android:drawableRight="@drawable/right_arrow"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/openBoxCountMinusButton"
+            android:layout_width="13dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/back"
+            app:layout_constraintTop_toTopOf="@id/openBoxCount"
+            app:layout_constraintBottom_toBottomOf="@id/openBoxCount"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.libRG.CustomTextView
+            android:id="@+id/openBoxCount"
+            android:layout_width="28dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="23dp"
+            android:text="1"
+            android:textSize="14sp"
+            android:textColor="@color/main_white_f4"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:lib_setRoundedView="true"
+            app:lib_setShape="rectangle"
+            app:lib_setRadius="14dp"
+            app:lib_setRoundedBGColor="@color/main_blue_dark2"
+            app:lib_setRoundedBorderColor="@color/main_blue_dark2"
+            app:layout_constraintTop_toBottomOf="@id/luckyPrizeLabel"
+            app:layout_constraintStart_toEndOf="@id/openBoxCountMinusButton"/>
+
+        <ImageView
+            android:id="@+id/openBoxCountPlusButton"
+            android:layout_width="13dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/right_arrow"
+            android:tint="@color/main_white_f4"
+            app:layout_constraintTop_toTopOf="@id/openBoxCount"
+            app:layout_constraintBottom_toBottomOf="@id/openBoxCount"
+            app:layout_constraintStart_toEndOf="@id/openBoxCount"/>
+
+        <com.libRG.CustomTextView
+            android:id="@+id/openBoxButton"
+            android:layout_width="60dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="16dp"
+            android:text="开1个"
+            android:textSize="14sp"
+            android:textColor="@color/main_blue_c1"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:lib_setRoundedView="true"
+            app:lib_setShape="rectangle"
+            app:lib_setRadius="14dp"
+            app:lib_setRoundedBGColor="@color/main_blue_dark2"
+            app:lib_setRoundedBorderColor="@color/main_blue_dark2"
+            app:layout_constraintTop_toBottomOf="@id/luckyPrizeLabel"
+            app:layout_constraintEnd_toStartOf="@id/batchOpenBoxButton"/>
+
+        <com.libRG.CustomTextView
+            android:id="@+id/batchOpenBoxButton"
+            android:layout_width="60dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="16dp"
+            android:text="开n个"
+            android:textSize="14sp"
+            android:textColor="@color/main_white_f4"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:lib_setRoundedView="true"
+            app:lib_setShape="rectangle"
+            app:lib_setRadius="14dp"
+            app:lib_setRoundedBGColor="@color/main_blue_c1"
+            app:layout_constraintTop_toBottomOf="@id/luckyPrizeLabel"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

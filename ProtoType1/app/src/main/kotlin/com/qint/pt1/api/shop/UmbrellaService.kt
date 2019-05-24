@@ -36,6 +36,10 @@ interface UmbrellaService{
     @POST(PRODUCT_LIST)
     fun getProductList(@Body req: ShopMessage.ShopProductsReq): Call<ShopMessage.ShopProductsResp>
     fun getAllProducts(): Call<ShopMessage.ShopProductsResp>
+
+    @POST(OPEN_BOX)
+    fun openBox(@Body req: ShopMessage.OpenBoxReq): Call<ShopMessage.OpenBoxResp>
+
 }
 
 @Singleton
@@ -54,4 +58,6 @@ class UmbrellaServiceImpl
             .setCategory(ShopMessage.CATEGORY.ALL).build()
         return api.getProductList(req)
     }
+
+    override fun openBox(req: ShopMessage.OpenBoxReq): Call<ShopMessage.OpenBoxResp> = api.openBox(req)
 }

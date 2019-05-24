@@ -76,6 +76,6 @@ class UmbrellaAPI
     }
 }
 
-private fun ShopMessage.Product.toGift(): Gift = Gift(pid, title, icon, price)
+private fun ShopMessage.Product.toGift(): Gift = Gift(pid.toString(), title, icon, price)
 
 private fun SysMessage.NobleListResp.Noble.toNobleLevel(): NobleLevel = NobleLevel(nid, title)

@@ -94,7 +94,7 @@ class MetaData @Inject constructor(
     fun getSticker(tag: Tag): Sticker? = _stickerMap.get(tag)
 
     private var _gifts: List<Gift> = emptyList()
-    private var _giftMap: MutableMap<ID, Gift> = mutableMapOf()
+    private var _giftMap: MutableMap<GiftId, Gift> = mutableMapOf()
     val gifts: List<Gift>
         get() = _gifts
 

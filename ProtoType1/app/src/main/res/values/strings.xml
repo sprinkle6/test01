@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">花语-PT2</string>
+    <string name="app_name">咚咚</string>
 
-    <string name="title_activity_main">花语-PT2</string>
+    <string name="title_activity_main">咚咚</string>
     <string name="user_details_screen_title">用户详情</string>
 
     <!-- Main Navigation -->

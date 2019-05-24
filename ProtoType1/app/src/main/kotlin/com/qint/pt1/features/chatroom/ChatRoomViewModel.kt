@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.netease.nimlib.sdk.StatusCode
 import com.qint.pt1.api.chatroom.HiveAPI
 import com.qint.pt1.api.shop.UmbrellaAPI
+import com.qint.pt1.api.user.BeesAPI
 import com.qint.pt1.base.exception.Failure
 import com.qint.pt1.base.platform.BaseViewModel
 import com.qint.pt1.base.platform.RequestCallback
@@ -32,7 +33,8 @@ class ChatRoomViewModel
                     private val im: IM,
                     private val hiveAPI: HiveAPI,
                     private val messageAPI: ChatRoomMessageAPI,
-                    private val umbrellaAPI: UmbrellaAPI) : BaseViewModel() {
+                    private val umbrellaAPI: UmbrellaAPI,
+                    private val beesAPI: BeesAPI) : BaseViewModel() {
 
     lateinit var roomId: ChatRoomId
         private set //keep this readonly to outside
@@ -56,6 +58,7 @@ class ChatRoomViewModel
     val roomBackgroundLiveData: MutableLiveData<ImageUrl> = MutableLiveData()
     val stickersLiveData: MutableLiveData<List<StickerItem>> = MutableLiveData()
     val giftsLiveData: MutableLiveData<List<GiftItem>> = MutableLiveData()
+    val backpackLiveData: MutableLiveData<Backpack> = MutableLiveData()
     val visualEffectLiveData: MutableLiveData<VisualEffect> = MutableLiveData()
     val isOnMicLiveData: MutableLiveData<Boolean> = MutableLiveData()
     val seatsInfoLiveData: MutableLiveData<MutableMap<Int, Seat>> = MutableLiveData()
@@ -568,7 +571,23 @@ class ChatRoomViewModel
                 )
             }
         }
+    }
 
+    fun loadBackpack() {
+        val account = login.account ?: return
+        CoroutineScope(Dispatchers.IO).launch {
+            val resp = beesAPI.getUserBackpack(account)
+            launch(Dispatchers.Main) {
+                resp.either(
+                    { _failure -> trigerFailure(_failure) },
+                    { _backpack -> updateBackpack(_backpack) }
+                )
+            }
+        }
+    }
+
+    private fun updateBackpack(backpack: Backpack){
+        backpackLiveData.value = backpack
     }
 
     private fun handleOnlineStatusChange(statusCode: StatusCode){ //FIXME: 触发handleFailure处理
@@ -631,7 +650,7 @@ data class StickerItem(val id: StickerId, val title: String, val icon: ImageUrl)
 
 fun StickerItem.toSticker(): Sticker = Sticker(id, title, icon)
 
-data class GiftItem(val id: GiftId, val title: String, val icon: ImageUrl, val price: PriceInCent) {
+data class GiftItem(val id: GiftId, val title: String, val icon: ImageUrl, val price: Price) {
     val priceInDiamond: String
         get() = "${price}钻"
 }

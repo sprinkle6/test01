@@ -51,7 +51,7 @@ enum PRODUCT_GRADE {
 }
 
 message Product {
-    string pid = 1;
+    int32 pid = 1;
     string title = 2;
     string icon = 3;
     int32  price = 4;
@@ -108,8 +108,13 @@ message OpenBoxResp{
         TRANSACTION_FAILURE = 4;
     }
 
+    message Item {
+        string title = 1;
+        string icon = 2;
+    }
+
     STATUS status = 1;
-    repeated int32 product_ids = 2;
+    repeated Item items = 2;
 }
 
 

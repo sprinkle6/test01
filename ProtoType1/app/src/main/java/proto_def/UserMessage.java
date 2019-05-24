@@ -31669,6 +31669,15 @@ public final class UserMessage {
      */
     com.google.protobuf.ByteString
         getAudioBytes();
+
+    /**
+     * <pre>
+     * required if audio
+     * </pre>
+     *
+     * <code>int32 duration = 10;</code>
+     */
+    int getDuration();
   }
   /**
    * Protobuf type {@code proto_def.UserInfoUpdateReq}
@@ -31692,6 +31701,7 @@ public final class UserMessage {
       careerId_ = "";
       avatar_ = "";
       audio_ = "";
+      duration_ = 0;
     }
 
     @java.lang.Override
@@ -31770,6 +31780,11 @@ public final class UserMessage {
               java.lang.String s = input.readStringRequireUtf8();
 
               audio_ = s;
+              break;
+            }
+            case 80: {
+
+              duration_ = input.readInt32();
               break;
             }
             default: {
@@ -32118,6 +32133,19 @@ public final class UserMessage {
       }
     }
 
+    public static final int DURATION_FIELD_NUMBER = 10;
+    private int duration_;
+    /**
+     * <pre>
+     * required if audio
+     * </pre>
+     *
+     * <code>int32 duration = 10;</code>
+     */
+    public int getDuration() {
+      return duration_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -32159,6 +32187,9 @@ public final class UserMessage {
       if (!getAudioBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, audio_);
       }
+      if (duration_ != 0) {
+        output.writeInt32(10, duration_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -32195,6 +32226,10 @@ public final class UserMessage {
       if (!getAudioBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, audio_);
       }
+      if (duration_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, duration_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -32229,6 +32264,8 @@ public final class UserMessage {
           .equals(other.getAvatar());
       result = result && getAudio()
           .equals(other.getAudio());
+      result = result && (getDuration()
+          == other.getDuration());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -32258,6 +32295,8 @@ public final class UserMessage {
       hash = (53 * hash) + getAvatar().hashCode();
       hash = (37 * hash) + AUDIO_FIELD_NUMBER;
       hash = (53 * hash) + getAudio().hashCode();
+      hash = (37 * hash) + DURATION_FIELD_NUMBER;
+      hash = (53 * hash) + getDuration();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -32409,6 +32448,8 @@ public final class UserMessage {
 
         audio_ = "";
 
+        duration_ = 0;
+
         return this;
       }
 
@@ -32444,6 +32485,7 @@ public final class UserMessage {
         result.careerId_ = careerId_;
         result.avatar_ = avatar_;
         result.audio_ = audio_;
+        result.duration_ = duration_;
         onBuilt();
         return result;
       }
@@ -32527,6 +32569,9 @@ public final class UserMessage {
         if (!other.getAudio().isEmpty()) {
           audio_ = other.audio_;
           onChanged();
+        }
+        if (other.getDuration() != 0) {
+          setDuration(other.getDuration());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -33197,6 +33242,44 @@ public final class UserMessage {
         onChanged();
         return this;
       }
+
+      private int duration_ ;
+      /**
+       * <pre>
+       * required if audio
+       * </pre>
+       *
+       * <code>int32 duration = 10;</code>
+       */
+      public int getDuration() {
+        return duration_;
+      }
+      /**
+       * <pre>
+       * required if audio
+       * </pre>
+       *
+       * <code>int32 duration = 10;</code>
+       */
+      public Builder setDuration(int value) {
+        
+        duration_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * required if audio
+       * </pre>
+       *
+       * <code>int32 duration = 10;</code>
+       */
+      public Builder clearDuration() {
+        
+        duration_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -33782,17 +33865,17 @@ public final class UserMessage {
         getTokenBytes();
 
     /**
-     * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+     * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
      */
     int getMethodValue();
     /**
-     * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+     * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
      */
-    proto_def.UserMessage.UserGalleryUpdateReq.METHOD getMethod();
+    proto_def.UserMessage.UserGalleryUpdateReq.Method getMethod();
 
     /**
      * <pre>
-     * for add/update/remove
+     * for add/replace/remove
      * </pre>
      *
      * <code>string pos = 4;</code>
@@ -33800,7 +33883,7 @@ public final class UserMessage {
     java.lang.String getPos();
     /**
      * <pre>
-     * for add/update/remove
+     * for add/replace/remove
      * </pre>
      *
      * <code>string pos = 4;</code>
@@ -33810,7 +33893,7 @@ public final class UserMessage {
 
     /**
      * <pre>
-     *for add/update
+     *for add/replace
      * </pre>
      *
      * <code>string url = 5;</code>
@@ -33818,7 +33901,7 @@ public final class UserMessage {
     java.lang.String getUrl();
     /**
      * <pre>
-     *for add/update
+     *for add/replace
      * </pre>
      *
      * <code>string url = 5;</code>
@@ -33963,9 +34046,9 @@ public final class UserMessage {
     }
 
     /**
-     * Protobuf enum {@code proto_def.UserGalleryUpdateReq.METHOD}
+     * Protobuf enum {@code proto_def.UserGalleryUpdateReq.Method}
      */
-    public enum METHOD
+    public enum Method
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
        * <code>UNK = 0;</code>
@@ -33976,9 +34059,9 @@ public final class UserMessage {
        */
       ADD(1),
       /**
-       * <code>UPDATE = 2;</code>
+       * <code>REPLACE = 2;</code>
        */
-      UPDATE(2),
+      REPLACE(2),
       /**
        * <code>REMOVE = 3;</code>
        */
@@ -33999,9 +34082,9 @@ public final class UserMessage {
        */
       public static final int ADD_VALUE = 1;
       /**
-       * <code>UPDATE = 2;</code>
+       * <code>REPLACE = 2;</code>
        */
-      public static final int UPDATE_VALUE = 2;
+      public static final int REPLACE_VALUE = 2;
       /**
        * <code>REMOVE = 3;</code>
        */
@@ -34024,30 +34107,30 @@ public final class UserMessage {
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
-      public static METHOD valueOf(int value) {
+      public static Method valueOf(int value) {
         return forNumber(value);
       }
 
-      public static METHOD forNumber(int value) {
+      public static Method forNumber(int value) {
         switch (value) {
           case 0: return UNK;
           case 1: return ADD;
-          case 2: return UPDATE;
+          case 2: return REPLACE;
           case 3: return REMOVE;
           case 4: return SWAP;
           default: return null;
         }
       }
 
-      public static com.google.protobuf.Internal.EnumLiteMap<METHOD>
+      public static com.google.protobuf.Internal.EnumLiteMap<Method>
           internalGetValueMap() {
         return internalValueMap;
       }
       private static final com.google.protobuf.Internal.EnumLiteMap<
-          METHOD> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<METHOD>() {
-              public METHOD findValueByNumber(int number) {
-                return METHOD.forNumber(number);
+          Method> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Method>() {
+              public Method findValueByNumber(int number) {
+                return Method.forNumber(number);
               }
             };
 
@@ -34064,9 +34147,9 @@ public final class UserMessage {
         return proto_def.UserMessage.UserGalleryUpdateReq.getDescriptor().getEnumTypes().get(0);
       }
 
-      private static final METHOD[] VALUES = values();
+      private static final Method[] VALUES = values();
 
-      public static METHOD valueOf(
+      public static Method valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
@@ -34080,11 +34163,11 @@ public final class UserMessage {
 
       private final int value;
 
-      private METHOD(int value) {
+      private Method(int value) {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:proto_def.UserGalleryUpdateReq.METHOD)
+      // @@protoc_insertion_point(enum_scope:proto_def.UserGalleryUpdateReq.Method)
     }
 
     public static final int UID_FIELD_NUMBER = 1;
@@ -34158,25 +34241,25 @@ public final class UserMessage {
     public static final int METHOD_FIELD_NUMBER = 3;
     private int method_;
     /**
-     * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+     * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
      */
     public int getMethodValue() {
       return method_;
     }
     /**
-     * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+     * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
      */
-    public proto_def.UserMessage.UserGalleryUpdateReq.METHOD getMethod() {
+    public proto_def.UserMessage.UserGalleryUpdateReq.Method getMethod() {
       @SuppressWarnings("deprecation")
-      proto_def.UserMessage.UserGalleryUpdateReq.METHOD result = proto_def.UserMessage.UserGalleryUpdateReq.METHOD.valueOf(method_);
-      return result == null ? proto_def.UserMessage.UserGalleryUpdateReq.METHOD.UNRECOGNIZED : result;
+      proto_def.UserMessage.UserGalleryUpdateReq.Method result = proto_def.UserMessage.UserGalleryUpdateReq.Method.valueOf(method_);
+      return result == null ? proto_def.UserMessage.UserGalleryUpdateReq.Method.UNRECOGNIZED : result;
     }
 
     public static final int POS_FIELD_NUMBER = 4;
     private volatile java.lang.Object pos_;
     /**
      * <pre>
-     * for add/update/remove
+     * for add/replace/remove
      * </pre>
      *
      * <code>string pos = 4;</code>
@@ -34195,7 +34278,7 @@ public final class UserMessage {
     }
     /**
      * <pre>
-     * for add/update/remove
+     * for add/replace/remove
      * </pre>
      *
      * <code>string pos = 4;</code>
@@ -34218,7 +34301,7 @@ public final class UserMessage {
     private volatile java.lang.Object url_;
     /**
      * <pre>
-     *for add/update
+     *for add/replace
      * </pre>
      *
      * <code>string url = 5;</code>
@@ -34237,7 +34320,7 @@ public final class UserMessage {
     }
     /**
      * <pre>
-     *for add/update
+     *for add/replace
      * </pre>
      *
      * <code>string url = 5;</code>
@@ -34302,7 +34385,7 @@ public final class UserMessage {
       if (!getTokenBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, token_);
       }
-      if (method_ != proto_def.UserMessage.UserGalleryUpdateReq.METHOD.UNK.getNumber()) {
+      if (method_ != proto_def.UserMessage.UserGalleryUpdateReq.Method.UNK.getNumber()) {
         output.writeEnum(3, method_);
       }
       if (!getPosBytes().isEmpty()) {
@@ -34332,7 +34415,7 @@ public final class UserMessage {
       if (!getTokenBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, token_);
       }
-      if (method_ != proto_def.UserMessage.UserGalleryUpdateReq.METHOD.UNK.getNumber()) {
+      if (method_ != proto_def.UserMessage.UserGalleryUpdateReq.Method.UNK.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, method_);
       }
@@ -34826,13 +34909,13 @@ public final class UserMessage {
 
       private int method_ = 0;
       /**
-       * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+       * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
        */
       public int getMethodValue() {
         return method_;
       }
       /**
-       * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+       * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
        */
       public Builder setMethodValue(int value) {
         method_ = value;
@@ -34840,17 +34923,17 @@ public final class UserMessage {
         return this;
       }
       /**
-       * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+       * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
        */
-      public proto_def.UserMessage.UserGalleryUpdateReq.METHOD getMethod() {
+      public proto_def.UserMessage.UserGalleryUpdateReq.Method getMethod() {
         @SuppressWarnings("deprecation")
-        proto_def.UserMessage.UserGalleryUpdateReq.METHOD result = proto_def.UserMessage.UserGalleryUpdateReq.METHOD.valueOf(method_);
-        return result == null ? proto_def.UserMessage.UserGalleryUpdateReq.METHOD.UNRECOGNIZED : result;
+        proto_def.UserMessage.UserGalleryUpdateReq.Method result = proto_def.UserMessage.UserGalleryUpdateReq.Method.valueOf(method_);
+        return result == null ? proto_def.UserMessage.UserGalleryUpdateReq.Method.UNRECOGNIZED : result;
       }
       /**
-       * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+       * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
        */
-      public Builder setMethod(proto_def.UserMessage.UserGalleryUpdateReq.METHOD value) {
+      public Builder setMethod(proto_def.UserMessage.UserGalleryUpdateReq.Method value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -34860,7 +34943,7 @@ public final class UserMessage {
         return this;
       }
       /**
-       * <code>.proto_def.UserGalleryUpdateReq.METHOD method = 3;</code>
+       * <code>.proto_def.UserGalleryUpdateReq.Method method = 3;</code>
        */
       public Builder clearMethod() {
         
@@ -34872,7 +34955,7 @@ public final class UserMessage {
       private java.lang.Object pos_ = "";
       /**
        * <pre>
-       * for add/update/remove
+       * for add/replace/remove
        * </pre>
        *
        * <code>string pos = 4;</code>
@@ -34891,7 +34974,7 @@ public final class UserMessage {
       }
       /**
        * <pre>
-       * for add/update/remove
+       * for add/replace/remove
        * </pre>
        *
        * <code>string pos = 4;</code>
@@ -34911,7 +34994,7 @@ public final class UserMessage {
       }
       /**
        * <pre>
-       * for add/update/remove
+       * for add/replace/remove
        * </pre>
        *
        * <code>string pos = 4;</code>
@@ -34928,7 +35011,7 @@ public final class UserMessage {
       }
       /**
        * <pre>
-       * for add/update/remove
+       * for add/replace/remove
        * </pre>
        *
        * <code>string pos = 4;</code>
@@ -34941,7 +35024,7 @@ public final class UserMessage {
       }
       /**
        * <pre>
-       * for add/update/remove
+       * for add/replace/remove
        * </pre>
        *
        * <code>string pos = 4;</code>
@@ -34961,7 +35044,7 @@ public final class UserMessage {
       private java.lang.Object url_ = "";
       /**
        * <pre>
-       *for add/update
+       *for add/replace
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -34980,7 +35063,7 @@ public final class UserMessage {
       }
       /**
        * <pre>
-       *for add/update
+       *for add/replace
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -35000,7 +35083,7 @@ public final class UserMessage {
       }
       /**
        * <pre>
-       *for add/update
+       *for add/replace
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -35017,7 +35100,7 @@ public final class UserMessage {
       }
       /**
        * <pre>
-       *for add/update
+       *for add/replace
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -35030,7 +35113,7 @@ public final class UserMessage {
       }
       /**
        * <pre>
-       *for add/update
+       *for add/replace
        * </pre>
        *
        * <code>string url = 5;</code>
@@ -35832,9 +35915,9 @@ public final class UserMessage {
        */
       ADD(1),
       /**
-       * <code>REMOVE = 3;</code>
+       * <code>REMOVE = 2;</code>
        */
-      REMOVE(3),
+      REMOVE(2),
       UNRECOGNIZED(-1),
       ;
 
@@ -35847,9 +35930,9 @@ public final class UserMessage {
        */
       public static final int ADD_VALUE = 1;
       /**
-       * <code>REMOVE = 3;</code>
+       * <code>REMOVE = 2;</code>
        */
-      public static final int REMOVE_VALUE = 3;
+      public static final int REMOVE_VALUE = 2;
 
 
       public final int getNumber() {
@@ -35872,7 +35955,7 @@ public final class UserMessage {
         switch (value) {
           case 0: return UNK;
           case 1: return ADD;
-          case 3: return REMOVE;
+          case 2: return REMOVE;
           default: return null;
         }
       }
@@ -46421,27 +46504,51 @@ public final class UserMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
      */
-    java.util.List<proto_def.UserMessage.BagResp.Item> 
-        getItemsList();
+    java.util.List<proto_def.UserMessage.BagResp.Product> 
+        getProductsList();
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
      */
-    proto_def.UserMessage.BagResp.Item getItems(int index);
+    proto_def.UserMessage.BagResp.Product getProducts(int index);
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
      */
-    int getItemsCount();
+    int getProductsCount();
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
      */
-    java.util.List<? extends proto_def.UserMessage.BagResp.ItemOrBuilder> 
-        getItemsOrBuilderList();
+    java.util.List<? extends proto_def.UserMessage.BagResp.ProductOrBuilder> 
+        getProductsOrBuilderList();
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
      */
-    proto_def.UserMessage.BagResp.ItemOrBuilder getItemsOrBuilder(
+    proto_def.UserMessage.BagResp.ProductOrBuilder getProductsOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    java.util.List<proto_def.UserMessage.BagResp.Coupon> 
+        getCouponsList();
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    proto_def.UserMessage.BagResp.Coupon getCoupons(int index);
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    int getCouponsCount();
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    java.util.List<? extends proto_def.UserMessage.BagResp.CouponOrBuilder> 
+        getCouponsOrBuilderList();
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    proto_def.UserMessage.BagResp.CouponOrBuilder getCouponsOrBuilder(
         int index);
   }
   /**
@@ -46457,7 +46564,8 @@ public final class UserMessage {
       super(builder);
     }
     private BagResp() {
-      items_ = java.util.Collections.emptyList();
+      products_ = java.util.Collections.emptyList();
+      coupons_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -46486,11 +46594,20 @@ public final class UserMessage {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                items_ = new java.util.ArrayList<proto_def.UserMessage.BagResp.Item>();
+                products_ = new java.util.ArrayList<proto_def.UserMessage.BagResp.Product>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              items_.add(
-                  input.readMessage(proto_def.UserMessage.BagResp.Item.parser(), extensionRegistry));
+              products_.add(
+                  input.readMessage(proto_def.UserMessage.BagResp.Product.parser(), extensionRegistry));
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                coupons_ = new java.util.ArrayList<proto_def.UserMessage.BagResp.Coupon>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              coupons_.add(
+                  input.readMessage(proto_def.UserMessage.BagResp.Coupon.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -46509,7 +46626,10 @@ public final class UserMessage {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          items_ = java.util.Collections.unmodifiableList(items_);
+          products_ = java.util.Collections.unmodifiableList(products_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          coupons_ = java.util.Collections.unmodifiableList(coupons_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -46528,42 +46648,353 @@ public final class UserMessage {
               proto_def.UserMessage.BagResp.class, proto_def.UserMessage.BagResp.Builder.class);
     }
 
-    public interface ItemOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:proto_def.BagResp.Item)
+    /**
+     * Protobuf enum {@code proto_def.BagResp.CATEGORY}
+     */
+    public enum CATEGORY
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>ALL = 0;</code>
+       */
+      ALL(0),
+      /**
+       * <code>GIFT = 1;</code>
+       */
+      GIFT(1),
+      /**
+       * <code>AVATAR_BOX = 2;</code>
+       */
+      AVATAR_BOX(2),
+      /**
+       * <code>SEAT_GUARDIAN = 3;</code>
+       */
+      SEAT_GUARDIAN(3),
+      /**
+       * <code>BOX = 4;</code>
+       */
+      BOX(4),
+      /**
+       * <code>KEY = 5;</code>
+       */
+      KEY(5),
+      /**
+       * <code>NOBLE = 6;</code>
+       */
+      NOBLE(6),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>ALL = 0;</code>
+       */
+      public static final int ALL_VALUE = 0;
+      /**
+       * <code>GIFT = 1;</code>
+       */
+      public static final int GIFT_VALUE = 1;
+      /**
+       * <code>AVATAR_BOX = 2;</code>
+       */
+      public static final int AVATAR_BOX_VALUE = 2;
+      /**
+       * <code>SEAT_GUARDIAN = 3;</code>
+       */
+      public static final int SEAT_GUARDIAN_VALUE = 3;
+      /**
+       * <code>BOX = 4;</code>
+       */
+      public static final int BOX_VALUE = 4;
+      /**
+       * <code>KEY = 5;</code>
+       */
+      public static final int KEY_VALUE = 5;
+      /**
+       * <code>NOBLE = 6;</code>
+       */
+      public static final int NOBLE_VALUE = 6;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static CATEGORY valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static CATEGORY forNumber(int value) {
+        switch (value) {
+          case 0: return ALL;
+          case 1: return GIFT;
+          case 2: return AVATAR_BOX;
+          case 3: return SEAT_GUARDIAN;
+          case 4: return BOX;
+          case 5: return KEY;
+          case 6: return NOBLE;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<CATEGORY>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          CATEGORY> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<CATEGORY>() {
+              public CATEGORY findValueByNumber(int number) {
+                return CATEGORY.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return proto_def.UserMessage.BagResp.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final CATEGORY[] VALUES = values();
+
+      public static CATEGORY valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private CATEGORY(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:proto_def.BagResp.CATEGORY)
+    }
+
+    /**
+     * Protobuf enum {@code proto_def.BagResp.PRODUCT_GRADE}
+     */
+    public enum PRODUCT_GRADE
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>NONE = 0;</code>
+       */
+      NONE(0),
+      /**
+       * <code>BROZEN = 1;</code>
+       */
+      BROZEN(1),
+      /**
+       * <code>SILVER = 2;</code>
+       */
+      SILVER(2),
+      /**
+       * <code>GOLDEN = 3;</code>
+       */
+      GOLDEN(3),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>NONE = 0;</code>
+       */
+      public static final int NONE_VALUE = 0;
+      /**
+       * <code>BROZEN = 1;</code>
+       */
+      public static final int BROZEN_VALUE = 1;
+      /**
+       * <code>SILVER = 2;</code>
+       */
+      public static final int SILVER_VALUE = 2;
+      /**
+       * <code>GOLDEN = 3;</code>
+       */
+      public static final int GOLDEN_VALUE = 3;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static PRODUCT_GRADE valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static PRODUCT_GRADE forNumber(int value) {
+        switch (value) {
+          case 0: return NONE;
+          case 1: return BROZEN;
+          case 2: return SILVER;
+          case 3: return GOLDEN;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<PRODUCT_GRADE>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          PRODUCT_GRADE> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<PRODUCT_GRADE>() {
+              public PRODUCT_GRADE findValueByNumber(int number) {
+                return PRODUCT_GRADE.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return proto_def.UserMessage.BagResp.getDescriptor().getEnumTypes().get(1);
+      }
+
+      private static final PRODUCT_GRADE[] VALUES = values();
+
+      public static PRODUCT_GRADE valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private PRODUCT_GRADE(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:proto_def.BagResp.PRODUCT_GRADE)
+    }
+
+    public interface ProductOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:proto_def.BagResp.Product)
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>.proto_def.Product product = 1;</code>
+       * <code>int32 pid = 1;</code>
        */
-      boolean hasProduct();
-      /**
-       * <code>.proto_def.Product product = 1;</code>
-       */
-      proto_def.ShopMessage.Product getProduct();
-      /**
-       * <code>.proto_def.Product product = 1;</code>
-       */
-      proto_def.ShopMessage.ProductOrBuilder getProductOrBuilder();
+      int getPid();
 
       /**
-       * <code>int32 count = 2;</code>
+       * <code>string title = 2;</code>
+       */
+      java.lang.String getTitle();
+      /**
+       * <code>string title = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getTitleBytes();
+
+      /**
+       * <code>string icon = 3;</code>
+       */
+      java.lang.String getIcon();
+      /**
+       * <code>string icon = 3;</code>
+       */
+      com.google.protobuf.ByteString
+          getIconBytes();
+
+      /**
+       * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+       */
+      int getCategoryValue();
+      /**
+       * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+       */
+      proto_def.UserMessage.BagResp.CATEGORY getCategory();
+
+      /**
+       * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+       */
+      int getGradeValue();
+      /**
+       * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+       */
+      proto_def.UserMessage.BagResp.PRODUCT_GRADE getGrade();
+
+      /**
+       * <code>int32 count = 6;</code>
        */
       int getCount();
+
+      /**
+       * <code>bool permant = 7;</code>
+       */
+      boolean getPermant();
+
+      /**
+       * <code>string expire = 8;</code>
+       */
+      java.lang.String getExpire();
+      /**
+       * <code>string expire = 8;</code>
+       */
+      com.google.protobuf.ByteString
+          getExpireBytes();
     }
     /**
-     * Protobuf type {@code proto_def.BagResp.Item}
+     * Protobuf type {@code proto_def.BagResp.Product}
      */
-    public  static final class Item extends
+    public  static final class Product extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:proto_def.BagResp.Item)
-        ItemOrBuilder {
+        // @@protoc_insertion_point(message_implements:proto_def.BagResp.Product)
+        ProductOrBuilder {
     private static final long serialVersionUID = 0L;
-      // Use Item.newBuilder() to construct.
-      private Item(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // Use Product.newBuilder() to construct.
+      private Product(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-      private Item() {
+      private Product() {
+        pid_ = 0;
+        title_ = "";
+        icon_ = "";
+        category_ = 0;
+        grade_ = 0;
         count_ = 0;
+        permant_ = false;
+        expire_ = "";
       }
 
       @java.lang.Override
@@ -46571,7 +47002,7 @@ public final class UserMessage {
       getUnknownFields() {
         return this.unknownFields;
       }
-      private Item(
+      private Product(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -46590,22 +47021,49 @@ public final class UserMessage {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                proto_def.ShopMessage.Product.Builder subBuilder = null;
-                if (product_ != null) {
-                  subBuilder = product_.toBuilder();
-                }
-                product_ = input.readMessage(proto_def.ShopMessage.Product.parser(), extensionRegistry);
-                if (subBuilder != null) {
-                  subBuilder.mergeFrom(product_);
-                  product_ = subBuilder.buildPartial();
-                }
+              case 8: {
 
+                pid_ = input.readInt32();
                 break;
               }
-              case 16: {
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                title_ = s;
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                icon_ = s;
+                break;
+              }
+              case 32: {
+                int rawValue = input.readEnum();
+
+                category_ = rawValue;
+                break;
+              }
+              case 40: {
+                int rawValue = input.readEnum();
+
+                grade_ = rawValue;
+                break;
+              }
+              case 48: {
 
                 count_ = input.readInt32();
+                break;
+              }
+              case 56: {
+
+                permant_ = input.readBool();
+                break;
+              }
+              case 66: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                expire_ = s;
                 break;
               }
               default: {
@@ -46629,45 +47087,178 @@ public final class UserMessage {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return proto_def.UserMessage.internal_static_proto_def_BagResp_Item_descriptor;
+        return proto_def.UserMessage.internal_static_proto_def_BagResp_Product_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return proto_def.UserMessage.internal_static_proto_def_BagResp_Item_fieldAccessorTable
+        return proto_def.UserMessage.internal_static_proto_def_BagResp_Product_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                proto_def.UserMessage.BagResp.Item.class, proto_def.UserMessage.BagResp.Item.Builder.class);
+                proto_def.UserMessage.BagResp.Product.class, proto_def.UserMessage.BagResp.Product.Builder.class);
       }
 
-      public static final int PRODUCT_FIELD_NUMBER = 1;
-      private proto_def.ShopMessage.Product product_;
+      public static final int PID_FIELD_NUMBER = 1;
+      private int pid_;
       /**
-       * <code>.proto_def.Product product = 1;</code>
+       * <code>int32 pid = 1;</code>
        */
-      public boolean hasProduct() {
-        return product_ != null;
-      }
-      /**
-       * <code>.proto_def.Product product = 1;</code>
-       */
-      public proto_def.ShopMessage.Product getProduct() {
-        return product_ == null ? proto_def.ShopMessage.Product.getDefaultInstance() : product_;
-      }
-      /**
-       * <code>.proto_def.Product product = 1;</code>
-       */
-      public proto_def.ShopMessage.ProductOrBuilder getProductOrBuilder() {
-        return getProduct();
+      public int getPid() {
+        return pid_;
       }
 
-      public static final int COUNT_FIELD_NUMBER = 2;
+      public static final int TITLE_FIELD_NUMBER = 2;
+      private volatile java.lang.Object title_;
+      /**
+       * <code>string title = 2;</code>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string title = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ICON_FIELD_NUMBER = 3;
+      private volatile java.lang.Object icon_;
+      /**
+       * <code>string icon = 3;</code>
+       */
+      public java.lang.String getIcon() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          icon_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string icon = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIconBytes() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          icon_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int CATEGORY_FIELD_NUMBER = 4;
+      private int category_;
+      /**
+       * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+       */
+      public int getCategoryValue() {
+        return category_;
+      }
+      /**
+       * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+       */
+      public proto_def.UserMessage.BagResp.CATEGORY getCategory() {
+        @SuppressWarnings("deprecation")
+        proto_def.UserMessage.BagResp.CATEGORY result = proto_def.UserMessage.BagResp.CATEGORY.valueOf(category_);
+        return result == null ? proto_def.UserMessage.BagResp.CATEGORY.UNRECOGNIZED : result;
+      }
+
+      public static final int GRADE_FIELD_NUMBER = 5;
+      private int grade_;
+      /**
+       * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+       */
+      public int getGradeValue() {
+        return grade_;
+      }
+      /**
+       * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+       */
+      public proto_def.UserMessage.BagResp.PRODUCT_GRADE getGrade() {
+        @SuppressWarnings("deprecation")
+        proto_def.UserMessage.BagResp.PRODUCT_GRADE result = proto_def.UserMessage.BagResp.PRODUCT_GRADE.valueOf(grade_);
+        return result == null ? proto_def.UserMessage.BagResp.PRODUCT_GRADE.UNRECOGNIZED : result;
+      }
+
+      public static final int COUNT_FIELD_NUMBER = 6;
       private int count_;
       /**
-       * <code>int32 count = 2;</code>
+       * <code>int32 count = 6;</code>
        */
       public int getCount() {
         return count_;
+      }
+
+      public static final int PERMANT_FIELD_NUMBER = 7;
+      private boolean permant_;
+      /**
+       * <code>bool permant = 7;</code>
+       */
+      public boolean getPermant() {
+        return permant_;
+      }
+
+      public static final int EXPIRE_FIELD_NUMBER = 8;
+      private volatile java.lang.Object expire_;
+      /**
+       * <code>string expire = 8;</code>
+       */
+      public java.lang.String getExpire() {
+        java.lang.Object ref = expire_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          expire_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string expire = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getExpireBytes() {
+        java.lang.Object ref = expire_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          expire_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
 
       private byte memoizedIsInitialized = -1;
@@ -46684,11 +47275,29 @@ public final class UserMessage {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (product_ != null) {
-          output.writeMessage(1, getProduct());
+        if (pid_ != 0) {
+          output.writeInt32(1, pid_);
+        }
+        if (!getTitleBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
+        }
+        if (!getIconBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, icon_);
+        }
+        if (category_ != proto_def.UserMessage.BagResp.CATEGORY.ALL.getNumber()) {
+          output.writeEnum(4, category_);
+        }
+        if (grade_ != proto_def.UserMessage.BagResp.PRODUCT_GRADE.NONE.getNumber()) {
+          output.writeEnum(5, grade_);
         }
         if (count_ != 0) {
-          output.writeInt32(2, count_);
+          output.writeInt32(6, count_);
+        }
+        if (permant_ != false) {
+          output.writeBool(7, permant_);
+        }
+        if (!getExpireBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 8, expire_);
         }
         unknownFields.writeTo(output);
       }
@@ -46699,13 +47308,34 @@ public final class UserMessage {
         if (size != -1) return size;
 
         size = 0;
-        if (product_ != null) {
+        if (pid_ != 0) {
           size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, getProduct());
+            .computeInt32Size(1, pid_);
+        }
+        if (!getTitleBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
+        }
+        if (!getIconBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, icon_);
+        }
+        if (category_ != proto_def.UserMessage.BagResp.CATEGORY.ALL.getNumber()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(4, category_);
+        }
+        if (grade_ != proto_def.UserMessage.BagResp.PRODUCT_GRADE.NONE.getNumber()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(5, grade_);
         }
         if (count_ != 0) {
           size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(2, count_);
+            .computeInt32Size(6, count_);
+        }
+        if (permant_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(7, permant_);
+        }
+        if (!getExpireBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, expire_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -46717,19 +47347,26 @@ public final class UserMessage {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof proto_def.UserMessage.BagResp.Item)) {
+        if (!(obj instanceof proto_def.UserMessage.BagResp.Product)) {
           return super.equals(obj);
         }
-        proto_def.UserMessage.BagResp.Item other = (proto_def.UserMessage.BagResp.Item) obj;
+        proto_def.UserMessage.BagResp.Product other = (proto_def.UserMessage.BagResp.Product) obj;
 
         boolean result = true;
-        result = result && (hasProduct() == other.hasProduct());
-        if (hasProduct()) {
-          result = result && getProduct()
-              .equals(other.getProduct());
-        }
+        result = result && (getPid()
+            == other.getPid());
+        result = result && getTitle()
+            .equals(other.getTitle());
+        result = result && getIcon()
+            .equals(other.getIcon());
+        result = result && category_ == other.category_;
+        result = result && grade_ == other.grade_;
         result = result && (getCount()
             == other.getCount());
+        result = result && (getPermant()
+            == other.getPermant());
+        result = result && getExpire()
+            .equals(other.getExpire());
         result = result && unknownFields.equals(other.unknownFields);
         return result;
       }
@@ -46741,80 +47378,91 @@ public final class UserMessage {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasProduct()) {
-          hash = (37 * hash) + PRODUCT_FIELD_NUMBER;
-          hash = (53 * hash) + getProduct().hashCode();
-        }
+        hash = (37 * hash) + PID_FIELD_NUMBER;
+        hash = (53 * hash) + getPid();
+        hash = (37 * hash) + TITLE_FIELD_NUMBER;
+        hash = (53 * hash) + getTitle().hashCode();
+        hash = (37 * hash) + ICON_FIELD_NUMBER;
+        hash = (53 * hash) + getIcon().hashCode();
+        hash = (37 * hash) + CATEGORY_FIELD_NUMBER;
+        hash = (53 * hash) + category_;
+        hash = (37 * hash) + GRADE_FIELD_NUMBER;
+        hash = (53 * hash) + grade_;
         hash = (37 * hash) + COUNT_FIELD_NUMBER;
         hash = (53 * hash) + getCount();
+        hash = (37 * hash) + PERMANT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getPermant());
+        hash = (37 * hash) + EXPIRE_FIELD_NUMBER;
+        hash = (53 * hash) + getExpire().hashCode();
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
       }
 
-      public static proto_def.UserMessage.BagResp.Item parseFrom(
+      public static proto_def.UserMessage.BagResp.Product parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(
+      public static proto_def.UserMessage.BagResp.Product parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(
+      public static proto_def.UserMessage.BagResp.Product parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(
+      public static proto_def.UserMessage.BagResp.Product parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(byte[] data)
+      public static proto_def.UserMessage.BagResp.Product parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(
+      public static proto_def.UserMessage.BagResp.Product parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(java.io.InputStream input)
+      public static proto_def.UserMessage.BagResp.Product parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(
+      public static proto_def.UserMessage.BagResp.Product parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static proto_def.UserMessage.BagResp.Item parseDelimitedFrom(java.io.InputStream input)
+      public static proto_def.UserMessage.BagResp.Product parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static proto_def.UserMessage.BagResp.Item parseDelimitedFrom(
+      public static proto_def.UserMessage.BagResp.Product parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(
+      public static proto_def.UserMessage.BagResp.Product parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static proto_def.UserMessage.BagResp.Item parseFrom(
+      public static proto_def.UserMessage.BagResp.Product parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -46827,7 +47475,7 @@ public final class UserMessage {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(proto_def.UserMessage.BagResp.Item prototype) {
+      public static Builder newBuilder(proto_def.UserMessage.BagResp.Product prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -46843,26 +47491,26 @@ public final class UserMessage {
         return builder;
       }
       /**
-       * Protobuf type {@code proto_def.BagResp.Item}
+       * Protobuf type {@code proto_def.BagResp.Product}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:proto_def.BagResp.Item)
-          proto_def.UserMessage.BagResp.ItemOrBuilder {
+          // @@protoc_insertion_point(builder_implements:proto_def.BagResp.Product)
+          proto_def.UserMessage.BagResp.ProductOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return proto_def.UserMessage.internal_static_proto_def_BagResp_Item_descriptor;
+          return proto_def.UserMessage.internal_static_proto_def_BagResp_Product_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return proto_def.UserMessage.internal_static_proto_def_BagResp_Item_fieldAccessorTable
+          return proto_def.UserMessage.internal_static_proto_def_BagResp_Product_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  proto_def.UserMessage.BagResp.Item.class, proto_def.UserMessage.BagResp.Item.Builder.class);
+                  proto_def.UserMessage.BagResp.Product.class, proto_def.UserMessage.BagResp.Product.Builder.class);
         }
 
-        // Construct using proto_def.UserMessage.BagResp.Item.newBuilder()
+        // Construct using proto_def.UserMessage.BagResp.Product.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -46880,13 +47528,21 @@ public final class UserMessage {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          if (productBuilder_ == null) {
-            product_ = null;
-          } else {
-            product_ = null;
-            productBuilder_ = null;
-          }
+          pid_ = 0;
+
+          title_ = "";
+
+          icon_ = "";
+
+          category_ = 0;
+
+          grade_ = 0;
+
           count_ = 0;
+
+          permant_ = false;
+
+          expire_ = "";
 
           return this;
         }
@@ -46894,17 +47550,17 @@ public final class UserMessage {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return proto_def.UserMessage.internal_static_proto_def_BagResp_Item_descriptor;
+          return proto_def.UserMessage.internal_static_proto_def_BagResp_Product_descriptor;
         }
 
         @java.lang.Override
-        public proto_def.UserMessage.BagResp.Item getDefaultInstanceForType() {
-          return proto_def.UserMessage.BagResp.Item.getDefaultInstance();
+        public proto_def.UserMessage.BagResp.Product getDefaultInstanceForType() {
+          return proto_def.UserMessage.BagResp.Product.getDefaultInstance();
         }
 
         @java.lang.Override
-        public proto_def.UserMessage.BagResp.Item build() {
-          proto_def.UserMessage.BagResp.Item result = buildPartial();
+        public proto_def.UserMessage.BagResp.Product build() {
+          proto_def.UserMessage.BagResp.Product result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -46912,14 +47568,16 @@ public final class UserMessage {
         }
 
         @java.lang.Override
-        public proto_def.UserMessage.BagResp.Item buildPartial() {
-          proto_def.UserMessage.BagResp.Item result = new proto_def.UserMessage.BagResp.Item(this);
-          if (productBuilder_ == null) {
-            result.product_ = product_;
-          } else {
-            result.product_ = productBuilder_.build();
-          }
+        public proto_def.UserMessage.BagResp.Product buildPartial() {
+          proto_def.UserMessage.BagResp.Product result = new proto_def.UserMessage.BagResp.Product(this);
+          result.pid_ = pid_;
+          result.title_ = title_;
+          result.icon_ = icon_;
+          result.category_ = category_;
+          result.grade_ = grade_;
           result.count_ = count_;
+          result.permant_ = permant_;
+          result.expire_ = expire_;
           onBuilt();
           return result;
         }
@@ -46958,21 +47616,42 @@ public final class UserMessage {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof proto_def.UserMessage.BagResp.Item) {
-            return mergeFrom((proto_def.UserMessage.BagResp.Item)other);
+          if (other instanceof proto_def.UserMessage.BagResp.Product) {
+            return mergeFrom((proto_def.UserMessage.BagResp.Product)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(proto_def.UserMessage.BagResp.Item other) {
-          if (other == proto_def.UserMessage.BagResp.Item.getDefaultInstance()) return this;
-          if (other.hasProduct()) {
-            mergeProduct(other.getProduct());
+        public Builder mergeFrom(proto_def.UserMessage.BagResp.Product other) {
+          if (other == proto_def.UserMessage.BagResp.Product.getDefaultInstance()) return this;
+          if (other.getPid() != 0) {
+            setPid(other.getPid());
+          }
+          if (!other.getTitle().isEmpty()) {
+            title_ = other.title_;
+            onChanged();
+          }
+          if (!other.getIcon().isEmpty()) {
+            icon_ = other.icon_;
+            onChanged();
+          }
+          if (other.category_ != 0) {
+            setCategoryValue(other.getCategoryValue());
+          }
+          if (other.grade_ != 0) {
+            setGradeValue(other.getGradeValue());
           }
           if (other.getCount() != 0) {
             setCount(other.getCount());
+          }
+          if (other.getPermant() != false) {
+            setPermant(other.getPermant());
+          }
+          if (!other.getExpire().isEmpty()) {
+            expire_ = other.expire_;
+            onChanged();
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -46989,11 +47668,11 @@ public final class UserMessage {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          proto_def.UserMessage.BagResp.Item parsedMessage = null;
+          proto_def.UserMessage.BagResp.Product parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (proto_def.UserMessage.BagResp.Item) e.getUnfinishedMessage();
+            parsedMessage = (proto_def.UserMessage.BagResp.Product) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -47003,132 +47682,269 @@ public final class UserMessage {
           return this;
         }
 
-        private proto_def.ShopMessage.Product product_ = null;
-        private com.google.protobuf.SingleFieldBuilderV3<
-            proto_def.ShopMessage.Product, proto_def.ShopMessage.Product.Builder, proto_def.ShopMessage.ProductOrBuilder> productBuilder_;
+        private int pid_ ;
         /**
-         * <code>.proto_def.Product product = 1;</code>
+         * <code>int32 pid = 1;</code>
          */
-        public boolean hasProduct() {
-          return productBuilder_ != null || product_ != null;
+        public int getPid() {
+          return pid_;
         }
         /**
-         * <code>.proto_def.Product product = 1;</code>
+         * <code>int32 pid = 1;</code>
          */
-        public proto_def.ShopMessage.Product getProduct() {
-          if (productBuilder_ == null) {
-            return product_ == null ? proto_def.ShopMessage.Product.getDefaultInstance() : product_;
-          } else {
-            return productBuilder_.getMessage();
-          }
-        }
-        /**
-         * <code>.proto_def.Product product = 1;</code>
-         */
-        public Builder setProduct(proto_def.ShopMessage.Product value) {
-          if (productBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            product_ = value;
-            onChanged();
-          } else {
-            productBuilder_.setMessage(value);
-          }
-
-          return this;
-        }
-        /**
-         * <code>.proto_def.Product product = 1;</code>
-         */
-        public Builder setProduct(
-            proto_def.ShopMessage.Product.Builder builderForValue) {
-          if (productBuilder_ == null) {
-            product_ = builderForValue.build();
-            onChanged();
-          } else {
-            productBuilder_.setMessage(builderForValue.build());
-          }
-
-          return this;
-        }
-        /**
-         * <code>.proto_def.Product product = 1;</code>
-         */
-        public Builder mergeProduct(proto_def.ShopMessage.Product value) {
-          if (productBuilder_ == null) {
-            if (product_ != null) {
-              product_ =
-                proto_def.ShopMessage.Product.newBuilder(product_).mergeFrom(value).buildPartial();
-            } else {
-              product_ = value;
-            }
-            onChanged();
-          } else {
-            productBuilder_.mergeFrom(value);
-          }
-
-          return this;
-        }
-        /**
-         * <code>.proto_def.Product product = 1;</code>
-         */
-        public Builder clearProduct() {
-          if (productBuilder_ == null) {
-            product_ = null;
-            onChanged();
-          } else {
-            product_ = null;
-            productBuilder_ = null;
-          }
-
-          return this;
-        }
-        /**
-         * <code>.proto_def.Product product = 1;</code>
-         */
-        public proto_def.ShopMessage.Product.Builder getProductBuilder() {
+        public Builder setPid(int value) {
           
+          pid_ = value;
           onChanged();
-          return getProductFieldBuilder().getBuilder();
+          return this;
         }
         /**
-         * <code>.proto_def.Product product = 1;</code>
+         * <code>int32 pid = 1;</code>
          */
-        public proto_def.ShopMessage.ProductOrBuilder getProductOrBuilder() {
-          if (productBuilder_ != null) {
-            return productBuilder_.getMessageOrBuilder();
+        public Builder clearPid() {
+          
+          pid_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object title_ = "";
+        /**
+         * <code>string title = 2;</code>
+         */
+        public java.lang.String getTitle() {
+          java.lang.Object ref = title_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            title_ = s;
+            return s;
           } else {
-            return product_ == null ?
-                proto_def.ShopMessage.Product.getDefaultInstance() : product_;
+            return (java.lang.String) ref;
           }
         }
         /**
-         * <code>.proto_def.Product product = 1;</code>
+         * <code>string title = 2;</code>
          */
-        private com.google.protobuf.SingleFieldBuilderV3<
-            proto_def.ShopMessage.Product, proto_def.ShopMessage.Product.Builder, proto_def.ShopMessage.ProductOrBuilder> 
-            getProductFieldBuilder() {
-          if (productBuilder_ == null) {
-            productBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                proto_def.ShopMessage.Product, proto_def.ShopMessage.Product.Builder, proto_def.ShopMessage.ProductOrBuilder>(
-                    getProduct(),
-                    getParentForChildren(),
-                    isClean());
-            product_ = null;
+        public com.google.protobuf.ByteString
+            getTitleBytes() {
+          java.lang.Object ref = title_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            title_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
           }
-          return productBuilder_;
+        }
+        /**
+         * <code>string title = 2;</code>
+         */
+        public Builder setTitle(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          title_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string title = 2;</code>
+         */
+        public Builder clearTitle() {
+          
+          title_ = getDefaultInstance().getTitle();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string title = 2;</code>
+         */
+        public Builder setTitleBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          title_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object icon_ = "";
+        /**
+         * <code>string icon = 3;</code>
+         */
+        public java.lang.String getIcon() {
+          java.lang.Object ref = icon_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            icon_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string icon = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIconBytes() {
+          java.lang.Object ref = icon_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            icon_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string icon = 3;</code>
+         */
+        public Builder setIcon(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          icon_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string icon = 3;</code>
+         */
+        public Builder clearIcon() {
+          
+          icon_ = getDefaultInstance().getIcon();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string icon = 3;</code>
+         */
+        public Builder setIconBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          icon_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int category_ = 0;
+        /**
+         * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+         */
+        public int getCategoryValue() {
+          return category_;
+        }
+        /**
+         * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+         */
+        public Builder setCategoryValue(int value) {
+          category_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+         */
+        public proto_def.UserMessage.BagResp.CATEGORY getCategory() {
+          @SuppressWarnings("deprecation")
+          proto_def.UserMessage.BagResp.CATEGORY result = proto_def.UserMessage.BagResp.CATEGORY.valueOf(category_);
+          return result == null ? proto_def.UserMessage.BagResp.CATEGORY.UNRECOGNIZED : result;
+        }
+        /**
+         * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+         */
+        public Builder setCategory(proto_def.UserMessage.BagResp.CATEGORY value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          
+          category_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.proto_def.BagResp.CATEGORY category = 4;</code>
+         */
+        public Builder clearCategory() {
+          
+          category_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int grade_ = 0;
+        /**
+         * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+         */
+        public int getGradeValue() {
+          return grade_;
+        }
+        /**
+         * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+         */
+        public Builder setGradeValue(int value) {
+          grade_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+         */
+        public proto_def.UserMessage.BagResp.PRODUCT_GRADE getGrade() {
+          @SuppressWarnings("deprecation")
+          proto_def.UserMessage.BagResp.PRODUCT_GRADE result = proto_def.UserMessage.BagResp.PRODUCT_GRADE.valueOf(grade_);
+          return result == null ? proto_def.UserMessage.BagResp.PRODUCT_GRADE.UNRECOGNIZED : result;
+        }
+        /**
+         * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+         */
+        public Builder setGrade(proto_def.UserMessage.BagResp.PRODUCT_GRADE value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          
+          grade_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.proto_def.BagResp.PRODUCT_GRADE grade = 5;</code>
+         */
+        public Builder clearGrade() {
+          
+          grade_ = 0;
+          onChanged();
+          return this;
         }
 
         private int count_ ;
         /**
-         * <code>int32 count = 2;</code>
+         * <code>int32 count = 6;</code>
          */
         public int getCount() {
           return count_;
         }
         /**
-         * <code>int32 count = 2;</code>
+         * <code>int32 count = 6;</code>
          */
         public Builder setCount(int value) {
           
@@ -47137,11 +47953,106 @@ public final class UserMessage {
           return this;
         }
         /**
-         * <code>int32 count = 2;</code>
+         * <code>int32 count = 6;</code>
          */
         public Builder clearCount() {
           
           count_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private boolean permant_ ;
+        /**
+         * <code>bool permant = 7;</code>
+         */
+        public boolean getPermant() {
+          return permant_;
+        }
+        /**
+         * <code>bool permant = 7;</code>
+         */
+        public Builder setPermant(boolean value) {
+          
+          permant_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>bool permant = 7;</code>
+         */
+        public Builder clearPermant() {
+          
+          permant_ = false;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object expire_ = "";
+        /**
+         * <code>string expire = 8;</code>
+         */
+        public java.lang.String getExpire() {
+          java.lang.Object ref = expire_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            expire_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string expire = 8;</code>
+         */
+        public com.google.protobuf.ByteString
+            getExpireBytes() {
+          java.lang.Object ref = expire_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            expire_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string expire = 8;</code>
+         */
+        public Builder setExpire(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          expire_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string expire = 8;</code>
+         */
+        public Builder clearExpire() {
+          
+          expire_ = getDefaultInstance().getExpire();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string expire = 8;</code>
+         */
+        public Builder setExpireBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          expire_ = value;
           onChanged();
           return this;
         }
@@ -47158,79 +48069,1117 @@ public final class UserMessage {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:proto_def.BagResp.Item)
+        // @@protoc_insertion_point(builder_scope:proto_def.BagResp.Product)
       }
 
-      // @@protoc_insertion_point(class_scope:proto_def.BagResp.Item)
-      private static final proto_def.UserMessage.BagResp.Item DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:proto_def.BagResp.Product)
+      private static final proto_def.UserMessage.BagResp.Product DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new proto_def.UserMessage.BagResp.Item();
+        DEFAULT_INSTANCE = new proto_def.UserMessage.BagResp.Product();
       }
 
-      public static proto_def.UserMessage.BagResp.Item getDefaultInstance() {
+      public static proto_def.UserMessage.BagResp.Product getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      private static final com.google.protobuf.Parser<Item>
-          PARSER = new com.google.protobuf.AbstractParser<Item>() {
+      private static final com.google.protobuf.Parser<Product>
+          PARSER = new com.google.protobuf.AbstractParser<Product>() {
         @java.lang.Override
-        public Item parsePartialFrom(
+        public Product parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Item(input, extensionRegistry);
+          return new Product(input, extensionRegistry);
         }
       };
 
-      public static com.google.protobuf.Parser<Item> parser() {
+      public static com.google.protobuf.Parser<Product> parser() {
         return PARSER;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Parser<Item> getParserForType() {
+      public com.google.protobuf.Parser<Product> getParserForType() {
         return PARSER;
       }
 
       @java.lang.Override
-      public proto_def.UserMessage.BagResp.Item getDefaultInstanceForType() {
+      public proto_def.UserMessage.BagResp.Product getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
-    public static final int ITEMS_FIELD_NUMBER = 1;
-    private java.util.List<proto_def.UserMessage.BagResp.Item> items_;
-    /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
-     */
-    public java.util.List<proto_def.UserMessage.BagResp.Item> getItemsList() {
-      return items_;
+    public interface CouponOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:proto_def.BagResp.Coupon)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>int32 cid = 1;</code>
+       */
+      int getCid();
+
+      /**
+       * <code>int32 pid = 2;</code>
+       */
+      int getPid();
+
+      /**
+       * <code>string title = 3;</code>
+       */
+      java.lang.String getTitle();
+      /**
+       * <code>string title = 3;</code>
+       */
+      com.google.protobuf.ByteString
+          getTitleBytes();
+
+      /**
+       * <code>string icon = 4;</code>
+       */
+      java.lang.String getIcon();
+      /**
+       * <code>string icon = 4;</code>
+       */
+      com.google.protobuf.ByteString
+          getIconBytes();
+
+      /**
+       * <code>bool permant = 5;</code>
+       */
+      boolean getPermant();
+
+      /**
+       * <code>int32 count = 6;</code>
+       */
+      int getCount();
+
+      /**
+       * <code>int32 value = 7;</code>
+       */
+      int getValue();
     }
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * Protobuf type {@code proto_def.BagResp.Coupon}
      */
-    public java.util.List<? extends proto_def.UserMessage.BagResp.ItemOrBuilder> 
-        getItemsOrBuilderList() {
-      return items_;
+    public  static final class Coupon extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:proto_def.BagResp.Coupon)
+        CouponOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Coupon.newBuilder() to construct.
+      private Coupon(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Coupon() {
+        cid_ = 0;
+        pid_ = 0;
+        title_ = "";
+        icon_ = "";
+        permant_ = false;
+        count_ = 0;
+        value_ = 0;
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Coupon(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+
+                cid_ = input.readInt32();
+                break;
+              }
+              case 16: {
+
+                pid_ = input.readInt32();
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                title_ = s;
+                break;
+              }
+              case 34: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                icon_ = s;
+                break;
+              }
+              case 40: {
+
+                permant_ = input.readBool();
+                break;
+              }
+              case 48: {
+
+                count_ = input.readInt32();
+                break;
+              }
+              case 56: {
+
+                value_ = input.readInt32();
+                break;
+              }
+              default: {
+                if (!parseUnknownFieldProto3(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_def.UserMessage.internal_static_proto_def_BagResp_Coupon_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_def.UserMessage.internal_static_proto_def_BagResp_Coupon_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_def.UserMessage.BagResp.Coupon.class, proto_def.UserMessage.BagResp.Coupon.Builder.class);
+      }
+
+      public static final int CID_FIELD_NUMBER = 1;
+      private int cid_;
+      /**
+       * <code>int32 cid = 1;</code>
+       */
+      public int getCid() {
+        return cid_;
+      }
+
+      public static final int PID_FIELD_NUMBER = 2;
+      private int pid_;
+      /**
+       * <code>int32 pid = 2;</code>
+       */
+      public int getPid() {
+        return pid_;
+      }
+
+      public static final int TITLE_FIELD_NUMBER = 3;
+      private volatile java.lang.Object title_;
+      /**
+       * <code>string title = 3;</code>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string title = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ICON_FIELD_NUMBER = 4;
+      private volatile java.lang.Object icon_;
+      /**
+       * <code>string icon = 4;</code>
+       */
+      public java.lang.String getIcon() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          icon_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string icon = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIconBytes() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          icon_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int PERMANT_FIELD_NUMBER = 5;
+      private boolean permant_;
+      /**
+       * <code>bool permant = 5;</code>
+       */
+      public boolean getPermant() {
+        return permant_;
+      }
+
+      public static final int COUNT_FIELD_NUMBER = 6;
+      private int count_;
+      /**
+       * <code>int32 count = 6;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+
+      public static final int VALUE_FIELD_NUMBER = 7;
+      private int value_;
+      /**
+       * <code>int32 value = 7;</code>
+       */
+      public int getValue() {
+        return value_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (cid_ != 0) {
+          output.writeInt32(1, cid_);
+        }
+        if (pid_ != 0) {
+          output.writeInt32(2, pid_);
+        }
+        if (!getTitleBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, title_);
+        }
+        if (!getIconBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, icon_);
+        }
+        if (permant_ != false) {
+          output.writeBool(5, permant_);
+        }
+        if (count_ != 0) {
+          output.writeInt32(6, count_);
+        }
+        if (value_ != 0) {
+          output.writeInt32(7, value_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (cid_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(1, cid_);
+        }
+        if (pid_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(2, pid_);
+        }
+        if (!getTitleBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, title_);
+        }
+        if (!getIconBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, icon_);
+        }
+        if (permant_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(5, permant_);
+        }
+        if (count_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(6, count_);
+        }
+        if (value_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(7, value_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof proto_def.UserMessage.BagResp.Coupon)) {
+          return super.equals(obj);
+        }
+        proto_def.UserMessage.BagResp.Coupon other = (proto_def.UserMessage.BagResp.Coupon) obj;
+
+        boolean result = true;
+        result = result && (getCid()
+            == other.getCid());
+        result = result && (getPid()
+            == other.getPid());
+        result = result && getTitle()
+            .equals(other.getTitle());
+        result = result && getIcon()
+            .equals(other.getIcon());
+        result = result && (getPermant()
+            == other.getPermant());
+        result = result && (getCount()
+            == other.getCount());
+        result = result && (getValue()
+            == other.getValue());
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + CID_FIELD_NUMBER;
+        hash = (53 * hash) + getCid();
+        hash = (37 * hash) + PID_FIELD_NUMBER;
+        hash = (53 * hash) + getPid();
+        hash = (37 * hash) + TITLE_FIELD_NUMBER;
+        hash = (53 * hash) + getTitle().hashCode();
+        hash = (37 * hash) + ICON_FIELD_NUMBER;
+        hash = (53 * hash) + getIcon().hashCode();
+        hash = (37 * hash) + PERMANT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getPermant());
+        hash = (37 * hash) + COUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getCount();
+        hash = (37 * hash) + VALUE_FIELD_NUMBER;
+        hash = (53 * hash) + getValue();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static proto_def.UserMessage.BagResp.Coupon parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(proto_def.UserMessage.BagResp.Coupon prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code proto_def.BagResp.Coupon}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:proto_def.BagResp.Coupon)
+          proto_def.UserMessage.BagResp.CouponOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return proto_def.UserMessage.internal_static_proto_def_BagResp_Coupon_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return proto_def.UserMessage.internal_static_proto_def_BagResp_Coupon_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  proto_def.UserMessage.BagResp.Coupon.class, proto_def.UserMessage.BagResp.Coupon.Builder.class);
+        }
+
+        // Construct using proto_def.UserMessage.BagResp.Coupon.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          cid_ = 0;
+
+          pid_ = 0;
+
+          title_ = "";
+
+          icon_ = "";
+
+          permant_ = false;
+
+          count_ = 0;
+
+          value_ = 0;
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return proto_def.UserMessage.internal_static_proto_def_BagResp_Coupon_descriptor;
+        }
+
+        @java.lang.Override
+        public proto_def.UserMessage.BagResp.Coupon getDefaultInstanceForType() {
+          return proto_def.UserMessage.BagResp.Coupon.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public proto_def.UserMessage.BagResp.Coupon build() {
+          proto_def.UserMessage.BagResp.Coupon result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public proto_def.UserMessage.BagResp.Coupon buildPartial() {
+          proto_def.UserMessage.BagResp.Coupon result = new proto_def.UserMessage.BagResp.Coupon(this);
+          result.cid_ = cid_;
+          result.pid_ = pid_;
+          result.title_ = title_;
+          result.icon_ = icon_;
+          result.permant_ = permant_;
+          result.count_ = count_;
+          result.value_ = value_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof proto_def.UserMessage.BagResp.Coupon) {
+            return mergeFrom((proto_def.UserMessage.BagResp.Coupon)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(proto_def.UserMessage.BagResp.Coupon other) {
+          if (other == proto_def.UserMessage.BagResp.Coupon.getDefaultInstance()) return this;
+          if (other.getCid() != 0) {
+            setCid(other.getCid());
+          }
+          if (other.getPid() != 0) {
+            setPid(other.getPid());
+          }
+          if (!other.getTitle().isEmpty()) {
+            title_ = other.title_;
+            onChanged();
+          }
+          if (!other.getIcon().isEmpty()) {
+            icon_ = other.icon_;
+            onChanged();
+          }
+          if (other.getPermant() != false) {
+            setPermant(other.getPermant());
+          }
+          if (other.getCount() != 0) {
+            setCount(other.getCount());
+          }
+          if (other.getValue() != 0) {
+            setValue(other.getValue());
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          proto_def.UserMessage.BagResp.Coupon parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (proto_def.UserMessage.BagResp.Coupon) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private int cid_ ;
+        /**
+         * <code>int32 cid = 1;</code>
+         */
+        public int getCid() {
+          return cid_;
+        }
+        /**
+         * <code>int32 cid = 1;</code>
+         */
+        public Builder setCid(int value) {
+          
+          cid_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 cid = 1;</code>
+         */
+        public Builder clearCid() {
+          
+          cid_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int pid_ ;
+        /**
+         * <code>int32 pid = 2;</code>
+         */
+        public int getPid() {
+          return pid_;
+        }
+        /**
+         * <code>int32 pid = 2;</code>
+         */
+        public Builder setPid(int value) {
+          
+          pid_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 pid = 2;</code>
+         */
+        public Builder clearPid() {
+          
+          pid_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object title_ = "";
+        /**
+         * <code>string title = 3;</code>
+         */
+        public java.lang.String getTitle() {
+          java.lang.Object ref = title_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            title_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string title = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTitleBytes() {
+          java.lang.Object ref = title_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            title_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string title = 3;</code>
+         */
+        public Builder setTitle(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          title_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string title = 3;</code>
+         */
+        public Builder clearTitle() {
+          
+          title_ = getDefaultInstance().getTitle();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string title = 3;</code>
+         */
+        public Builder setTitleBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          title_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object icon_ = "";
+        /**
+         * <code>string icon = 4;</code>
+         */
+        public java.lang.String getIcon() {
+          java.lang.Object ref = icon_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            icon_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string icon = 4;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIconBytes() {
+          java.lang.Object ref = icon_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            icon_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string icon = 4;</code>
+         */
+        public Builder setIcon(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          icon_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string icon = 4;</code>
+         */
+        public Builder clearIcon() {
+          
+          icon_ = getDefaultInstance().getIcon();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string icon = 4;</code>
+         */
+        public Builder setIconBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          icon_ = value;
+          onChanged();
+          return this;
+        }
+
+        private boolean permant_ ;
+        /**
+         * <code>bool permant = 5;</code>
+         */
+        public boolean getPermant() {
+          return permant_;
+        }
+        /**
+         * <code>bool permant = 5;</code>
+         */
+        public Builder setPermant(boolean value) {
+          
+          permant_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>bool permant = 5;</code>
+         */
+        public Builder clearPermant() {
+          
+          permant_ = false;
+          onChanged();
+          return this;
+        }
+
+        private int count_ ;
+        /**
+         * <code>int32 count = 6;</code>
+         */
+        public int getCount() {
+          return count_;
+        }
+        /**
+         * <code>int32 count = 6;</code>
+         */
+        public Builder setCount(int value) {
+          
+          count_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 count = 6;</code>
+         */
+        public Builder clearCount() {
+          
+          count_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int value_ ;
+        /**
+         * <code>int32 value = 7;</code>
+         */
+        public int getValue() {
+          return value_;
+        }
+        /**
+         * <code>int32 value = 7;</code>
+         */
+        public Builder setValue(int value) {
+          
+          value_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 value = 7;</code>
+         */
+        public Builder clearValue() {
+          
+          value_ = 0;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:proto_def.BagResp.Coupon)
+      }
+
+      // @@protoc_insertion_point(class_scope:proto_def.BagResp.Coupon)
+      private static final proto_def.UserMessage.BagResp.Coupon DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new proto_def.UserMessage.BagResp.Coupon();
+      }
+
+      public static proto_def.UserMessage.BagResp.Coupon getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Coupon>
+          PARSER = new com.google.protobuf.AbstractParser<Coupon>() {
+        @java.lang.Override
+        public Coupon parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Coupon(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Coupon> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Coupon> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public proto_def.UserMessage.BagResp.Coupon getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public static final int PRODUCTS_FIELD_NUMBER = 1;
+    private java.util.List<proto_def.UserMessage.BagResp.Product> products_;
+    /**
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
+     */
+    public java.util.List<proto_def.UserMessage.BagResp.Product> getProductsList() {
+      return products_;
     }
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
      */
-    public int getItemsCount() {
-      return items_.size();
+    public java.util.List<? extends proto_def.UserMessage.BagResp.ProductOrBuilder> 
+        getProductsOrBuilderList() {
+      return products_;
     }
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
      */
-    public proto_def.UserMessage.BagResp.Item getItems(int index) {
-      return items_.get(index);
+    public int getProductsCount() {
+      return products_.size();
     }
     /**
-     * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
      */
-    public proto_def.UserMessage.BagResp.ItemOrBuilder getItemsOrBuilder(
+    public proto_def.UserMessage.BagResp.Product getProducts(int index) {
+      return products_.get(index);
+    }
+    /**
+     * <code>repeated .proto_def.BagResp.Product products = 1;</code>
+     */
+    public proto_def.UserMessage.BagResp.ProductOrBuilder getProductsOrBuilder(
         int index) {
-      return items_.get(index);
+      return products_.get(index);
+    }
+
+    public static final int COUPONS_FIELD_NUMBER = 2;
+    private java.util.List<proto_def.UserMessage.BagResp.Coupon> coupons_;
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    public java.util.List<proto_def.UserMessage.BagResp.Coupon> getCouponsList() {
+      return coupons_;
+    }
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    public java.util.List<? extends proto_def.UserMessage.BagResp.CouponOrBuilder> 
+        getCouponsOrBuilderList() {
+      return coupons_;
+    }
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    public int getCouponsCount() {
+      return coupons_.size();
+    }
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    public proto_def.UserMessage.BagResp.Coupon getCoupons(int index) {
+      return coupons_.get(index);
+    }
+    /**
+     * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+     */
+    public proto_def.UserMessage.BagResp.CouponOrBuilder getCouponsOrBuilder(
+        int index) {
+      return coupons_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -47247,8 +49196,11 @@ public final class UserMessage {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < items_.size(); i++) {
-        output.writeMessage(1, items_.get(i));
+      for (int i = 0; i < products_.size(); i++) {
+        output.writeMessage(1, products_.get(i));
+      }
+      for (int i = 0; i < coupons_.size(); i++) {
+        output.writeMessage(2, coupons_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -47259,9 +49211,13 @@ public final class UserMessage {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < items_.size(); i++) {
+      for (int i = 0; i < products_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, items_.get(i));
+          .computeMessageSize(1, products_.get(i));
+      }
+      for (int i = 0; i < coupons_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, coupons_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -47279,8 +49235,10 @@ public final class UserMessage {
       proto_def.UserMessage.BagResp other = (proto_def.UserMessage.BagResp) obj;
 
       boolean result = true;
-      result = result && getItemsList()
-          .equals(other.getItemsList());
+      result = result && getProductsList()
+          .equals(other.getProductsList());
+      result = result && getCouponsList()
+          .equals(other.getCouponsList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -47292,9 +49250,13 @@ public final class UserMessage {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getItemsCount() > 0) {
-        hash = (37 * hash) + ITEMS_FIELD_NUMBER;
-        hash = (53 * hash) + getItemsList().hashCode();
+      if (getProductsCount() > 0) {
+        hash = (37 * hash) + PRODUCTS_FIELD_NUMBER;
+        hash = (53 * hash) + getProductsList().hashCode();
+      }
+      if (getCouponsCount() > 0) {
+        hash = (37 * hash) + COUPONS_FIELD_NUMBER;
+        hash = (53 * hash) + getCouponsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -47424,17 +49386,24 @@ public final class UserMessage {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getItemsFieldBuilder();
+          getProductsFieldBuilder();
+          getCouponsFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (itemsBuilder_ == null) {
-          items_ = java.util.Collections.emptyList();
+        if (productsBuilder_ == null) {
+          products_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          itemsBuilder_.clear();
+          productsBuilder_.clear();
+        }
+        if (couponsBuilder_ == null) {
+          coupons_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          couponsBuilder_.clear();
         }
         return this;
       }
@@ -47463,14 +49432,23 @@ public final class UserMessage {
       public proto_def.UserMessage.BagResp buildPartial() {
         proto_def.UserMessage.BagResp result = new proto_def.UserMessage.BagResp(this);
         int from_bitField0_ = bitField0_;
-        if (itemsBuilder_ == null) {
+        if (productsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            items_ = java.util.Collections.unmodifiableList(items_);
+            products_ = java.util.Collections.unmodifiableList(products_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.items_ = items_;
+          result.products_ = products_;
         } else {
-          result.items_ = itemsBuilder_.build();
+          result.products_ = productsBuilder_.build();
+        }
+        if (couponsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            coupons_ = java.util.Collections.unmodifiableList(coupons_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.coupons_ = coupons_;
+        } else {
+          result.coupons_ = couponsBuilder_.build();
         }
         onBuilt();
         return result;
@@ -47520,29 +49498,55 @@ public final class UserMessage {
 
       public Builder mergeFrom(proto_def.UserMessage.BagResp other) {
         if (other == proto_def.UserMessage.BagResp.getDefaultInstance()) return this;
-        if (itemsBuilder_ == null) {
-          if (!other.items_.isEmpty()) {
-            if (items_.isEmpty()) {
-              items_ = other.items_;
+        if (productsBuilder_ == null) {
+          if (!other.products_.isEmpty()) {
+            if (products_.isEmpty()) {
+              products_ = other.products_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureItemsIsMutable();
-              items_.addAll(other.items_);
+              ensureProductsIsMutable();
+              products_.addAll(other.products_);
             }
             onChanged();
           }
         } else {
-          if (!other.items_.isEmpty()) {
-            if (itemsBuilder_.isEmpty()) {
-              itemsBuilder_.dispose();
-              itemsBuilder_ = null;
-              items_ = other.items_;
+          if (!other.products_.isEmpty()) {
+            if (productsBuilder_.isEmpty()) {
+              productsBuilder_.dispose();
+              productsBuilder_ = null;
+              products_ = other.products_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              itemsBuilder_ = 
+              productsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getItemsFieldBuilder() : null;
+                   getProductsFieldBuilder() : null;
             } else {
-              itemsBuilder_.addAllMessages(other.items_);
+              productsBuilder_.addAllMessages(other.products_);
+            }
+          }
+        }
+        if (couponsBuilder_ == null) {
+          if (!other.coupons_.isEmpty()) {
+            if (coupons_.isEmpty()) {
+              coupons_ = other.coupons_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureCouponsIsMutable();
+              coupons_.addAll(other.coupons_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.coupons_.isEmpty()) {
+            if (couponsBuilder_.isEmpty()) {
+              couponsBuilder_.dispose();
+              couponsBuilder_ = null;
+              coupons_ = other.coupons_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              couponsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getCouponsFieldBuilder() : null;
+            } else {
+              couponsBuilder_.addAllMessages(other.coupons_);
             }
           }
         }
@@ -47576,244 +49580,484 @@ public final class UserMessage {
       }
       private int bitField0_;
 
-      private java.util.List<proto_def.UserMessage.BagResp.Item> items_ =
+      private java.util.List<proto_def.UserMessage.BagResp.Product> products_ =
         java.util.Collections.emptyList();
-      private void ensureItemsIsMutable() {
+      private void ensureProductsIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          items_ = new java.util.ArrayList<proto_def.UserMessage.BagResp.Item>(items_);
+          products_ = new java.util.ArrayList<proto_def.UserMessage.BagResp.Product>(products_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          proto_def.UserMessage.BagResp.Item, proto_def.UserMessage.BagResp.Item.Builder, proto_def.UserMessage.BagResp.ItemOrBuilder> itemsBuilder_;
+          proto_def.UserMessage.BagResp.Product, proto_def.UserMessage.BagResp.Product.Builder, proto_def.UserMessage.BagResp.ProductOrBuilder> productsBuilder_;
 
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public java.util.List<proto_def.UserMessage.BagResp.Item> getItemsList() {
-        if (itemsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(items_);
+      public java.util.List<proto_def.UserMessage.BagResp.Product> getProductsList() {
+        if (productsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(products_);
         } else {
-          return itemsBuilder_.getMessageList();
+          return productsBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public int getItemsCount() {
-        if (itemsBuilder_ == null) {
-          return items_.size();
+      public int getProductsCount() {
+        if (productsBuilder_ == null) {
+          return products_.size();
         } else {
-          return itemsBuilder_.getCount();
+          return productsBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public proto_def.UserMessage.BagResp.Item getItems(int index) {
-        if (itemsBuilder_ == null) {
-          return items_.get(index);
+      public proto_def.UserMessage.BagResp.Product getProducts(int index) {
+        if (productsBuilder_ == null) {
+          return products_.get(index);
         } else {
-          return itemsBuilder_.getMessage(index);
+          return productsBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder setItems(
-          int index, proto_def.UserMessage.BagResp.Item value) {
-        if (itemsBuilder_ == null) {
+      public Builder setProducts(
+          int index, proto_def.UserMessage.BagResp.Product value) {
+        if (productsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemsIsMutable();
-          items_.set(index, value);
+          ensureProductsIsMutable();
+          products_.set(index, value);
           onChanged();
         } else {
-          itemsBuilder_.setMessage(index, value);
+          productsBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder setItems(
-          int index, proto_def.UserMessage.BagResp.Item.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.set(index, builderForValue.build());
+      public Builder setProducts(
+          int index, proto_def.UserMessage.BagResp.Product.Builder builderForValue) {
+        if (productsBuilder_ == null) {
+          ensureProductsIsMutable();
+          products_.set(index, builderForValue.build());
           onChanged();
         } else {
-          itemsBuilder_.setMessage(index, builderForValue.build());
+          productsBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder addItems(proto_def.UserMessage.BagResp.Item value) {
-        if (itemsBuilder_ == null) {
+      public Builder addProducts(proto_def.UserMessage.BagResp.Product value) {
+        if (productsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemsIsMutable();
-          items_.add(value);
+          ensureProductsIsMutable();
+          products_.add(value);
           onChanged();
         } else {
-          itemsBuilder_.addMessage(value);
+          productsBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder addItems(
-          int index, proto_def.UserMessage.BagResp.Item value) {
-        if (itemsBuilder_ == null) {
+      public Builder addProducts(
+          int index, proto_def.UserMessage.BagResp.Product value) {
+        if (productsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureItemsIsMutable();
-          items_.add(index, value);
+          ensureProductsIsMutable();
+          products_.add(index, value);
           onChanged();
         } else {
-          itemsBuilder_.addMessage(index, value);
+          productsBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder addItems(
-          proto_def.UserMessage.BagResp.Item.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.add(builderForValue.build());
+      public Builder addProducts(
+          proto_def.UserMessage.BagResp.Product.Builder builderForValue) {
+        if (productsBuilder_ == null) {
+          ensureProductsIsMutable();
+          products_.add(builderForValue.build());
           onChanged();
         } else {
-          itemsBuilder_.addMessage(builderForValue.build());
+          productsBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder addItems(
-          int index, proto_def.UserMessage.BagResp.Item.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.add(index, builderForValue.build());
+      public Builder addProducts(
+          int index, proto_def.UserMessage.BagResp.Product.Builder builderForValue) {
+        if (productsBuilder_ == null) {
+          ensureProductsIsMutable();
+          products_.add(index, builderForValue.build());
           onChanged();
         } else {
-          itemsBuilder_.addMessage(index, builderForValue.build());
+          productsBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder addAllItems(
-          java.lang.Iterable<? extends proto_def.UserMessage.BagResp.Item> values) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
+      public Builder addAllProducts(
+          java.lang.Iterable<? extends proto_def.UserMessage.BagResp.Product> values) {
+        if (productsBuilder_ == null) {
+          ensureProductsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, items_);
+              values, products_);
           onChanged();
         } else {
-          itemsBuilder_.addAllMessages(values);
+          productsBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder clearItems() {
-        if (itemsBuilder_ == null) {
-          items_ = java.util.Collections.emptyList();
+      public Builder clearProducts() {
+        if (productsBuilder_ == null) {
+          products_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          itemsBuilder_.clear();
+          productsBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public Builder removeItems(int index) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.remove(index);
+      public Builder removeProducts(int index) {
+        if (productsBuilder_ == null) {
+          ensureProductsIsMutable();
+          products_.remove(index);
           onChanged();
         } else {
-          itemsBuilder_.remove(index);
+          productsBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public proto_def.UserMessage.BagResp.Item.Builder getItemsBuilder(
+      public proto_def.UserMessage.BagResp.Product.Builder getProductsBuilder(
           int index) {
-        return getItemsFieldBuilder().getBuilder(index);
+        return getProductsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public proto_def.UserMessage.BagResp.ItemOrBuilder getItemsOrBuilder(
+      public proto_def.UserMessage.BagResp.ProductOrBuilder getProductsOrBuilder(
           int index) {
-        if (itemsBuilder_ == null) {
-          return items_.get(index);  } else {
-          return itemsBuilder_.getMessageOrBuilder(index);
+        if (productsBuilder_ == null) {
+          return products_.get(index);  } else {
+          return productsBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public java.util.List<? extends proto_def.UserMessage.BagResp.ItemOrBuilder> 
-           getItemsOrBuilderList() {
-        if (itemsBuilder_ != null) {
-          return itemsBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends proto_def.UserMessage.BagResp.ProductOrBuilder> 
+           getProductsOrBuilderList() {
+        if (productsBuilder_ != null) {
+          return productsBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(items_);
+          return java.util.Collections.unmodifiableList(products_);
         }
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public proto_def.UserMessage.BagResp.Item.Builder addItemsBuilder() {
-        return getItemsFieldBuilder().addBuilder(
-            proto_def.UserMessage.BagResp.Item.getDefaultInstance());
+      public proto_def.UserMessage.BagResp.Product.Builder addProductsBuilder() {
+        return getProductsFieldBuilder().addBuilder(
+            proto_def.UserMessage.BagResp.Product.getDefaultInstance());
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public proto_def.UserMessage.BagResp.Item.Builder addItemsBuilder(
+      public proto_def.UserMessage.BagResp.Product.Builder addProductsBuilder(
           int index) {
-        return getItemsFieldBuilder().addBuilder(
-            index, proto_def.UserMessage.BagResp.Item.getDefaultInstance());
+        return getProductsFieldBuilder().addBuilder(
+            index, proto_def.UserMessage.BagResp.Product.getDefaultInstance());
       }
       /**
-       * <code>repeated .proto_def.BagResp.Item items = 1;</code>
+       * <code>repeated .proto_def.BagResp.Product products = 1;</code>
        */
-      public java.util.List<proto_def.UserMessage.BagResp.Item.Builder> 
-           getItemsBuilderList() {
-        return getItemsFieldBuilder().getBuilderList();
+      public java.util.List<proto_def.UserMessage.BagResp.Product.Builder> 
+           getProductsBuilderList() {
+        return getProductsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          proto_def.UserMessage.BagResp.Item, proto_def.UserMessage.BagResp.Item.Builder, proto_def.UserMessage.BagResp.ItemOrBuilder> 
-          getItemsFieldBuilder() {
-        if (itemsBuilder_ == null) {
-          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              proto_def.UserMessage.BagResp.Item, proto_def.UserMessage.BagResp.Item.Builder, proto_def.UserMessage.BagResp.ItemOrBuilder>(
-                  items_,
+          proto_def.UserMessage.BagResp.Product, proto_def.UserMessage.BagResp.Product.Builder, proto_def.UserMessage.BagResp.ProductOrBuilder> 
+          getProductsFieldBuilder() {
+        if (productsBuilder_ == null) {
+          productsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto_def.UserMessage.BagResp.Product, proto_def.UserMessage.BagResp.Product.Builder, proto_def.UserMessage.BagResp.ProductOrBuilder>(
+                  products_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          items_ = null;
+          products_ = null;
         }
-        return itemsBuilder_;
+        return productsBuilder_;
+      }
+
+      private java.util.List<proto_def.UserMessage.BagResp.Coupon> coupons_ =
+        java.util.Collections.emptyList();
+      private void ensureCouponsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          coupons_ = new java.util.ArrayList<proto_def.UserMessage.BagResp.Coupon>(coupons_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_def.UserMessage.BagResp.Coupon, proto_def.UserMessage.BagResp.Coupon.Builder, proto_def.UserMessage.BagResp.CouponOrBuilder> couponsBuilder_;
+
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public java.util.List<proto_def.UserMessage.BagResp.Coupon> getCouponsList() {
+        if (couponsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(coupons_);
+        } else {
+          return couponsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public int getCouponsCount() {
+        if (couponsBuilder_ == null) {
+          return coupons_.size();
+        } else {
+          return couponsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public proto_def.UserMessage.BagResp.Coupon getCoupons(int index) {
+        if (couponsBuilder_ == null) {
+          return coupons_.get(index);
+        } else {
+          return couponsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder setCoupons(
+          int index, proto_def.UserMessage.BagResp.Coupon value) {
+        if (couponsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCouponsIsMutable();
+          coupons_.set(index, value);
+          onChanged();
+        } else {
+          couponsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder setCoupons(
+          int index, proto_def.UserMessage.BagResp.Coupon.Builder builderForValue) {
+        if (couponsBuilder_ == null) {
+          ensureCouponsIsMutable();
+          coupons_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          couponsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder addCoupons(proto_def.UserMessage.BagResp.Coupon value) {
+        if (couponsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCouponsIsMutable();
+          coupons_.add(value);
+          onChanged();
+        } else {
+          couponsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder addCoupons(
+          int index, proto_def.UserMessage.BagResp.Coupon value) {
+        if (couponsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCouponsIsMutable();
+          coupons_.add(index, value);
+          onChanged();
+        } else {
+          couponsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder addCoupons(
+          proto_def.UserMessage.BagResp.Coupon.Builder builderForValue) {
+        if (couponsBuilder_ == null) {
+          ensureCouponsIsMutable();
+          coupons_.add(builderForValue.build());
+          onChanged();
+        } else {
+          couponsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder addCoupons(
+          int index, proto_def.UserMessage.BagResp.Coupon.Builder builderForValue) {
+        if (couponsBuilder_ == null) {
+          ensureCouponsIsMutable();
+          coupons_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          couponsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder addAllCoupons(
+          java.lang.Iterable<? extends proto_def.UserMessage.BagResp.Coupon> values) {
+        if (couponsBuilder_ == null) {
+          ensureCouponsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, coupons_);
+          onChanged();
+        } else {
+          couponsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder clearCoupons() {
+        if (couponsBuilder_ == null) {
+          coupons_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          couponsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public Builder removeCoupons(int index) {
+        if (couponsBuilder_ == null) {
+          ensureCouponsIsMutable();
+          coupons_.remove(index);
+          onChanged();
+        } else {
+          couponsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public proto_def.UserMessage.BagResp.Coupon.Builder getCouponsBuilder(
+          int index) {
+        return getCouponsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public proto_def.UserMessage.BagResp.CouponOrBuilder getCouponsOrBuilder(
+          int index) {
+        if (couponsBuilder_ == null) {
+          return coupons_.get(index);  } else {
+          return couponsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public java.util.List<? extends proto_def.UserMessage.BagResp.CouponOrBuilder> 
+           getCouponsOrBuilderList() {
+        if (couponsBuilder_ != null) {
+          return couponsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(coupons_);
+        }
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public proto_def.UserMessage.BagResp.Coupon.Builder addCouponsBuilder() {
+        return getCouponsFieldBuilder().addBuilder(
+            proto_def.UserMessage.BagResp.Coupon.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public proto_def.UserMessage.BagResp.Coupon.Builder addCouponsBuilder(
+          int index) {
+        return getCouponsFieldBuilder().addBuilder(
+            index, proto_def.UserMessage.BagResp.Coupon.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto_def.BagResp.Coupon coupons = 2;</code>
+       */
+      public java.util.List<proto_def.UserMessage.BagResp.Coupon.Builder> 
+           getCouponsBuilderList() {
+        return getCouponsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_def.UserMessage.BagResp.Coupon, proto_def.UserMessage.BagResp.Coupon.Builder, proto_def.UserMessage.BagResp.CouponOrBuilder> 
+          getCouponsFieldBuilder() {
+        if (couponsBuilder_ == null) {
+          couponsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto_def.UserMessage.BagResp.Coupon, proto_def.UserMessage.BagResp.Coupon.Builder, proto_def.UserMessage.BagResp.CouponOrBuilder>(
+                  coupons_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          coupons_ = null;
+        }
+        return couponsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -55181,10 +57425,15 @@ public final class UserMessage {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_def_BagResp_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_def_BagResp_Item_descriptor;
+    internal_static_proto_def_BagResp_Product_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_def_BagResp_Item_fieldAccessorTable;
+      internal_static_proto_def_BagResp_Product_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_def_BagResp_Coupon_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_def_BagResp_Coupon_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_def_OrderListReq_descriptor;
   private static final 
@@ -55229,170 +57478,181 @@ public final class UserMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022user_message.proto\022\tproto_def\032\022shop_me" +
-      "ssage.proto\"\337\001\n\rUserInfoBrief\022\013\n\003uid\030\001 \001" +
-      "(\t\022\021\n\tnick_name\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\r\n" +
-      "\005level\030\004 \001(\t\022\020\n\010level_id\030\014 \001(\005\022\021\n\tgreat_" +
-      "num\030\005 \001(\t\022\020\n\010location\030\006 \001(\t\022\014\n\004fans\030\007 \001(" +
-      "\005\022\017\n\007follows\030\010 \001(\005\022\017\n\007balance\030\t \001(\002\022\013\n\003a" +
-      "ge\030\n \001(\005\022\016\n\006gender\030\013 \001(\t\022\013\n\003vip\030\r \001(\005\"\034\n" +
-      "\014NameCheckReq\022\014\n\004name\030\001 \001(\t\"/\n\rNameCheck" +
-      "Resp\022\017\n\007can_use\030\001 \001(\010\022\r\n\005names\030\002 \003(\t\"\230\001\n" +
-      "\017UserRegisterReq\022\r\n\005phone\030\001 \001(\t\022\014\n\004name\030" +
-      "\002 \001(\t\022\016\n\006gender\030\003 \001(\t\022\016\n\006avatar\030\004 \001(\t\022\r\n" +
-      "\005birth\030\005 \001(\t\022\024\n\014invited_code\030\006 \001(\t\022\020\n\010gi" +
-      "ft_ids\030\007 \003(\t\022\021\n\tskill_ids\030\010 \003(\005\"\247\001\n\020User" +
-      "RegisterResp\0222\n\006status\030\001 \001(\0162\".proto_def" +
-      ".UserRegisterResp.STATUS\022&\n\004user\030\002 \001(\0132\030" +
-      ".proto_def.UserInfoBrief\"7\n\006STATUS\022\006\n\002OK" +
-      "\020\000\022\020\n\014NAME_OCUPIED\020\001\022\023\n\017PARAMETER_ERROR\020" +
-      "\002\"\305\001\n\rBanbanListReq\022\017\n\007user_id\030\001 \001(\t\022\023\n\013" +
-      "page_number\030\002 \001(\005\022\024\n\014num_per_page\030\003 \001(\005\022" +
-      "0\n\007filters\030\004 \003(\0132\037.proto_def.BanbanListR" +
-      "eq.Filter\022\020\n\010order_by\030\005 \001(\t\022\014\n\004desc\030\006 \001(" +
-      "\010\032&\n\006Filter\022\r\n\005field\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
-      "\t\"\260\003\n\016BanBanListResp\0229\n\007banbans\030\001 \003(\0132(." +
-      "proto_def.BanBanListResp.VoiceCharacter\032" +
-      "\342\002\n\016VoiceCharacter\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002" +
-      " \001(\t\022\016\n\006gender\030\014 \001(\t\022\013\n\003age\030\r \001(\005\022\016\n\006ava" +
-      "tar\030\003 \001(\t\022\021\n\taudio_url\030\016 \001(\t\022\026\n\016audio_du" +
-      "ration\030\017 \001(\005\022\r\n\005skill\030\004 \001(\t\022\026\n\016skill_cat" +
-      "egory\030\023 \001(\t\022\023\n\013declaration\030\005 \001(\t\022\022\n\nlast" +
-      "_alive\030\006 \001(\t\022\016\n\006online\030\007 \001(\010\022\017\n\007chating\030" +
-      "\010 \001(\010\022\021\n\tfresh_man\030\t \001(\010\022\020\n\010location\030\n \001" +
-      "(\t\022\014\n\004rank\030\013 \001(\005\022\020\n\010rank_str\030\020 \001(\t\022\021\n\tvi" +
-      "p_level\030\021 \001(\005\022\025\n\rvip_level_str\030\022 \001(\t\"G\n\t" +
-      "SearchReq\022\017\n\007keyword\030\001 \001(\t\022\023\n\013page_numbe" +
-      "r\030\002 \001(\005\022\024\n\014num_per_page\030\003 \001(\005\"\323\001\n\nSearch" +
-      "Resp\022!\n\006status\030\001 \001(\0162\021.proto_def.STATUS\022" +
-      "4\n\006skills\030\002 \003(\0132$.proto_def.SearchResp.S" +
-      "killInfoBrief\022\'\n\005users\030\003 \003(\0132\030.proto_def" +
-      ".UserInfoBrief\032C\n\016SkillInfoBrief\022\r\n\005titl" +
-      "e\030\001 \001(\t\022\020\n\010icon_url\030\002 \001(\t\022\020\n\010category\030\003 " +
-      "\001(\t\"B\n\017UserOverviewReq\022\017\n\007dst_uid\030\001 \001(\t\022" +
-      "\017\n\007src_uid\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\"\246\001\n\020User" +
-      "OverviewResp\0222\n\006status\030\001 \001(\0162\".proto_def" +
-      ".UserOverviewResp.STATUS\022&\n\004user\030\002 \001(\0132\030" +
-      ".proto_def.UserInfoBrief\022\020\n\010followed\030\003 \001" +
-      "(\010\"$\n\006STATUS\022\006\n\002OK\020\000\022\022\n\016USER_NOT_EXIST\020\001" +
-      "\"<\n\010LoginReq\022\r\n\005phone\030\001 \001(\t\022\020\n\010sms_code\030" +
-      "\002 \001(\t\022\017\n\007user_id\030\003 \001(\t\"\336\001\n\tLoginResp\022)\n\004" +
-      "code\030\001 \001(\0162\033.proto_def.LoginResp.STATUS\022" +
-      "\r\n\005phone\030\003 \001(\t\022\013\n\003uid\030\002 \001(\t\022\021\n\tnick_name" +
-      "\030\004 \001(\t\022\016\n\006avatar\030\005 \001(\t\022\r\n\005token\030\006 \001(\t\022&\n" +
-      "\004user\030\007 \001(\0132\030.proto_def.UserInfoBrief\"0\n" +
-      "\006STATUS\022\006\n\002OK\020\000\022\017\n\013SMS_TIMEOUT\020\001\022\r\n\tSMS_" +
-      "ERROR\020\002\"/\n\016SkillDetailReq\022\013\n\003uid\030\001 \001(\t\022\020" +
-      "\n\010skill_id\030\002 \001(\t\"\200\003\n\017SkillDetailResp\022\013\n\003" +
-      "uid\030\001 \001(\t\022/\n\005skill\030\003 \001(\0132 .proto_def.Ski" +
-      "llDetailResp.Skill\022\021\n\tuser_imgs\030\002 \003(\t\022:\n" +
-      "\016skill_comments\030\004 \003(\0132\".proto_def.SkillD" +
-      "etailResp.Comment\032h\n\007Comment\022\013\n\003uid\030\001 \001(" +
-      "\t\022\014\n\004name\030\002 \001(\t\022\020\n\010user_img\030\003 \001(\t\022\017\n\007com" +
-      "ment\030\004 \001(\t\022\014\n\004rate\030\005 \001(\005\022\021\n\ttime_info\030\006 " +
-      "\001(\t\032v\n\005Skill\022\r\n\005title\030\001 \001(\t\022\r\n\005grade\030\002 \001" +
-      "(\t\022\023\n\013description\030\003 \001(\t\022\017\n\007img_url\030\004 \001(\t" +
-      "\022\021\n\taudio_url\030\005 \001(\t\022\026\n\016audio_duration\030\006 " +
-      "\001(\005\"/\n\013HomePageReq\022\017\n\007tgt_uid\030\001 \001(\t\022\017\n\007s" +
-      "rc_uid\030\002 \001(\t\"\237\006\n\014HomePageResp\0222\n\010persona" +
-      "l\030\001 \001(\0132 .proto_def.HomePageResp.Persona" +
-      "l\022\020\n\010location\030\002 \001(\t\022\016\n\006online\030\003 \001(\t\022\022\n\nt" +
-      "otal_gift\030\004 \001(\005\022+\n\005gifts\030\005 \003(\0132\034.proto_d" +
-      "ef.HomePageResp.Gift\0223\n\tinterests\030\010 \003(\0132" +
-      " .proto_def.HomePageResp.Interest\022-\n\006ski" +
-      "lls\030\006 \003(\0132\035.proto_def.HomePageResp.Skill" +
-      "\022\r\n\005audio\030\t \001(\t\022\024\n\014total_cp_num\030\n \001(\005\022\020\n" +
-      "\010followed\030\013 \001(\010\032\247\001\n\010Personal\022\n\n\002id\030\001 \001(\t" +
-      "\022\014\n\004name\030\002 \001(\t\022\016\n\006gender\030\003 \001(\t\022\013\n\003age\030\004 " +
-      "\001(\005\022\014\n\004star\030\005 \001(\t\022\016\n\006career\030\006 \001(\t\022\023\n\013dec" +
-      "laration\030\007 \001(\t\022\021\n\ttime_info\030\010 \001(\t\022\014\n\004fan" +
-      "s\030\t \001(\005\022\020\n\010img_urls\030\n \003(\t\0320\n\004Gift\022\n\n\002id\030" +
-      "\001 \001(\t\022\014\n\004icon\030\002 \001(\t\022\016\n\006amount\030\003 \001(\005\0327\n\010C" +
-      "hatroom\022\n\n\002id\030\001 \001(\t\022\r\n\005title\030\002 \001(\t\022\020\n\010ca" +
-      "tegory\030\003 \001(\t\032+\n\010Interest\022\020\n\010skill_id\030\001 \001" +
-      "(\t\022\r\n\005title\030\002 \001(\t\032\232\001\n\005Skill\022\n\n\002id\030\001 \001(\t\022" +
-      "\023\n\013description\030\002 \001(\t\022\020\n\010priority\030\003 \001(\005\022\r" +
-      "\n\005grade\030\004 \001(\t\022\017\n\007img_url\030\005 \001(\t\022\021\n\taudio_" +
-      "url\030\006 \001(\t\022\026\n\016audio_duration\030\007 \001(\005\022\023\n\013sel" +
-      "ls_count\030\010 \001(\005\"A\n\021LocationUpdateReq\022\013\n\003u" +
-      "id\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\020\n\010location\030\003 \001(" +
-      "\t\"7\n\022LocationUpdateResp\022!\n\006status\030\001 \001(\0162" +
-      "\021.proto_def.STATUS\"\243\001\n\021UserInfoUpdateReq" +
-      "\022\013\n\003uid\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\014\n\004name\030\003 \001" +
-      "(\t\022\016\n\006gender\030\004 \001(\t\022\r\n\005birth\030\005 \001(\t\022\023\n\013dec" +
-      "laration\030\006 \001(\t\022\021\n\tcareer_id\030\007 \001(\t\022\016\n\006ava" +
-      "tar\030\010 \001(\t\022\r\n\005audio\030\t \001(\t\"7\n\022UserInfoUpda" +
-      "teResp\022!\n\006status\030\001 \001(\0162\021.proto_def.STATU" +
-      "S\"\336\001\n\024UserGalleryUpdateReq\022\013\n\003uid\030\001 \001(\t\022" +
-      "\r\n\005token\030\002 \001(\t\0226\n\006method\030\003 \001(\0162&.proto_d" +
-      "ef.UserGalleryUpdateReq.METHOD\022\013\n\003pos\030\004 " +
-      "\001(\t\022\013\n\003url\030\005 \001(\t\022\014\n\004pos1\030\006 \001(\005\022\014\n\004pos2\030\007" +
-      " \001(\005\"<\n\006METHOD\022\007\n\003UNK\020\000\022\007\n\003ADD\020\001\022\n\n\006UPDA" +
-      "TE\020\002\022\n\n\006REMOVE\020\003\022\010\n\004SWAP\020\004\"9\n\024UserGaller" +
-      "yUpdteResp\022!\n\006status\030\001 \001(\0162\021.proto_def.S" +
-      "TATUS\"\250\001\n\026UserInterestsUpdateReq\022\013\n\003uid\030" +
-      "\001 \001(\t\022\r\n\005token\030\002 \001(\t\0228\n\006method\030\003 \001(\0162(.p" +
-      "roto_def.UserInterestsUpdateReq.METHOD\022\020" +
-      "\n\010skill_id\030\004 \001(\005\"&\n\006METHOD\022\007\n\003UNK\020\000\022\007\n\003A" +
-      "DD\020\001\022\n\n\006REMOVE\020\003\"<\n\027UserInterestsUpdateR" +
-      "esp\022!\n\006status\030\001 \001(\0162\021.proto_def.STATUS\"l" +
-      "\n\014TokenOssResp\022\025\n\raccess_key_id\030\001 \001(\t\022\031\n" +
-      "\021access_key_secret\030\002 \001(\t\022\026\n\016security_tok" +
-      "en\030\003 \001(\t\022\022\n\nexpiration\030\004 \001(\005\"\037\n\016TokenAgo" +
-      "raResp\022\r\n\005token\030\001 \001(\t\"J\n\tFollowReq\022\017\n\007sr" +
-      "c_uid\030\001 \001(\t\022\017\n\007tgt_uid\030\002 \001(\t\022\014\n\004flag\030\003 \001" +
-      "(\010\022\r\n\005token\030\004 \001(\t\"/\n\nFollowResp\022!\n\006statu" +
-      "s\030\001 \001(\0162\021.proto_def.STATUS\"\033\n\nSmsCodeReq" +
-      "\022\r\n\005phone\030\001 \001(\t\"\221\001\n\013SmsCodeResp\022-\n\006statu" +
-      "s\030\001 \001(\0162\035.proto_def.SmsCodeResp.STATUS\022\020" +
-      "\n\010registed\030\002 \001(\010\022\014\n\004code\030\003 \001(\t\"3\n\006STATUS" +
-      "\022\006\n\002OK\020\000\022\016\n\nOVER_LIMIT\020\001\022\021\n\rPHONE_INVALI" +
-      "D\020\002\"\023\n\021CpCategoryListReq\"\246\001\n\022CpCategoryL" +
-      "istResp\0227\n\005lists\030\001 \003(\0132(.proto_def.CpCat" +
-      "egoryListResp.CpCategory\032W\n\nCpCategory\022\017" +
-      "\n\007cate_id\030\001 \001(\005\022\r\n\005price\030\002 \001(\005\022\014\n\004days\030\003" +
-      " \001(\005\022\r\n\005title\030\004 \001(\t\022\014\n\004icon\030\005 \001(\t\"!\n\022Use" +
-      "rCpRelationsReq\022\013\n\003uid\030\001 \001(\t\"\265\001\n\023UserCpR" +
-      "elationsResp\022<\n\trelations\030\001 \003(\0132).proto_" +
-      "def.UserCpRelationsResp.CpRelation\032`\n\nCp" +
-      "Relation\022\014\n\004name\030\001 \001(\t\022\016\n\006avatar\030\002 \001(\t\022\021" +
-      "\n\tdays_left\030\003 \001(\005\022\017\n\007cp_type\030\004 \001(\005\022\020\n\010cp" +
-      "_title\030\005 \001(\t\"$\n\006BagReq\022\013\n\003uid\030\001 \001(\t\022\r\n\005t" +
-      "oken\030\002 \001(\t\"m\n\007BagResp\022&\n\005items\030\001 \003(\0132\027.p" +
-      "roto_def.BagResp.Item\032:\n\004Item\022#\n\007product" +
-      "\030\001 \001(\0132\022.proto_def.Product\022\r\n\005count\030\002 \001(" +
-      "\005\"\275\001\n\014OrderListReq\022\013\n\003uid\030\001 \001(\t\022\r\n\005token" +
-      "\030\002 \001(\t\0222\n\010category\030\003 \001(\0162 .proto_def.Ord" +
-      "erListReq.Category\022\020\n\010page_num\030\004 \001(\005\022\024\n\014" +
-      "num_per_page\030\005 \001(\005\"5\n\010Category\022\007\n\003ALL\020\000\022" +
-      "\017\n\013AS_PROVIDER\020\001\022\017\n\013AS_CUSTOMER\020\002\"\251\004\n\rOr" +
-      "derListResp\022.\n\006orders\030\001 \003(\0132\036.proto_def." +
-      "OrderListResp.Order\032\310\002\n\005Order\022\023\n\013skill_t" +
-      "itle\030\001 \001(\t\022\022\n\nserve_time\030\002 \001(\t\022\017\n\007gift_i" +
-      "d\030\003 \001(\t\022\022\n\ngift_title\030\004 \001(\t\022\021\n\tgift_icon" +
-      "\030\005 \001(\t\022\r\n\005count\030\006 \001(\005\022\017\n\007user_id\030\007 \001(\t\022\021" +
-      "\n\tuser_name\030\010 \001(\t\022\023\n\013user_gender\030\t \001(\t\022\020" +
-      "\n\010user_vip\030\n \001(\005\022\022\n\nuser_noble\030\013 \001(\005\0228\n\013" +
-      "order_state\030\014 \001(\0162#.proto_def.OrderListR" +
-      "esp.OrderState\0226\n\ngift_state\030\r \001(\0162\".pro" +
-      "to_def.OrderListResp.GiftState\"/\n\tGiftSt" +
-      "ate\022\n\n\006GS_UNK\020\000\022\t\n\005GIVEN\020\001\022\013\n\007REVOKED\020\002\"" +
-      "l\n\nOrderState\022\n\n\006OS_UNK\020\000\022\013\n\007PENDING\020\001\022\014" +
-      "\n\010ACCEPTED\020\002\022\013\n\007SERVING\020\003\022\010\n\004DONE\020\004\022\017\n\013C" +
-      "ANCEL_BY_C\020\005\022\017\n\013CANCEL_BY_P\020\006\"u\n\014MakeOrd" +
-      "erReq\022\013\n\003uid\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\020\n\010ski" +
-      "ll_id\030\003 \001(\t\022\022\n\nserve_time\030\004 \001(\t\022\017\n\007gift_" +
-      "id\030\005 \001(\005\022\022\n\ngift_count\030\006 \001(\005\"2\n\rMakeOrde" +
-      "rResp\022!\n\006status\030\001 \001(\0162\021.proto_def.STATUS" +
-      "\"\304\001\n\023ChangeOrderStateReq\022\013\n\003uid\030\001 \001(\t\022\r\n" +
-      "\005token\030\002 \001(\t\022\020\n\010order_id\030\003 \001(\t\0228\n\005state\030" +
-      "\004 \001(\0162).proto_def.ChangeOrderStateReq.Or" +
-      "derState\"E\n\nOrderState\022\007\n\003UNK\020\000\022\014\n\010ACCEP" +
-      "TED\020\002\022\017\n\013CANCEL_BY_C\020\005\022\017\n\013CANCEL_BY_P\020\006\"" +
-      "9\n\024ChangeOrderStateResp\022!\n\006status\030\001 \001(\0162" +
-      "\021.proto_def.STATUS*H\n\006STATUS\022\006\n\002OK\020\000\022\020\n\014" +
-      "USER_INVALID\020\001\022\020\n\014TOKEN_EXPIRE\020\002\022\022\n\016PARA" +
-      "MTER_ERROR\020\003b\006proto3"
+      "\n\022user_message.proto\022\tproto_def\"\337\001\n\rUser" +
+      "InfoBrief\022\013\n\003uid\030\001 \001(\t\022\021\n\tnick_name\030\002 \001(" +
+      "\t\022\016\n\006avatar\030\003 \001(\t\022\r\n\005level\030\004 \001(\t\022\020\n\010leve" +
+      "l_id\030\014 \001(\005\022\021\n\tgreat_num\030\005 \001(\t\022\020\n\010locatio" +
+      "n\030\006 \001(\t\022\014\n\004fans\030\007 \001(\005\022\017\n\007follows\030\010 \001(\005\022\017" +
+      "\n\007balance\030\t \001(\002\022\013\n\003age\030\n \001(\005\022\016\n\006gender\030\013" +
+      " \001(\t\022\013\n\003vip\030\r \001(\005\"\034\n\014NameCheckReq\022\014\n\004nam" +
+      "e\030\001 \001(\t\"/\n\rNameCheckResp\022\017\n\007can_use\030\001 \001(" +
+      "\010\022\r\n\005names\030\002 \003(\t\"\230\001\n\017UserRegisterReq\022\r\n\005" +
+      "phone\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006gender\030\003 \001(" +
+      "\t\022\016\n\006avatar\030\004 \001(\t\022\r\n\005birth\030\005 \001(\t\022\024\n\014invi" +
+      "ted_code\030\006 \001(\t\022\020\n\010gift_ids\030\007 \003(\t\022\021\n\tskil" +
+      "l_ids\030\010 \003(\005\"\247\001\n\020UserRegisterResp\0222\n\006stat" +
+      "us\030\001 \001(\0162\".proto_def.UserRegisterResp.ST" +
+      "ATUS\022&\n\004user\030\002 \001(\0132\030.proto_def.UserInfoB" +
+      "rief\"7\n\006STATUS\022\006\n\002OK\020\000\022\020\n\014NAME_OCUPIED\020\001" +
+      "\022\023\n\017PARAMETER_ERROR\020\002\"\305\001\n\rBanbanListReq\022" +
+      "\017\n\007user_id\030\001 \001(\t\022\023\n\013page_number\030\002 \001(\005\022\024\n" +
+      "\014num_per_page\030\003 \001(\005\0220\n\007filters\030\004 \003(\0132\037.p" +
+      "roto_def.BanbanListReq.Filter\022\020\n\010order_b" +
+      "y\030\005 \001(\t\022\014\n\004desc\030\006 \001(\010\032&\n\006Filter\022\r\n\005field" +
+      "\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"\260\003\n\016BanBanListResp" +
+      "\0229\n\007banbans\030\001 \003(\0132(.proto_def.BanBanList" +
+      "Resp.VoiceCharacter\032\342\002\n\016VoiceCharacter\022\n" +
+      "\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006gender\030\014 \001(\t" +
+      "\022\013\n\003age\030\r \001(\005\022\016\n\006avatar\030\003 \001(\t\022\021\n\taudio_u" +
+      "rl\030\016 \001(\t\022\026\n\016audio_duration\030\017 \001(\005\022\r\n\005skil" +
+      "l\030\004 \001(\t\022\026\n\016skill_category\030\023 \001(\t\022\023\n\013decla" +
+      "ration\030\005 \001(\t\022\022\n\nlast_alive\030\006 \001(\t\022\016\n\006onli" +
+      "ne\030\007 \001(\010\022\017\n\007chating\030\010 \001(\010\022\021\n\tfresh_man\030\t" +
+      " \001(\010\022\020\n\010location\030\n \001(\t\022\014\n\004rank\030\013 \001(\005\022\020\n\010" +
+      "rank_str\030\020 \001(\t\022\021\n\tvip_level\030\021 \001(\005\022\025\n\rvip" +
+      "_level_str\030\022 \001(\t\"G\n\tSearchReq\022\017\n\007keyword" +
+      "\030\001 \001(\t\022\023\n\013page_number\030\002 \001(\005\022\024\n\014num_per_p" +
+      "age\030\003 \001(\005\"\323\001\n\nSearchResp\022!\n\006status\030\001 \001(\016" +
+      "2\021.proto_def.STATUS\0224\n\006skills\030\002 \003(\0132$.pr" +
+      "oto_def.SearchResp.SkillInfoBrief\022\'\n\005use" +
+      "rs\030\003 \003(\0132\030.proto_def.UserInfoBrief\032C\n\016Sk" +
+      "illInfoBrief\022\r\n\005title\030\001 \001(\t\022\020\n\010icon_url\030" +
+      "\002 \001(\t\022\020\n\010category\030\003 \001(\t\"B\n\017UserOverviewR" +
+      "eq\022\017\n\007dst_uid\030\001 \001(\t\022\017\n\007src_uid\030\002 \001(\t\022\r\n\005" +
+      "token\030\003 \001(\t\"\246\001\n\020UserOverviewResp\0222\n\006stat" +
+      "us\030\001 \001(\0162\".proto_def.UserOverviewResp.ST" +
+      "ATUS\022&\n\004user\030\002 \001(\0132\030.proto_def.UserInfoB" +
+      "rief\022\020\n\010followed\030\003 \001(\010\"$\n\006STATUS\022\006\n\002OK\020\000" +
+      "\022\022\n\016USER_NOT_EXIST\020\001\"<\n\010LoginReq\022\r\n\005phon" +
+      "e\030\001 \001(\t\022\020\n\010sms_code\030\002 \001(\t\022\017\n\007user_id\030\003 \001" +
+      "(\t\"\336\001\n\tLoginResp\022)\n\004code\030\001 \001(\0162\033.proto_d" +
+      "ef.LoginResp.STATUS\022\r\n\005phone\030\003 \001(\t\022\013\n\003ui" +
+      "d\030\002 \001(\t\022\021\n\tnick_name\030\004 \001(\t\022\016\n\006avatar\030\005 \001" +
+      "(\t\022\r\n\005token\030\006 \001(\t\022&\n\004user\030\007 \001(\0132\030.proto_" +
+      "def.UserInfoBrief\"0\n\006STATUS\022\006\n\002OK\020\000\022\017\n\013S" +
+      "MS_TIMEOUT\020\001\022\r\n\tSMS_ERROR\020\002\"/\n\016SkillDeta" +
+      "ilReq\022\013\n\003uid\030\001 \001(\t\022\020\n\010skill_id\030\002 \001(\t\"\200\003\n" +
+      "\017SkillDetailResp\022\013\n\003uid\030\001 \001(\t\022/\n\005skill\030\003" +
+      " \001(\0132 .proto_def.SkillDetailResp.Skill\022\021" +
+      "\n\tuser_imgs\030\002 \003(\t\022:\n\016skill_comments\030\004 \003(" +
+      "\0132\".proto_def.SkillDetailResp.Comment\032h\n" +
+      "\007Comment\022\013\n\003uid\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\020\n\010u" +
+      "ser_img\030\003 \001(\t\022\017\n\007comment\030\004 \001(\t\022\014\n\004rate\030\005" +
+      " \001(\005\022\021\n\ttime_info\030\006 \001(\t\032v\n\005Skill\022\r\n\005titl" +
+      "e\030\001 \001(\t\022\r\n\005grade\030\002 \001(\t\022\023\n\013description\030\003 " +
+      "\001(\t\022\017\n\007img_url\030\004 \001(\t\022\021\n\taudio_url\030\005 \001(\t\022" +
+      "\026\n\016audio_duration\030\006 \001(\005\"/\n\013HomePageReq\022\017" +
+      "\n\007tgt_uid\030\001 \001(\t\022\017\n\007src_uid\030\002 \001(\t\"\237\006\n\014Hom" +
+      "ePageResp\0222\n\010personal\030\001 \001(\0132 .proto_def." +
+      "HomePageResp.Personal\022\020\n\010location\030\002 \001(\t\022" +
+      "\016\n\006online\030\003 \001(\t\022\022\n\ntotal_gift\030\004 \001(\005\022+\n\005g" +
+      "ifts\030\005 \003(\0132\034.proto_def.HomePageResp.Gift" +
+      "\0223\n\tinterests\030\010 \003(\0132 .proto_def.HomePage" +
+      "Resp.Interest\022-\n\006skills\030\006 \003(\0132\035.proto_de" +
+      "f.HomePageResp.Skill\022\r\n\005audio\030\t \001(\t\022\024\n\014t" +
+      "otal_cp_num\030\n \001(\005\022\020\n\010followed\030\013 \001(\010\032\247\001\n\010" +
+      "Personal\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006ge" +
+      "nder\030\003 \001(\t\022\013\n\003age\030\004 \001(\005\022\014\n\004star\030\005 \001(\t\022\016\n" +
+      "\006career\030\006 \001(\t\022\023\n\013declaration\030\007 \001(\t\022\021\n\tti" +
+      "me_info\030\010 \001(\t\022\014\n\004fans\030\t \001(\005\022\020\n\010img_urls\030" +
+      "\n \003(\t\0320\n\004Gift\022\n\n\002id\030\001 \001(\t\022\014\n\004icon\030\002 \001(\t\022" +
+      "\016\n\006amount\030\003 \001(\005\0327\n\010Chatroom\022\n\n\002id\030\001 \001(\t\022" +
+      "\r\n\005title\030\002 \001(\t\022\020\n\010category\030\003 \001(\t\032+\n\010Inte" +
+      "rest\022\020\n\010skill_id\030\001 \001(\t\022\r\n\005title\030\002 \001(\t\032\232\001" +
+      "\n\005Skill\022\n\n\002id\030\001 \001(\t\022\023\n\013description\030\002 \001(\t" +
+      "\022\020\n\010priority\030\003 \001(\005\022\r\n\005grade\030\004 \001(\t\022\017\n\007img" +
+      "_url\030\005 \001(\t\022\021\n\taudio_url\030\006 \001(\t\022\026\n\016audio_d" +
+      "uration\030\007 \001(\005\022\023\n\013sells_count\030\010 \001(\005\"A\n\021Lo" +
+      "cationUpdateReq\022\013\n\003uid\030\001 \001(\t\022\r\n\005token\030\002 " +
+      "\001(\t\022\020\n\010location\030\003 \001(\t\"7\n\022LocationUpdateR" +
+      "esp\022!\n\006status\030\001 \001(\0162\021.proto_def.STATUS\"\265" +
+      "\001\n\021UserInfoUpdateReq\022\013\n\003uid\030\001 \001(\t\022\r\n\005tok" +
+      "en\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\016\n\006gender\030\004 \001(\t\022\r" +
+      "\n\005birth\030\005 \001(\t\022\023\n\013declaration\030\006 \001(\t\022\021\n\tca" +
+      "reer_id\030\007 \001(\t\022\016\n\006avatar\030\010 \001(\t\022\r\n\005audio\030\t" +
+      " \001(\t\022\020\n\010duration\030\n \001(\005\"7\n\022UserInfoUpdate" +
+      "Resp\022!\n\006status\030\001 \001(\0162\021.proto_def.STATUS\"" +
+      "\337\001\n\024UserGalleryUpdateReq\022\013\n\003uid\030\001 \001(\t\022\r\n" +
+      "\005token\030\002 \001(\t\0226\n\006method\030\003 \001(\0162&.proto_def" +
+      ".UserGalleryUpdateReq.Method\022\013\n\003pos\030\004 \001(" +
+      "\t\022\013\n\003url\030\005 \001(\t\022\014\n\004pos1\030\006 \001(\005\022\014\n\004pos2\030\007 \001" +
+      "(\005\"=\n\006Method\022\007\n\003UNK\020\000\022\007\n\003ADD\020\001\022\013\n\007REPLAC" +
+      "E\020\002\022\n\n\006REMOVE\020\003\022\010\n\004SWAP\020\004\"9\n\024UserGallery" +
+      "UpdteResp\022!\n\006status\030\001 \001(\0162\021.proto_def.ST" +
+      "ATUS\"\250\001\n\026UserInterestsUpdateReq\022\013\n\003uid\030\001" +
+      " \001(\t\022\r\n\005token\030\002 \001(\t\0228\n\006method\030\003 \001(\0162(.pr" +
+      "oto_def.UserInterestsUpdateReq.METHOD\022\020\n" +
+      "\010skill_id\030\004 \001(\005\"&\n\006METHOD\022\007\n\003UNK\020\000\022\007\n\003AD" +
+      "D\020\001\022\n\n\006REMOVE\020\002\"<\n\027UserInterestsUpdateRe" +
+      "sp\022!\n\006status\030\001 \001(\0162\021.proto_def.STATUS\"l\n" +
+      "\014TokenOssResp\022\025\n\raccess_key_id\030\001 \001(\t\022\031\n\021" +
+      "access_key_secret\030\002 \001(\t\022\026\n\016security_toke" +
+      "n\030\003 \001(\t\022\022\n\nexpiration\030\004 \001(\005\"\037\n\016TokenAgor" +
+      "aResp\022\r\n\005token\030\001 \001(\t\"J\n\tFollowReq\022\017\n\007src" +
+      "_uid\030\001 \001(\t\022\017\n\007tgt_uid\030\002 \001(\t\022\014\n\004flag\030\003 \001(" +
+      "\010\022\r\n\005token\030\004 \001(\t\"/\n\nFollowResp\022!\n\006status" +
+      "\030\001 \001(\0162\021.proto_def.STATUS\"\033\n\nSmsCodeReq\022" +
+      "\r\n\005phone\030\001 \001(\t\"\221\001\n\013SmsCodeResp\022-\n\006status" +
+      "\030\001 \001(\0162\035.proto_def.SmsCodeResp.STATUS\022\020\n" +
+      "\010registed\030\002 \001(\010\022\014\n\004code\030\003 \001(\t\"3\n\006STATUS\022" +
+      "\006\n\002OK\020\000\022\016\n\nOVER_LIMIT\020\001\022\021\n\rPHONE_INVALID" +
+      "\020\002\"\023\n\021CpCategoryListReq\"\246\001\n\022CpCategoryLi" +
+      "stResp\0227\n\005lists\030\001 \003(\0132(.proto_def.CpCate" +
+      "goryListResp.CpCategory\032W\n\nCpCategory\022\017\n" +
+      "\007cate_id\030\001 \001(\005\022\r\n\005price\030\002 \001(\005\022\014\n\004days\030\003 " +
+      "\001(\005\022\r\n\005title\030\004 \001(\t\022\014\n\004icon\030\005 \001(\t\"!\n\022User" +
+      "CpRelationsReq\022\013\n\003uid\030\001 \001(\t\"\265\001\n\023UserCpRe" +
+      "lationsResp\022<\n\trelations\030\001 \003(\0132).proto_d" +
+      "ef.UserCpRelationsResp.CpRelation\032`\n\nCpR" +
+      "elation\022\014\n\004name\030\001 \001(\t\022\016\n\006avatar\030\002 \001(\t\022\021\n" +
+      "\tdays_left\030\003 \001(\005\022\017\n\007cp_type\030\004 \001(\005\022\020\n\010cp_" +
+      "title\030\005 \001(\t\"$\n\006BagReq\022\013\n\003uid\030\001 \001(\t\022\r\n\005to" +
+      "ken\030\002 \001(\t\"\267\004\n\007BagResp\022,\n\010products\030\001 \003(\0132" +
+      "\032.proto_def.BagResp.Product\022*\n\007coupons\030\002" +
+      " \003(\0132\031.proto_def.BagResp.Coupon\032\303\001\n\007Prod" +
+      "uct\022\013\n\003pid\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\022\014\n\004icon\030" +
+      "\003 \001(\t\022-\n\010category\030\004 \001(\0162\033.proto_def.BagR" +
+      "esp.CATEGORY\022/\n\005grade\030\005 \001(\0162 .proto_def." +
+      "BagResp.PRODUCT_GRADE\022\r\n\005count\030\006 \001(\005\022\017\n\007" +
+      "permant\030\007 \001(\010\022\016\n\006expire\030\010 \001(\t\032n\n\006Coupon\022" +
+      "\013\n\003cid\030\001 \001(\005\022\013\n\003pid\030\002 \001(\005\022\r\n\005title\030\003 \001(\t" +
+      "\022\014\n\004icon\030\004 \001(\t\022\017\n\007permant\030\005 \001(\010\022\r\n\005count" +
+      "\030\006 \001(\005\022\r\n\005value\030\007 \001(\005\"]\n\010CATEGORY\022\007\n\003ALL" +
+      "\020\000\022\010\n\004GIFT\020\001\022\016\n\nAVATAR_BOX\020\002\022\021\n\rSEAT_GUA" +
+      "RDIAN\020\003\022\007\n\003BOX\020\004\022\007\n\003KEY\020\005\022\t\n\005NOBLE\020\006\"=\n\r" +
+      "PRODUCT_GRADE\022\010\n\004NONE\020\000\022\n\n\006BROZEN\020\001\022\n\n\006S" +
+      "ILVER\020\002\022\n\n\006GOLDEN\020\003\"\275\001\n\014OrderListReq\022\013\n\003" +
+      "uid\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\0222\n\010category\030\003 \001" +
+      "(\0162 .proto_def.OrderListReq.Category\022\020\n\010" +
+      "page_num\030\004 \001(\005\022\024\n\014num_per_page\030\005 \001(\005\"5\n\010" +
+      "Category\022\007\n\003ALL\020\000\022\017\n\013AS_PROVIDER\020\001\022\017\n\013AS" +
+      "_CUSTOMER\020\002\"\251\004\n\rOrderListResp\022.\n\006orders\030" +
+      "\001 \003(\0132\036.proto_def.OrderListResp.Order\032\310\002" +
+      "\n\005Order\022\023\n\013skill_title\030\001 \001(\t\022\022\n\nserve_ti" +
+      "me\030\002 \001(\t\022\017\n\007gift_id\030\003 \001(\t\022\022\n\ngift_title\030" +
+      "\004 \001(\t\022\021\n\tgift_icon\030\005 \001(\t\022\r\n\005count\030\006 \001(\005\022" +
+      "\017\n\007user_id\030\007 \001(\t\022\021\n\tuser_name\030\010 \001(\t\022\023\n\013u" +
+      "ser_gender\030\t \001(\t\022\020\n\010user_vip\030\n \001(\005\022\022\n\nus" +
+      "er_noble\030\013 \001(\005\0228\n\013order_state\030\014 \001(\0162#.pr" +
+      "oto_def.OrderListResp.OrderState\0226\n\ngift" +
+      "_state\030\r \001(\0162\".proto_def.OrderListResp.G" +
+      "iftState\"/\n\tGiftState\022\n\n\006GS_UNK\020\000\022\t\n\005GIV" +
+      "EN\020\001\022\013\n\007REVOKED\020\002\"l\n\nOrderState\022\n\n\006OS_UN" +
+      "K\020\000\022\013\n\007PENDING\020\001\022\014\n\010ACCEPTED\020\002\022\013\n\007SERVIN" +
+      "G\020\003\022\010\n\004DONE\020\004\022\017\n\013CANCEL_BY_C\020\005\022\017\n\013CANCEL" +
+      "_BY_P\020\006\"u\n\014MakeOrderReq\022\013\n\003uid\030\001 \001(\t\022\r\n\005" +
+      "token\030\002 \001(\t\022\020\n\010skill_id\030\003 \001(\t\022\022\n\nserve_t" +
+      "ime\030\004 \001(\t\022\017\n\007gift_id\030\005 \001(\005\022\022\n\ngift_count" +
+      "\030\006 \001(\005\"2\n\rMakeOrderResp\022!\n\006status\030\001 \001(\0162" +
+      "\021.proto_def.STATUS\"\304\001\n\023ChangeOrderStateR" +
+      "eq\022\013\n\003uid\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\020\n\010order_" +
+      "id\030\003 \001(\t\0228\n\005state\030\004 \001(\0162).proto_def.Chan" +
+      "geOrderStateReq.OrderState\"E\n\nOrderState" +
+      "\022\007\n\003UNK\020\000\022\014\n\010ACCEPTED\020\002\022\017\n\013CANCEL_BY_C\020\005" +
+      "\022\017\n\013CANCEL_BY_P\020\006\"9\n\024ChangeOrderStateRes" +
+      "p\022!\n\006status\030\001 \001(\0162\021.proto_def.STATUS*H\n\006" +
+      "STATUS\022\006\n\002OK\020\000\022\020\n\014USER_INVALID\020\001\022\020\n\014TOKE" +
+      "N_EXPIRE\020\002\022\022\n\016PARAMTER_ERROR\020\003b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -55405,7 +57665,6 @@ public final class UserMessage {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          proto_def.ShopMessage.getDescriptor(),
         }, assigner);
     internal_static_proto_def_UserInfoBrief_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -55586,7 +57845,7 @@ public final class UserMessage {
     internal_static_proto_def_UserInfoUpdateReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_def_UserInfoUpdateReq_descriptor,
-        new java.lang.String[] { "Uid", "Token", "Name", "Gender", "Birth", "Declaration", "CareerId", "Avatar", "Audio", });
+        new java.lang.String[] { "Uid", "Token", "Name", "Gender", "Birth", "Declaration", "CareerId", "Avatar", "Audio", "Duration", });
     internal_static_proto_def_UserInfoUpdateResp_descriptor =
       getDescriptor().getMessageTypes().get(20);
     internal_static_proto_def_UserInfoUpdateResp_fieldAccessorTable = new
@@ -55700,13 +57959,19 @@ public final class UserMessage {
     internal_static_proto_def_BagResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_def_BagResp_descriptor,
-        new java.lang.String[] { "Items", });
-    internal_static_proto_def_BagResp_Item_descriptor =
+        new java.lang.String[] { "Products", "Coupons", });
+    internal_static_proto_def_BagResp_Product_descriptor =
       internal_static_proto_def_BagResp_descriptor.getNestedTypes().get(0);
-    internal_static_proto_def_BagResp_Item_fieldAccessorTable = new
+    internal_static_proto_def_BagResp_Product_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_def_BagResp_Item_descriptor,
-        new java.lang.String[] { "Product", "Count", });
+        internal_static_proto_def_BagResp_Product_descriptor,
+        new java.lang.String[] { "Pid", "Title", "Icon", "Category", "Grade", "Count", "Permant", "Expire", });
+    internal_static_proto_def_BagResp_Coupon_descriptor =
+      internal_static_proto_def_BagResp_descriptor.getNestedTypes().get(1);
+    internal_static_proto_def_BagResp_Coupon_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_def_BagResp_Coupon_descriptor,
+        new java.lang.String[] { "Cid", "Pid", "Title", "Icon", "Permant", "Count", "Value", });
     internal_static_proto_def_OrderListReq_descriptor =
       getDescriptor().getMessageTypes().get(37);
     internal_static_proto_def_OrderListReq_fieldAccessorTable = new
@@ -55749,7 +58014,6 @@ public final class UserMessage {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_def_ChangeOrderStateResp_descriptor,
         new java.lang.String[] { "Status", });
-    proto_def.ShopMessage.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

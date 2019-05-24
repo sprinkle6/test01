@@ -76,8 +76,6 @@ class RoomUserStyledMessage(val userId: UserId,
                             mBody: SimpleVisualEffectText,
                             val targetUserId: UserId? = null) : BaseStyledMessage(mBody)
 
-data class Icon(val id: String, val image: ImageUrl, val code: String)
-
 data class SimpleFormattedText(val text: String, val textColor: String? = null, val backgroundColor: String? = null)
 
 data class IconedSimpleFormattedText(val icon: Icon?, val sftText: SimpleFormattedText?)

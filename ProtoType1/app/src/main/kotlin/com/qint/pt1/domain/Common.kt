@@ -20,7 +20,12 @@ typealias AudioUrl = String
 
 typealias Token = String
 
-typealias PriceInCent = Int
+typealias Price = Int
+
+val Price.priceInDiamond: String
+    get() = "${this}钻"
+
+data class Icon(val id: String, val image: ImageUrl, val code: String="")
 
 @Parcelize
 data class Avatar(val url: ImageUrl):  ImageContainer, Parcelable{
@@ -100,3 +105,16 @@ data class Location(val province: String, val city: String = "", val county: Str
      */
     fun isDirectCity() = province == city
 }
+
+data class Period(val valueInSecond: Int){
+    companion object{
+        val FOREVER = Period(Int.MAX_VALUE)
+
+        val SECONDS_IN_DAY = 86400
+
+        fun makePeroidInDay(valueInDay: Int) = Period(valueInDay * SECONDS_IN_DAY)
+    }
+
+    val valueInDay:Int get() = valueInSecond / SECONDS_IN_DAY
+}
+

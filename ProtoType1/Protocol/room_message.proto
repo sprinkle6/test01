@@ -234,7 +234,7 @@ message RoomMemberControlNotification {
     string comment = 5;
 }
 
-// this message is for placehold, Should Not Be used for clinet
+// this message is for placehold, Should Not Be used for client
 message RoomEventReq {
     enum EventType {
         ENTER = 0;      // MAY COMPLETE BY CLIENT
@@ -261,7 +261,7 @@ message RoomEventResp {
 
 /*
    This Message should be serialize to str as data , and used as the value of data which in
-   the json object called attach in netease custom defined message. The JSON object should be
+   the json object called attach in netease custom-defined message. The JSON object should be
    defined as bellow:
    {
        "from": "server|peer",
@@ -286,16 +286,22 @@ message RoomEventNotification {
         int32  vip = 5;
     }
 
-    message Gift {
-        string to_uid = 1;   //for send gift
-        string to_name = 2;  //for send gift
+    message Gift { //for send gift
+        string to_uid = 1;
+        string to_name = 2;
         int32  gift_id = 3;
         int32  count = 4;
+    }
+
+    message BoxOpenMsg {
+        string title = 1;
+        string icon = 2;
     }
 
     RoomEventReq.EventType type = 1;
     User user = 2;
     repeated Gift gifts = 3;
+    repeated BoxOpenMsg box_msgs= 4;
 }
 
 enum ControlState {
@@ -312,11 +318,11 @@ message RoomControlReq {
     }
 
     message Info {
-        string declaration = 1;   //may impliement through client-side message
-        string backgroud = 2;     //may impliement through client-side message
+        string declaration = 1;     //may impliement through client-side message
+        string background = 2;      //may impliement through client-side message
         string room_avatar = 3;
         string password = 4;
-        ControlState muted_all = 5;     //may impliement through client-side message
+        ControlState muted_all = 5; //may impliement through client-side message
         ControlState enable = 6;
         string title = 7;
     }

@@ -22209,7 +22209,7 @@ public final class RoomMessage {
   }
   /**
    * <pre>
-   * this message is for placehold, Should Not Be used for clinet
+   * this message is for placehold, Should Not Be used for client
    * </pre>
    *
    * Protobuf type {@code proto_def.RoomEventReq}
@@ -22764,7 +22764,7 @@ public final class RoomMessage {
     }
     /**
      * <pre>
-     * this message is for placehold, Should Not Be used for clinet
+     * this message is for placehold, Should Not Be used for client
      * </pre>
      *
      * Protobuf type {@code proto_def.RoomEventReq}
@@ -23892,6 +23892,30 @@ public final class RoomMessage {
      */
     proto_def.RoomMessage.RoomEventNotification.GiftOrBuilder getGiftsOrBuilder(
         int index);
+
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    java.util.List<proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg> 
+        getBoxMsgsList();
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg getBoxMsgs(int index);
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    int getBoxMsgsCount();
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    java.util.List<? extends proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder> 
+        getBoxMsgsOrBuilderList();
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder getBoxMsgsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code proto_def.RoomEventNotification}
@@ -23908,6 +23932,7 @@ public final class RoomMessage {
     private RoomEventNotification() {
       type_ = 0;
       gifts_ = java.util.Collections.emptyList();
+      boxMsgs_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -23962,6 +23987,15 @@ public final class RoomMessage {
                   input.readMessage(proto_def.RoomMessage.RoomEventNotification.Gift.parser(), extensionRegistry));
               break;
             }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                boxMsgs_ = new java.util.ArrayList<proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              boxMsgs_.add(
+                  input.readMessage(proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.parser(), extensionRegistry));
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -23979,6 +24013,9 @@ public final class RoomMessage {
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           gifts_ = java.util.Collections.unmodifiableList(gifts_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          boxMsgs_ = java.util.Collections.unmodifiableList(boxMsgs_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -24952,36 +24989,20 @@ public final class RoomMessage {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <pre>
-       *for send gift
-       * </pre>
-       *
        * <code>string to_uid = 1;</code>
        */
       java.lang.String getToUid();
       /**
-       * <pre>
-       *for send gift
-       * </pre>
-       *
        * <code>string to_uid = 1;</code>
        */
       com.google.protobuf.ByteString
           getToUidBytes();
 
       /**
-       * <pre>
-       *for send gift
-       * </pre>
-       *
        * <code>string to_name = 2;</code>
        */
       java.lang.String getToName();
       /**
-       * <pre>
-       *for send gift
-       * </pre>
-       *
        * <code>string to_name = 2;</code>
        */
       com.google.protobuf.ByteString
@@ -24998,6 +25019,10 @@ public final class RoomMessage {
       int getCount();
     }
     /**
+     * <pre>
+     *for send gift
+     * </pre>
+     *
      * Protobuf type {@code proto_def.RoomEventNotification.Gift}
      */
     public  static final class Gift extends
@@ -25097,10 +25122,6 @@ public final class RoomMessage {
       public static final int TO_UID_FIELD_NUMBER = 1;
       private volatile java.lang.Object toUid_;
       /**
-       * <pre>
-       *for send gift
-       * </pre>
-       *
        * <code>string to_uid = 1;</code>
        */
       public java.lang.String getToUid() {
@@ -25116,10 +25137,6 @@ public final class RoomMessage {
         }
       }
       /**
-       * <pre>
-       *for send gift
-       * </pre>
-       *
        * <code>string to_uid = 1;</code>
        */
       public com.google.protobuf.ByteString
@@ -25139,10 +25156,6 @@ public final class RoomMessage {
       public static final int TO_NAME_FIELD_NUMBER = 2;
       private volatile java.lang.Object toName_;
       /**
-       * <pre>
-       *for send gift
-       * </pre>
-       *
        * <code>string to_name = 2;</code>
        */
       public java.lang.String getToName() {
@@ -25158,10 +25171,6 @@ public final class RoomMessage {
         }
       }
       /**
-       * <pre>
-       *for send gift
-       * </pre>
-       *
        * <code>string to_name = 2;</code>
        */
       public com.google.protobuf.ByteString
@@ -25384,6 +25393,10 @@ public final class RoomMessage {
         return builder;
       }
       /**
+       * <pre>
+       *for send gift
+       * </pre>
+       *
        * Protobuf type {@code proto_def.RoomEventNotification.Gift}
        */
       public static final class Builder extends
@@ -25552,10 +25565,6 @@ public final class RoomMessage {
 
         private java.lang.Object toUid_ = "";
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_uid = 1;</code>
          */
         public java.lang.String getToUid() {
@@ -25571,10 +25580,6 @@ public final class RoomMessage {
           }
         }
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_uid = 1;</code>
          */
         public com.google.protobuf.ByteString
@@ -25591,10 +25596,6 @@ public final class RoomMessage {
           }
         }
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_uid = 1;</code>
          */
         public Builder setToUid(
@@ -25608,10 +25609,6 @@ public final class RoomMessage {
           return this;
         }
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_uid = 1;</code>
          */
         public Builder clearToUid() {
@@ -25621,10 +25618,6 @@ public final class RoomMessage {
           return this;
         }
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_uid = 1;</code>
          */
         public Builder setToUidBytes(
@@ -25641,10 +25634,6 @@ public final class RoomMessage {
 
         private java.lang.Object toName_ = "";
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_name = 2;</code>
          */
         public java.lang.String getToName() {
@@ -25660,10 +25649,6 @@ public final class RoomMessage {
           }
         }
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_name = 2;</code>
          */
         public com.google.protobuf.ByteString
@@ -25680,10 +25665,6 @@ public final class RoomMessage {
           }
         }
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_name = 2;</code>
          */
         public Builder setToName(
@@ -25697,10 +25678,6 @@ public final class RoomMessage {
           return this;
         }
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_name = 2;</code>
          */
         public Builder clearToName() {
@@ -25710,10 +25687,6 @@ public final class RoomMessage {
           return this;
         }
         /**
-         * <pre>
-         *for send gift
-         * </pre>
-         *
          * <code>string to_name = 2;</code>
          */
         public Builder setToNameBytes(
@@ -25832,6 +25805,693 @@ public final class RoomMessage {
 
     }
 
+    public interface BoxOpenMsgOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:proto_def.RoomEventNotification.BoxOpenMsg)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string title = 1;</code>
+       */
+      java.lang.String getTitle();
+      /**
+       * <code>string title = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getTitleBytes();
+
+      /**
+       * <code>string icon = 2;</code>
+       */
+      java.lang.String getIcon();
+      /**
+       * <code>string icon = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getIconBytes();
+    }
+    /**
+     * Protobuf type {@code proto_def.RoomEventNotification.BoxOpenMsg}
+     */
+    public  static final class BoxOpenMsg extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:proto_def.RoomEventNotification.BoxOpenMsg)
+        BoxOpenMsgOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use BoxOpenMsg.newBuilder() to construct.
+      private BoxOpenMsg(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private BoxOpenMsg() {
+        title_ = "";
+        icon_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private BoxOpenMsg(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                title_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                icon_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownFieldProto3(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return proto_def.RoomMessage.internal_static_proto_def_RoomEventNotification_BoxOpenMsg_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return proto_def.RoomMessage.internal_static_proto_def_RoomEventNotification_BoxOpenMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.class, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder.class);
+      }
+
+      public static final int TITLE_FIELD_NUMBER = 1;
+      private volatile java.lang.Object title_;
+      /**
+       * <code>string title = 1;</code>
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string title = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ICON_FIELD_NUMBER = 2;
+      private volatile java.lang.Object icon_;
+      /**
+       * <code>string icon = 2;</code>
+       */
+      public java.lang.String getIcon() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          icon_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string icon = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIconBytes() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          icon_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getTitleBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, title_);
+        }
+        if (!getIconBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, icon_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getTitleBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, title_);
+        }
+        if (!getIconBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, icon_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg)) {
+          return super.equals(obj);
+        }
+        proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg other = (proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg) obj;
+
+        boolean result = true;
+        result = result && getTitle()
+            .equals(other.getTitle());
+        result = result && getIcon()
+            .equals(other.getIcon());
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + TITLE_FIELD_NUMBER;
+        hash = (53 * hash) + getTitle().hashCode();
+        hash = (37 * hash) + ICON_FIELD_NUMBER;
+        hash = (53 * hash) + getIcon().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code proto_def.RoomEventNotification.BoxOpenMsg}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:proto_def.RoomEventNotification.BoxOpenMsg)
+          proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return proto_def.RoomMessage.internal_static_proto_def_RoomEventNotification_BoxOpenMsg_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return proto_def.RoomMessage.internal_static_proto_def_RoomEventNotification_BoxOpenMsg_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.class, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder.class);
+        }
+
+        // Construct using proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          title_ = "";
+
+          icon_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return proto_def.RoomMessage.internal_static_proto_def_RoomEventNotification_BoxOpenMsg_descriptor;
+        }
+
+        @java.lang.Override
+        public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg getDefaultInstanceForType() {
+          return proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg build() {
+          proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg buildPartial() {
+          proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg result = new proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg(this);
+          result.title_ = title_;
+          result.icon_ = icon_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg) {
+            return mergeFrom((proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg other) {
+          if (other == proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.getDefaultInstance()) return this;
+          if (!other.getTitle().isEmpty()) {
+            title_ = other.title_;
+            onChanged();
+          }
+          if (!other.getIcon().isEmpty()) {
+            icon_ = other.icon_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object title_ = "";
+        /**
+         * <code>string title = 1;</code>
+         */
+        public java.lang.String getTitle() {
+          java.lang.Object ref = title_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            title_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string title = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTitleBytes() {
+          java.lang.Object ref = title_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            title_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string title = 1;</code>
+         */
+        public Builder setTitle(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          title_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string title = 1;</code>
+         */
+        public Builder clearTitle() {
+          
+          title_ = getDefaultInstance().getTitle();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string title = 1;</code>
+         */
+        public Builder setTitleBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          title_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object icon_ = "";
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public java.lang.String getIcon() {
+          java.lang.Object ref = icon_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            icon_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIconBytes() {
+          java.lang.Object ref = icon_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            icon_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public Builder setIcon(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          icon_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public Builder clearIcon() {
+          
+          icon_ = getDefaultInstance().getIcon();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string icon = 2;</code>
+         */
+        public Builder setIconBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          icon_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:proto_def.RoomEventNotification.BoxOpenMsg)
+      }
+
+      // @@protoc_insertion_point(class_scope:proto_def.RoomEventNotification.BoxOpenMsg)
+      private static final proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg();
+      }
+
+      public static proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<BoxOpenMsg>
+          PARSER = new com.google.protobuf.AbstractParser<BoxOpenMsg>() {
+        @java.lang.Override
+        public BoxOpenMsg parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new BoxOpenMsg(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<BoxOpenMsg> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<BoxOpenMsg> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
     private int bitField0_;
     public static final int TYPE_FIELD_NUMBER = 1;
     private int type_;
@@ -25906,6 +26566,41 @@ public final class RoomMessage {
       return gifts_.get(index);
     }
 
+    public static final int BOX_MSGS_FIELD_NUMBER = 4;
+    private java.util.List<proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg> boxMsgs_;
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    public java.util.List<proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg> getBoxMsgsList() {
+      return boxMsgs_;
+    }
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    public java.util.List<? extends proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder> 
+        getBoxMsgsOrBuilderList() {
+      return boxMsgs_;
+    }
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    public int getBoxMsgsCount() {
+      return boxMsgs_.size();
+    }
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg getBoxMsgs(int index) {
+      return boxMsgs_.get(index);
+    }
+    /**
+     * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+     */
+    public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder getBoxMsgsOrBuilder(
+        int index) {
+      return boxMsgs_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -25929,6 +26624,9 @@ public final class RoomMessage {
       for (int i = 0; i < gifts_.size(); i++) {
         output.writeMessage(3, gifts_.get(i));
       }
+      for (int i = 0; i < boxMsgs_.size(); i++) {
+        output.writeMessage(4, boxMsgs_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -25949,6 +26647,10 @@ public final class RoomMessage {
       for (int i = 0; i < gifts_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, gifts_.get(i));
+      }
+      for (int i = 0; i < boxMsgs_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, boxMsgs_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -25974,6 +26676,8 @@ public final class RoomMessage {
       }
       result = result && getGiftsList()
           .equals(other.getGiftsList());
+      result = result && getBoxMsgsList()
+          .equals(other.getBoxMsgsList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -25994,6 +26698,10 @@ public final class RoomMessage {
       if (getGiftsCount() > 0) {
         hash = (37 * hash) + GIFTS_FIELD_NUMBER;
         hash = (53 * hash) + getGiftsList().hashCode();
+      }
+      if (getBoxMsgsCount() > 0) {
+        hash = (37 * hash) + BOX_MSGS_FIELD_NUMBER;
+        hash = (53 * hash) + getBoxMsgsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -26124,6 +26832,7 @@ public final class RoomMessage {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getGiftsFieldBuilder();
+          getBoxMsgsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -26142,6 +26851,12 @@ public final class RoomMessage {
           bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           giftsBuilder_.clear();
+        }
+        if (boxMsgsBuilder_ == null) {
+          boxMsgs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          boxMsgsBuilder_.clear();
         }
         return this;
       }
@@ -26185,6 +26900,15 @@ public final class RoomMessage {
           result.gifts_ = gifts_;
         } else {
           result.gifts_ = giftsBuilder_.build();
+        }
+        if (boxMsgsBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            boxMsgs_ = java.util.Collections.unmodifiableList(boxMsgs_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.boxMsgs_ = boxMsgs_;
+        } else {
+          result.boxMsgs_ = boxMsgsBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -26264,6 +26988,32 @@ public final class RoomMessage {
                    getGiftsFieldBuilder() : null;
             } else {
               giftsBuilder_.addAllMessages(other.gifts_);
+            }
+          }
+        }
+        if (boxMsgsBuilder_ == null) {
+          if (!other.boxMsgs_.isEmpty()) {
+            if (boxMsgs_.isEmpty()) {
+              boxMsgs_ = other.boxMsgs_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureBoxMsgsIsMutable();
+              boxMsgs_.addAll(other.boxMsgs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.boxMsgs_.isEmpty()) {
+            if (boxMsgsBuilder_.isEmpty()) {
+              boxMsgsBuilder_.dispose();
+              boxMsgsBuilder_ = null;
+              boxMsgs_ = other.boxMsgs_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              boxMsgsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getBoxMsgsFieldBuilder() : null;
+            } else {
+              boxMsgsBuilder_.addAllMessages(other.boxMsgs_);
             }
           }
         }
@@ -26698,6 +27448,246 @@ public final class RoomMessage {
         }
         return giftsBuilder_;
       }
+
+      private java.util.List<proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg> boxMsgs_ =
+        java.util.Collections.emptyList();
+      private void ensureBoxMsgsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          boxMsgs_ = new java.util.ArrayList<proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg>(boxMsgs_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder> boxMsgsBuilder_;
+
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public java.util.List<proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg> getBoxMsgsList() {
+        if (boxMsgsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(boxMsgs_);
+        } else {
+          return boxMsgsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public int getBoxMsgsCount() {
+        if (boxMsgsBuilder_ == null) {
+          return boxMsgs_.size();
+        } else {
+          return boxMsgsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg getBoxMsgs(int index) {
+        if (boxMsgsBuilder_ == null) {
+          return boxMsgs_.get(index);
+        } else {
+          return boxMsgsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder setBoxMsgs(
+          int index, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg value) {
+        if (boxMsgsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBoxMsgsIsMutable();
+          boxMsgs_.set(index, value);
+          onChanged();
+        } else {
+          boxMsgsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder setBoxMsgs(
+          int index, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder builderForValue) {
+        if (boxMsgsBuilder_ == null) {
+          ensureBoxMsgsIsMutable();
+          boxMsgs_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          boxMsgsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder addBoxMsgs(proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg value) {
+        if (boxMsgsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBoxMsgsIsMutable();
+          boxMsgs_.add(value);
+          onChanged();
+        } else {
+          boxMsgsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder addBoxMsgs(
+          int index, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg value) {
+        if (boxMsgsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBoxMsgsIsMutable();
+          boxMsgs_.add(index, value);
+          onChanged();
+        } else {
+          boxMsgsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder addBoxMsgs(
+          proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder builderForValue) {
+        if (boxMsgsBuilder_ == null) {
+          ensureBoxMsgsIsMutable();
+          boxMsgs_.add(builderForValue.build());
+          onChanged();
+        } else {
+          boxMsgsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder addBoxMsgs(
+          int index, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder builderForValue) {
+        if (boxMsgsBuilder_ == null) {
+          ensureBoxMsgsIsMutable();
+          boxMsgs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          boxMsgsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder addAllBoxMsgs(
+          java.lang.Iterable<? extends proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg> values) {
+        if (boxMsgsBuilder_ == null) {
+          ensureBoxMsgsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, boxMsgs_);
+          onChanged();
+        } else {
+          boxMsgsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder clearBoxMsgs() {
+        if (boxMsgsBuilder_ == null) {
+          boxMsgs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          boxMsgsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public Builder removeBoxMsgs(int index) {
+        if (boxMsgsBuilder_ == null) {
+          ensureBoxMsgsIsMutable();
+          boxMsgs_.remove(index);
+          onChanged();
+        } else {
+          boxMsgsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder getBoxMsgsBuilder(
+          int index) {
+        return getBoxMsgsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder getBoxMsgsOrBuilder(
+          int index) {
+        if (boxMsgsBuilder_ == null) {
+          return boxMsgs_.get(index);  } else {
+          return boxMsgsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public java.util.List<? extends proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder> 
+           getBoxMsgsOrBuilderList() {
+        if (boxMsgsBuilder_ != null) {
+          return boxMsgsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(boxMsgs_);
+        }
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder addBoxMsgsBuilder() {
+        return getBoxMsgsFieldBuilder().addBuilder(
+            proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder addBoxMsgsBuilder(
+          int index) {
+        return getBoxMsgsFieldBuilder().addBuilder(
+            index, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .proto_def.RoomEventNotification.BoxOpenMsg box_msgs = 4;</code>
+       */
+      public java.util.List<proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder> 
+           getBoxMsgsBuilderList() {
+        return getBoxMsgsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder> 
+          getBoxMsgsFieldBuilder() {
+        if (boxMsgsBuilder_ == null) {
+          boxMsgsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsg.Builder, proto_def.RoomMessage.RoomEventNotification.BoxOpenMsgOrBuilder>(
+                  boxMsgs_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          boxMsgs_ = null;
+        }
+        return boxMsgsBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -27078,18 +28068,18 @@ public final class RoomMessage {
        *may impliement through client-side message
        * </pre>
        *
-       * <code>string backgroud = 2;</code>
+       * <code>string background = 2;</code>
        */
-      java.lang.String getBackgroud();
+      java.lang.String getBackground();
       /**
        * <pre>
        *may impliement through client-side message
        * </pre>
        *
-       * <code>string backgroud = 2;</code>
+       * <code>string background = 2;</code>
        */
       com.google.protobuf.ByteString
-          getBackgroudBytes();
+          getBackgroundBytes();
 
       /**
        * <code>string room_avatar = 3;</code>
@@ -27161,7 +28151,7 @@ public final class RoomMessage {
       }
       private Info() {
         declaration_ = "";
-        backgroud_ = "";
+        background_ = "";
         roomAvatar_ = "";
         password_ = "";
         mutedAll_ = 0;
@@ -27202,7 +28192,7 @@ public final class RoomMessage {
               case 18: {
                 java.lang.String s = input.readStringRequireUtf8();
 
-                backgroud_ = s;
+                background_ = s;
                 break;
               }
               case 26: {
@@ -27309,24 +28299,24 @@ public final class RoomMessage {
         }
       }
 
-      public static final int BACKGROUD_FIELD_NUMBER = 2;
-      private volatile java.lang.Object backgroud_;
+      public static final int BACKGROUND_FIELD_NUMBER = 2;
+      private volatile java.lang.Object background_;
       /**
        * <pre>
        *may impliement through client-side message
        * </pre>
        *
-       * <code>string backgroud = 2;</code>
+       * <code>string background = 2;</code>
        */
-      public java.lang.String getBackgroud() {
-        java.lang.Object ref = backgroud_;
+      public java.lang.String getBackground() {
+        java.lang.Object ref = background_;
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
           com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          backgroud_ = s;
+          background_ = s;
           return s;
         }
       }
@@ -27335,16 +28325,16 @@ public final class RoomMessage {
        *may impliement through client-side message
        * </pre>
        *
-       * <code>string backgroud = 2;</code>
+       * <code>string background = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getBackgroudBytes() {
-        java.lang.Object ref = backgroud_;
+          getBackgroundBytes() {
+        java.lang.Object ref = background_;
         if (ref instanceof java.lang.String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          backgroud_ = b;
+          background_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -27512,8 +28502,8 @@ public final class RoomMessage {
         if (!getDeclarationBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 1, declaration_);
         }
-        if (!getBackgroudBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, backgroud_);
+        if (!getBackgroundBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, background_);
         }
         if (!getRoomAvatarBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 3, roomAvatar_);
@@ -27542,8 +28532,8 @@ public final class RoomMessage {
         if (!getDeclarationBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, declaration_);
         }
-        if (!getBackgroudBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, backgroud_);
+        if (!getBackgroundBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, background_);
         }
         if (!getRoomAvatarBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, roomAvatar_);
@@ -27580,8 +28570,8 @@ public final class RoomMessage {
         boolean result = true;
         result = result && getDeclaration()
             .equals(other.getDeclaration());
-        result = result && getBackgroud()
-            .equals(other.getBackgroud());
+        result = result && getBackground()
+            .equals(other.getBackground());
         result = result && getRoomAvatar()
             .equals(other.getRoomAvatar());
         result = result && getPassword()
@@ -27603,8 +28593,8 @@ public final class RoomMessage {
         hash = (19 * hash) + getDescriptor().hashCode();
         hash = (37 * hash) + DECLARATION_FIELD_NUMBER;
         hash = (53 * hash) + getDeclaration().hashCode();
-        hash = (37 * hash) + BACKGROUD_FIELD_NUMBER;
-        hash = (53 * hash) + getBackgroud().hashCode();
+        hash = (37 * hash) + BACKGROUND_FIELD_NUMBER;
+        hash = (53 * hash) + getBackground().hashCode();
         hash = (37 * hash) + ROOM_AVATAR_FIELD_NUMBER;
         hash = (53 * hash) + getRoomAvatar().hashCode();
         hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
@@ -27750,7 +28740,7 @@ public final class RoomMessage {
           super.clear();
           declaration_ = "";
 
-          backgroud_ = "";
+          background_ = "";
 
           roomAvatar_ = "";
 
@@ -27789,7 +28779,7 @@ public final class RoomMessage {
         public proto_def.RoomMessage.RoomControlReq.Info buildPartial() {
           proto_def.RoomMessage.RoomControlReq.Info result = new proto_def.RoomMessage.RoomControlReq.Info(this);
           result.declaration_ = declaration_;
-          result.backgroud_ = backgroud_;
+          result.background_ = background_;
           result.roomAvatar_ = roomAvatar_;
           result.password_ = password_;
           result.mutedAll_ = mutedAll_;
@@ -27847,8 +28837,8 @@ public final class RoomMessage {
             declaration_ = other.declaration_;
             onChanged();
           }
-          if (!other.getBackgroud().isEmpty()) {
-            backgroud_ = other.backgroud_;
+          if (!other.getBackground().isEmpty()) {
+            background_ = other.background_;
             onChanged();
           }
           if (!other.getRoomAvatar().isEmpty()) {
@@ -27987,21 +28977,21 @@ public final class RoomMessage {
           return this;
         }
 
-        private java.lang.Object backgroud_ = "";
+        private java.lang.Object background_ = "";
         /**
          * <pre>
          *may impliement through client-side message
          * </pre>
          *
-         * <code>string backgroud = 2;</code>
+         * <code>string background = 2;</code>
          */
-        public java.lang.String getBackgroud() {
-          java.lang.Object ref = backgroud_;
+        public java.lang.String getBackground() {
+          java.lang.Object ref = background_;
           if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
                 (com.google.protobuf.ByteString) ref;
             java.lang.String s = bs.toStringUtf8();
-            backgroud_ = s;
+            background_ = s;
             return s;
           } else {
             return (java.lang.String) ref;
@@ -28012,16 +29002,16 @@ public final class RoomMessage {
          *may impliement through client-side message
          * </pre>
          *
-         * <code>string backgroud = 2;</code>
+         * <code>string background = 2;</code>
          */
         public com.google.protobuf.ByteString
-            getBackgroudBytes() {
-          java.lang.Object ref = backgroud_;
+            getBackgroundBytes() {
+          java.lang.Object ref = background_;
           if (ref instanceof String) {
             com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
-            backgroud_ = b;
+            background_ = b;
             return b;
           } else {
             return (com.google.protobuf.ByteString) ref;
@@ -28032,15 +29022,15 @@ public final class RoomMessage {
          *may impliement through client-side message
          * </pre>
          *
-         * <code>string backgroud = 2;</code>
+         * <code>string background = 2;</code>
          */
-        public Builder setBackgroud(
+        public Builder setBackground(
             java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
   
-          backgroud_ = value;
+          background_ = value;
           onChanged();
           return this;
         }
@@ -28049,11 +29039,11 @@ public final class RoomMessage {
          *may impliement through client-side message
          * </pre>
          *
-         * <code>string backgroud = 2;</code>
+         * <code>string background = 2;</code>
          */
-        public Builder clearBackgroud() {
+        public Builder clearBackground() {
           
-          backgroud_ = getDefaultInstance().getBackgroud();
+          background_ = getDefaultInstance().getBackground();
           onChanged();
           return this;
         }
@@ -28062,16 +29052,16 @@ public final class RoomMessage {
          *may impliement through client-side message
          * </pre>
          *
-         * <code>string backgroud = 2;</code>
+         * <code>string background = 2;</code>
          */
-        public Builder setBackgroudBytes(
+        public Builder setBackgroundBytes(
             com.google.protobuf.ByteString value) {
           if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
           
-          backgroud_ = value;
+          background_ = value;
           onChanged();
           return this;
         }
@@ -40028,6 +41018,11 @@ public final class RoomMessage {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_def_RoomEventNotification_Gift_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_def_RoomEventNotification_BoxOpenMsg_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_def_RoomEventNotification_BoxOpenMsg_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_proto_def_RoomControlReq_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -40198,67 +41193,69 @@ public final class RoomMessage {
       "\000\022\t\n\005LEAVE\020\001\022\014\n\010OPEN_BOX\020\002\022\r\n\tSEND_GIFT\020" +
       "\003\"]\n\rRoomEventResp\022/\n\006status\030\001 \001(\0162\037.pro" +
       "to_def.RoomEventResp.STATUS\"\033\n\006STATUS\022\006\n" +
-      "\002OK\020\000\022\t\n\005ERROR\020\001\"\313\002\n\025RoomEventNotificati" +
+      "\002OK\020\000\022\t\n\005ERROR\020\001\"\265\003\n\025RoomEventNotificati" +
       "on\022/\n\004type\030\001 \001(\0162!.proto_def.RoomEventRe" +
       "q.EventType\0223\n\004user\030\002 \001(\0132%.proto_def.Ro" +
       "omEventNotification.User\0224\n\005gifts\030\003 \003(\0132" +
-      "%.proto_def.RoomEventNotification.Gift\032M" +
-      "\n\004User\022\013\n\003uid\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006ava" +
-      "tar\030\003 \001(\t\022\r\n\005noble\030\004 \001(\005\022\013\n\003vip\030\005 \001(\005\032G\n" +
-      "\004Gift\022\016\n\006to_uid\030\001 \001(\t\022\017\n\007to_name\030\002 \001(\t\022\017" +
-      "\n\007gift_id\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\"\245\003\n\016RoomC" +
-      "ontrolReq\0223\n\004type\030\001 \001(\0162%.proto_def.Room" +
-      "ControlReq.ControlType\022\013\n\003uid\030\002 \001(\t\022\r\n\005t" +
-      "oken\030\003 \001(\t\022\017\n\007room_id\030\004 \001(\t\0221\n\troom_info" +
-      "\030\005 \001(\0132\036.proto_def.RoomControlReq.Info\022\017" +
-      "\n\007tgt_uid\030\006 \001(\t\032\271\001\n\004Info\022\023\n\013declaration\030" +
-      "\001 \001(\t\022\021\n\tbackgroud\030\002 \001(\t\022\023\n\013room_avatar\030" +
-      "\003 \001(\t\022\020\n\010password\030\004 \001(\t\022*\n\tmuted_all\030\005 \001" +
-      "(\0162\027.proto_def.ControlState\022\'\n\006enable\030\006 " +
-      "\001(\0162\027.proto_def.ControlState\022\r\n\005title\030\007 " +
-      "\001(\t\"1\n\013ControlType\022\007\n\003UNK\020\000\022\010\n\004KICK\020\001\022\017\n" +
-      "\013INFO_UPDATE\020\002\"\226\001\n\017RoomControlResp\0221\n\006st" +
-      "atus\030\001 \001(\0162!.proto_def.RoomControlResp.S" +
-      "TATUS\"P\n\006STATUS\022\006\n\002OK\020\000\022\021\n\rTOKEN_INVALID" +
-      "\020\001\022\025\n\021PERMISSION_DENIED\020\002\022\024\n\020OPERATION_F" +
-      "AILED\020\003\"\217\002\n\016SeatControlReq\0223\n\004type\030\001 \001(\016" +
-      "2%.proto_def.SeatControlReq.ControlType\022" +
-      "\013\n\003uid\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\022\017\n\007room_id\030\004" +
-      " \001(\t\022\017\n\007tgt_uid\030\005 \001(\t\022\020\n\010seat_idx\030\006 \001(\005\"" +
-      "x\n\013ControlType\022\007\n\003UNK\020\000\022\t\n\005APPLY\020\001\022\n\n\006CA" +
-      "NCEL\020\002\022\t\n\005TAKEN\020\003\022\013\n\007RELEASE\020\004\022\014\n\010OPEN_M" +
-      "IC\020\005\022\r\n\tCLOSE_MIC\020\006\022\010\n\004LOCK\020\007\022\n\n\006UNLOCK\020" +
-      "\010\"a\n\017SeatControlResp\0221\n\006status\030\001 \001(\0162!.p" +
-      "roto_def.SeatControlResp.STATUS\"\033\n\006STATU" +
-      "S\022\006\n\002OK\020\000\022\t\n\005ERROR\020\001\"#\n\020YunxinAddressReq" +
-      "\022\017\n\007room_id\030\001 \001(\t\"&\n\021YunxinAddressResp\022\021" +
-      "\n\taddr_list\030\001 \003(\t\"\"\n\020RoomTitleTipResp\022\016\n" +
-      "\006titles\030\001 \003(\t\"b\n\rRoomThemeResp\022.\n\006themes" +
-      "\030\001 \003(\0132\036.proto_def.RoomThemeResp.Theme\032!" +
-      "\n\005Theme\022\013\n\003tid\030\001 \001(\005\022\013\n\003url\030\002 \001(\t\"\"\n\013Roo" +
-      "mExtInfo\022\023\n\013bg_theme_id\030\001 \001(\t\"\232\002\n\rSeatQu" +
-      "eueItem\022\020\n\010seat_idx\030\001 \001(\005\0226\n\nseat_state\030" +
-      "\002 \001(\0162\".proto_def.SeatQueueItem.SeatStat" +
-      "e\022*\n\tmic_state\030\003 \001(\0162\027.proto_def.Control" +
-      "State\022\013\n\003uid\030\004 \001(\t\022\021\n\tuser_name\030\005 \001(\t\022\023\n" +
-      "\013user_avatar\030\006 \001(\t\022\022\n\nuser_noble\030\007 \001(\005\022\020" +
-      "\n\010user_vip\030\010 \001(\005\"8\n\tSeatState\022\007\n\003UNK\020\000\022\n" +
-      "\n\006LOCKED\020\001\022\010\n\004OPEN\020\002\022\014\n\010OCCUPIED\020\003\"\253\002\n\tW" +
-      "aitQueue\022\023\n\013placeholder\030\001 \001(\t\0227\n\nwait_us" +
-      "ers\030\002 \003(\0132#.proto_def.WaitQueue.WaitUser" +
-      "sEntry\032\202\001\n\004User\022\013\n\003uid\030\001 \001(\t\022\014\n\004name\030\002 \001" +
-      "(\t\022\016\n\006gender\030\003 \001(\t\022\016\n\006avatar\030\004 \001(\t\022\r\n\005no" +
-      "ble\030\005 \001(\005\022\013\n\003vip\030\006 \001(\005\022\020\n\010seat_idx\030\007 \001(\005" +
-      "\022\021\n\ttimestamp\030\010 \001(\005\032K\n\016WaitUsersEntry\022\013\n" +
-      "\003key\030\001 \001(\t\022(\n\005value\030\002 \001(\0132\031.proto_def.Wa" +
-      "itQueue.User:\0028\001\"C\n\021KeepAliveRegister\022\013\n" +
-      "\003uid\030\001 \001(\t\022\017\n\007room_id\030\002 \001(\t\022\020\n\010seat_idx\030" +
-      "\003 \001(\005*7\n\004Role\022\t\n\005OWNER\020\000\022\014\n\010OPERATOR\020\001\022\013" +
-      "\n\007BLOCKED\020\002\022\t\n\005GUEST\020\003*U\n\020NotificationTy" +
-      "pe\022\t\n\005EVENT\020\000\022\020\n\014ROOM_CONTROL\020\001\022\020\n\014SEAT_" +
-      "CONTROL\020\002\022\022\n\016MEMBER_CONTROL\020\003*0\n\014Control" +
-      "State\022\007\n\003UNK\020\000\022\013\n\007DISABLE\020\001\022\n\n\006ENABLE\020\002b" +
-      "\006proto3"
+      "%.proto_def.RoomEventNotification.Gift\022=" +
+      "\n\010box_msgs\030\004 \003(\0132+.proto_def.RoomEventNo" +
+      "tification.BoxOpenMsg\032M\n\004User\022\013\n\003uid\030\001 \001" +
+      "(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\r\n\005nobl" +
+      "e\030\004 \001(\005\022\013\n\003vip\030\005 \001(\005\032G\n\004Gift\022\016\n\006to_uid\030\001" +
+      " \001(\t\022\017\n\007to_name\030\002 \001(\t\022\017\n\007gift_id\030\003 \001(\005\022\r" +
+      "\n\005count\030\004 \001(\005\032)\n\nBoxOpenMsg\022\r\n\005title\030\001 \001" +
+      "(\t\022\014\n\004icon\030\002 \001(\t\"\246\003\n\016RoomControlReq\0223\n\004t" +
+      "ype\030\001 \001(\0162%.proto_def.RoomControlReq.Con" +
+      "trolType\022\013\n\003uid\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\022\017\n\007" +
+      "room_id\030\004 \001(\t\0221\n\troom_info\030\005 \001(\0132\036.proto" +
+      "_def.RoomControlReq.Info\022\017\n\007tgt_uid\030\006 \001(" +
+      "\t\032\272\001\n\004Info\022\023\n\013declaration\030\001 \001(\t\022\022\n\nbackg" +
+      "round\030\002 \001(\t\022\023\n\013room_avatar\030\003 \001(\t\022\020\n\010pass" +
+      "word\030\004 \001(\t\022*\n\tmuted_all\030\005 \001(\0162\027.proto_de" +
+      "f.ControlState\022\'\n\006enable\030\006 \001(\0162\027.proto_d" +
+      "ef.ControlState\022\r\n\005title\030\007 \001(\t\"1\n\013Contro" +
+      "lType\022\007\n\003UNK\020\000\022\010\n\004KICK\020\001\022\017\n\013INFO_UPDATE\020" +
+      "\002\"\226\001\n\017RoomControlResp\0221\n\006status\030\001 \001(\0162!." +
+      "proto_def.RoomControlResp.STATUS\"P\n\006STAT" +
+      "US\022\006\n\002OK\020\000\022\021\n\rTOKEN_INVALID\020\001\022\025\n\021PERMISS" +
+      "ION_DENIED\020\002\022\024\n\020OPERATION_FAILED\020\003\"\217\002\n\016S" +
+      "eatControlReq\0223\n\004type\030\001 \001(\0162%.proto_def." +
+      "SeatControlReq.ControlType\022\013\n\003uid\030\002 \001(\t\022" +
+      "\r\n\005token\030\003 \001(\t\022\017\n\007room_id\030\004 \001(\t\022\017\n\007tgt_u" +
+      "id\030\005 \001(\t\022\020\n\010seat_idx\030\006 \001(\005\"x\n\013ControlTyp" +
+      "e\022\007\n\003UNK\020\000\022\t\n\005APPLY\020\001\022\n\n\006CANCEL\020\002\022\t\n\005TAK" +
+      "EN\020\003\022\013\n\007RELEASE\020\004\022\014\n\010OPEN_MIC\020\005\022\r\n\tCLOSE" +
+      "_MIC\020\006\022\010\n\004LOCK\020\007\022\n\n\006UNLOCK\020\010\"a\n\017SeatCont" +
+      "rolResp\0221\n\006status\030\001 \001(\0162!.proto_def.Seat" +
+      "ControlResp.STATUS\"\033\n\006STATUS\022\006\n\002OK\020\000\022\t\n\005" +
+      "ERROR\020\001\"#\n\020YunxinAddressReq\022\017\n\007room_id\030\001" +
+      " \001(\t\"&\n\021YunxinAddressResp\022\021\n\taddr_list\030\001" +
+      " \003(\t\"\"\n\020RoomTitleTipResp\022\016\n\006titles\030\001 \003(\t" +
+      "\"b\n\rRoomThemeResp\022.\n\006themes\030\001 \003(\0132\036.prot" +
+      "o_def.RoomThemeResp.Theme\032!\n\005Theme\022\013\n\003ti" +
+      "d\030\001 \001(\005\022\013\n\003url\030\002 \001(\t\"\"\n\013RoomExtInfo\022\023\n\013b" +
+      "g_theme_id\030\001 \001(\t\"\232\002\n\rSeatQueueItem\022\020\n\010se" +
+      "at_idx\030\001 \001(\005\0226\n\nseat_state\030\002 \001(\0162\".proto" +
+      "_def.SeatQueueItem.SeatState\022*\n\tmic_stat" +
+      "e\030\003 \001(\0162\027.proto_def.ControlState\022\013\n\003uid\030" +
+      "\004 \001(\t\022\021\n\tuser_name\030\005 \001(\t\022\023\n\013user_avatar\030" +
+      "\006 \001(\t\022\022\n\nuser_noble\030\007 \001(\005\022\020\n\010user_vip\030\010 " +
+      "\001(\005\"8\n\tSeatState\022\007\n\003UNK\020\000\022\n\n\006LOCKED\020\001\022\010\n" +
+      "\004OPEN\020\002\022\014\n\010OCCUPIED\020\003\"\253\002\n\tWaitQueue\022\023\n\013p" +
+      "laceholder\030\001 \001(\t\0227\n\nwait_users\030\002 \003(\0132#.p" +
+      "roto_def.WaitQueue.WaitUsersEntry\032\202\001\n\004Us" +
+      "er\022\013\n\003uid\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006gender\030" +
+      "\003 \001(\t\022\016\n\006avatar\030\004 \001(\t\022\r\n\005noble\030\005 \001(\005\022\013\n\003" +
+      "vip\030\006 \001(\005\022\020\n\010seat_idx\030\007 \001(\005\022\021\n\ttimestamp" +
+      "\030\010 \001(\005\032K\n\016WaitUsersEntry\022\013\n\003key\030\001 \001(\t\022(\n" +
+      "\005value\030\002 \001(\0132\031.proto_def.WaitQueue.User:" +
+      "\0028\001\"C\n\021KeepAliveRegister\022\013\n\003uid\030\001 \001(\t\022\017\n" +
+      "\007room_id\030\002 \001(\t\022\020\n\010seat_idx\030\003 \001(\005*7\n\004Role" +
+      "\022\t\n\005OWNER\020\000\022\014\n\010OPERATOR\020\001\022\013\n\007BLOCKED\020\002\022\t" +
+      "\n\005GUEST\020\003*U\n\020NotificationType\022\t\n\005EVENT\020\000" +
+      "\022\020\n\014ROOM_CONTROL\020\001\022\020\n\014SEAT_CONTROL\020\002\022\022\n\016" +
+      "MEMBER_CONTROL\020\003*0\n\014ControlState\022\007\n\003UNK\020" +
+      "\000\022\013\n\007DISABLE\020\001\022\n\n\006ENABLE\020\002b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -40415,7 +41412,7 @@ public final class RoomMessage {
     internal_static_proto_def_RoomEventNotification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_def_RoomEventNotification_descriptor,
-        new java.lang.String[] { "Type", "User", "Gifts", });
+        new java.lang.String[] { "Type", "User", "Gifts", "BoxMsgs", });
     internal_static_proto_def_RoomEventNotification_User_descriptor =
       internal_static_proto_def_RoomEventNotification_descriptor.getNestedTypes().get(0);
     internal_static_proto_def_RoomEventNotification_User_fieldAccessorTable = new
@@ -40428,6 +41425,12 @@ public final class RoomMessage {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_def_RoomEventNotification_Gift_descriptor,
         new java.lang.String[] { "ToUid", "ToName", "GiftId", "Count", });
+    internal_static_proto_def_RoomEventNotification_BoxOpenMsg_descriptor =
+      internal_static_proto_def_RoomEventNotification_descriptor.getNestedTypes().get(2);
+    internal_static_proto_def_RoomEventNotification_BoxOpenMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_def_RoomEventNotification_BoxOpenMsg_descriptor,
+        new java.lang.String[] { "Title", "Icon", });
     internal_static_proto_def_RoomControlReq_descriptor =
       getDescriptor().getMessageTypes().get(19);
     internal_static_proto_def_RoomControlReq_fieldAccessorTable = new
@@ -40439,7 +41442,7 @@ public final class RoomMessage {
     internal_static_proto_def_RoomControlReq_Info_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_def_RoomControlReq_Info_descriptor,
-        new java.lang.String[] { "Declaration", "Backgroud", "RoomAvatar", "Password", "MutedAll", "Enable", "Title", });
+        new java.lang.String[] { "Declaration", "Background", "RoomAvatar", "Password", "MutedAll", "Enable", "Title", });
     internal_static_proto_def_RoomControlResp_descriptor =
       getDescriptor().getMessageTypes().get(20);
     internal_static_proto_def_RoomControlResp_fieldAccessorTable = new

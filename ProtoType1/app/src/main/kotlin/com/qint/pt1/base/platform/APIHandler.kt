@@ -43,7 +43,10 @@ class APIHandler
                 val errorMessage = exception.message ?: exception.toString()
                 Log.e(LOG_TAG, "request remote data error: ${errorMessage}")
                 exception.printStackTrace()
-                Either.Left(Failure.UnknownError(errorMessage))
+                when(exception){ //TODO: 细分处理
+                    is java.net.UnknownHostException -> Either.Left(Failure.NetworkConnectionError())
+                    else -> Either.Left(Failure.UnknownError(errorMessage))
+                }
             }
         }
     }

@@ -21,6 +21,7 @@ import com.qint.pt1.base.navigation.RouteActivity
 import com.qint.pt1.features.account.AccountFragment
 import com.qint.pt1.features.chatroom.ChatRoomActivity
 import com.qint.pt1.features.chatroom.ChatRoomFragment
+import com.qint.pt1.features.chatroom.widgets.ChatRoomBackpackPanelFragment
 import com.qint.pt1.features.chatroom.widgets.ChatRoomGiftPanelFragment
 import com.qint.pt1.features.chatrooms.ChatRoomsFragment
 import com.qint.pt1.features.chatrooms.ChatRoomsListFragment
@@ -55,6 +56,7 @@ interface ApplicationComponent {
     fun inject(chatRoomActivity: ChatRoomActivity)
     fun inject(chatRoomFragment: ChatRoomFragment)
     fun inject(chatRoomGiftPanelFragment: ChatRoomGiftPanelFragment)
+    fun inject(chatRoomBackpackPanelFragment: ChatRoomBackpackPanelFragment)
 
     fun inject(messagesFragment: MessagesFragment)
     fun inject(accountFragment: AccountFragment)
